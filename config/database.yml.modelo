@@ -1,23 +1,23 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: patrono_development
+  database: imbw_the_blog_development
   username: root
-  password: riopro
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql
   encoding: utf8
-  database: patrono_test
+  database: imbw_the_blog_test
   username: root
-  password: riopro
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql
   encoding: utf8
-  database: patrono
-  username: root
-  password:
+  database: imbw_the_blog_production
+  username: 
+  password: 
   socket: /var/run/mysqld/mysqld.sock
