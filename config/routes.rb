@@ -34,13 +34,19 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
 
   # See how all your routes lay out with "rake routes"
- 
-  map.resource :session
 
-  map.login  '/login',  :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+    ## admin - administração da conta
 
-  map.root :controller => "sessions", :action => "new"
+  map.admin_root '/admin',  :controller => 'admin', :action => 'index'
+  map.namespace(:admin) do |admin|
+    admin.resource :session
+    admin.resources :users
+  end
+
+  map.login  '/login',  :controller => 'admin/sessions', :action => 'new'
+  map.logout '/logout', :controller => 'admin/sessions', :action => 'destroy'
+
+  map.root :controller => "admin/sessions", :action => "new"
 
 
   # Install the default routes as the lowest priority.
