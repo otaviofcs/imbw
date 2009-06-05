@@ -35,23 +35,23 @@ describe User do
       u.login.should == 'upper'
     end
   end
-#
-#  describe "on update" do
-#    before(:each) do
-#      User.create!(@valid_attributes)
-#      @user = User.find_by_login(@valid_attributes[:login])
-#    end
-#    it { @user.should_not validate_presence_of(:password) }
-#    it { @user.should_not validate_presence_of(:password_confirmation) }
-#  end
-#
-#  describe "on update, changing password" do
-#    before(:each) do
-#      User.create!(@valid_attributes)
-#      @user = User.find_by_login(@valid_attributes[:login])
-#      @user.password = 'new_passord'
-#    end
-#    it { @user.should validate_presence_of(:password_confirmation) }
-#  end
+
+  describe "on update" do
+    before(:each) do
+      User.create!(@valid_attributes)
+      @user = User.find_by_login(@valid_attributes[:login])
+    end
+    it { @user.should_not validate_presence_of(:password) }
+    it { @user.should_not validate_presence_of(:password_confirmation) }
+  end
+
+  describe "on update, changing password" do
+    before(:each) do
+      User.create!(@valid_attributes)
+      @user = User.find_by_login(@valid_attributes[:login])
+      @user.password = 'new_passord'
+    end
+    it { @user.should validate_presence_of(:password_confirmation) }
+  end
 
 end
