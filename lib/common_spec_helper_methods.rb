@@ -17,7 +17,7 @@ module CommonSpecHelperMethods
   end
   
   def mock_user_session
-    mock_model UserSession, { :record => @user, :destroy => true, :save => true }
+    mock_model UserSession, { :destroy => true, :save => true }
   end
 
 
