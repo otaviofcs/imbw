@@ -37,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
 
     ## admin - administração da conta
 
+  map.resources :posts
+
   map.admin_root '/admin',  :controller => 'admin', :action => 'index'
   map.namespace(:admin) do |admin|
     admin.resource :session
@@ -46,7 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login  '/login',  :controller => 'admin/sessions', :action => 'new'
   map.logout '/logout', :controller => 'admin/sessions', :action => 'destroy'
 
-  map.root :controller => "admin/sessions", :action => "new"
+  map.root :controller => "posts", :action => "index"
 
 
   # Install the default routes as the lowest priority.
