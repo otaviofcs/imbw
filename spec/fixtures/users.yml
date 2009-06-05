@@ -2,6 +2,7 @@
 
 the_blogger:
   login: the_blogger
+  email: blogger@my_blog.com
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("123456" + salt) %> # senha = 123456
   persistence_token: <%= Authlogic::Random.hex_token %>
