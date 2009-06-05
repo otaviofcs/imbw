@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
-  # Requer um +current_user+ setado. Valida apenas caso Account válida
-  # esteja especificada.
-  before_filter :user_required
-
   # Seta +TimeZone+ da requisição atual para a TimeZone do usuário atual, caso
   # o mesmo esteja logado.
   before_filter :set_user_time_zone
@@ -45,6 +41,5 @@ class ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.record
     end
-
 
 end
