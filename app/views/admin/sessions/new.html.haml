@@ -1,0 +1,18 @@
+.login
+  %h5 Login
+
+  - form_for @user_session, :url => admin_session_path do |f|
+    %p
+      = f.label 'Login'
+      %br
+      = f.text_field :login, :size => '20'
+    %p
+      = f.label 'Senha'
+      %br
+      = f.password_field :password, :size => '20'
+    %p
+      = f.label 'Lembrar de mim?'
+      = f.check_box :remember_me
+    %p
+      = f.submit "Enviar"
+  
