@@ -10,6 +10,7 @@
     %title= h(@page_title) if @page_title
   %body.gray
     .content-all
+      = render :partial => 'shared/menu'
       = display_flashes()
       = yield
       .clear
