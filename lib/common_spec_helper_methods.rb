@@ -9,7 +9,7 @@ module CommonSpecHelperMethods
   # logs in the supplied user
   def login_as(user=nil)
     activate_authlogic
-    if super_user # login
+    if user # login
       UserSession.create(user)
     else # logout
       UserSession.find.destroy
