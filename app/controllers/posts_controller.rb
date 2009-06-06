@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   #
   # lista de posts
   def index
-    @posts = Post.available
+    @posts = Post.available.by_id
   end
 
 end

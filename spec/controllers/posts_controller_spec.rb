@@ -20,6 +20,12 @@ describe PostsController do
       get :index, params
     end
     it_should_be_accessible_if_not_logged_in
+    it "should retrieve posts" do
+      @post = mock_model(Post)
+      Post.should_receive(:available).and_return(posts = [@post])
+      posts.should_receive(:by_id).and_return(posts)
+      call_action
+    end
   end
 
 end

@@ -2,6 +2,6 @@
 
 first_post:
   title: my first post
-  body: text text
-  body_html: <p>text text</p>
+  body: text text, it should be long enough to be considered correct.
+  body_html: <p>text text, it should be long enough to be considered correct.</p>
   edited_at: <%= Time.current %>

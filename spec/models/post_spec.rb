@@ -4,6 +4,7 @@ describe Post do
   before(:each) do
     @valid_attributes = {
       :title => 'my first post',
+      :body => ', it should be long enough to be considered correct',
       :edited_at => Time.current
     }
     @post = Post.new(@valid_attributes)
@@ -15,9 +16,13 @@ describe Post do
 
   describe "named_scopes" do
     it { should have_scope(:available).conditions(["posts.active = ? and (not posts.published_at is null)", true]) }
+    it { should have_scope(:by_id).order("id desc") }
   end
 
   describe "validations" do
     it { should validate_presence_of(:edited_at) }
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:body) }
+    it { should validate_length_of(:body, :minimum => 20) }
   end
 end
