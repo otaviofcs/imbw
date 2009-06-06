@@ -13,9 +13,11 @@ describe Post do
     @post.save.should be_true
   end
 
+  describe "named_scopes" do
+    it { should have_scope(:available).conditions(["posts.active = ? and (not posts.published_at is null)", true]) }
+  end
+
   describe "validations" do
-
     it { should validate_presence_of(:edited_at) }
-
   end
 end

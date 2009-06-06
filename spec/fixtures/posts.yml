@@ -1,7 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+first_post:
+  title: my first post
+  body: text text
+  body_html: <p>text text</p>
+  edited_at: <%= Time.current %>
