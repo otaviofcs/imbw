@@ -4,7 +4,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 # da sessão.
 class ApplicationTestController < ApplicationController
 
-  skip_before_filter :user_required, :only => [ :test_without_user, :test_company_required ]
+  before_filter :user_required
+  
+  skip_before_filter :user_required, :only => [ :test_without_user ]
 
   def test_without_user
     render 'user_sessions/new'
@@ -50,9 +52,6 @@ describe ApplicationTestController do
       get :test_with_user
     end
     describe "on success" do
-      before(:each) do
-        UserSession.stub!(:find).and_return( @user_session )
-      end
       it "should succed" do
         do_get
         response.should be_success
@@ -64,7 +63,7 @@ describe ApplicationTestController do
     end
     describe "on failure" do
       before(:each) do
-        UserSession.stub!(:find).and_return( nil )
+        login_as nil
       end
       it "should fail" do
         do_get
