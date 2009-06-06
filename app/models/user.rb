@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   #
+  # Association
+  #
+
+  has_many :posts
+
+
+  #
   # Named Scopes
   #
 

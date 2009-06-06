@@ -17,6 +17,10 @@ describe User do
     @user.save.should be_true
   end
 
+  describe "associations" do
+    it { should have_many(:posts) }
+  end
+
   describe "on creation" do
     it { should validate_presence_of(:login) }
     it { should validate_uniqueness_of(:login, :case_sensitive => false) }
