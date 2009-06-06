@@ -48,12 +48,18 @@ describe Admin::SessionsController do
   describe "destroy" do
     before(:each) do
       activate_authlogic
+      @user = users(:the_blogger)
+      login_as @user
+    end
+    def call_action(params={})
+      delete :destroy, params
     end
     it "should destroy a -user session" do
-      delete :destroy
+      call_action
       UserSession.find.should be_nil
       response.should redirect_to(login_path)
     end
+    it_should_set_a_flash_message(:notice)
   end
 
 end
