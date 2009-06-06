@@ -1,0 +1,18 @@
+%h4
+  = @post.title
+.post
+  .post_header
+    %span
+      = link_to @post.user.login, post_path(@post.user), :class => 'link-user'
+    %span
+      , criada em
+      = l(@post.created_at, :format => 'short')
+    %span
+      , última edição em
+      = l(@post.edited_at, :format => 'short')
+  %p
+    = @post.body
+
+.comments
+  %p
+    Comentários abaixo:
