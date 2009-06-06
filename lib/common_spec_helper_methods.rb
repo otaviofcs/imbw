@@ -21,7 +21,7 @@ module CommonSpecHelperMethods
   end
 
 
-  # rspec example used all over the super_admin controllers. assumes there's a
+  # rspec example used all over the admin controllers. assumes there's a
   # 'call_action(params={})' method that calls the controller action.
   #
   # tests if the action cannot be accessed anonimously.
@@ -32,6 +32,19 @@ module CommonSpecHelperMethods
       response.should_not be_success
       response.should be_redirect
       response.should redirect_to login_path
+    end
+  end
+
+  # rspec example used all over the non admin controllers. assumes there's a
+  # 'call_action(params={})' method that calls the controller action.
+  #
+  # tests if the action cannot be accessed anonimously.
+  def it_should_be_accessible_if_not_logged_in(params={})
+    it "should not be accessible if not logged in" do
+      login_as(nil)
+      call_action(params)
+      response.should be_success
+      response.should_not be_redirect
     end
   end
 
