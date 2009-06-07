@@ -1,3 +1,6 @@
 - @posts.each do |post|
-  %p
-    = link_to post.title, post_path(post), :class => 'link-post'
+  .post-card
+    %p
+      = link_to post.title, post_path(post), :class => 'link-post'
+    %p
+      = post.body
