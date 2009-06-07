@@ -3,7 +3,7 @@
 .post
   .post_header
     %span
-      = link_to @post.user.login, post_path(@post.user), :class => 'link-user'
+      = link_to @post.user.login, user_path(@post.user), :class => 'link-user'
       ,
     %span.date
       criada em

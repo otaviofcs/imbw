@@ -41,7 +41,6 @@ module CommonSpecHelperMethods
   # tests if the action cannot be accessed anonimously.
   def it_should_be_accessible_if_not_logged_in(params={})
     it "should be accessible if not logged in" do
-      login_as(nil)
       call_action(params)
       response.should be_success
       response.should_not be_redirect

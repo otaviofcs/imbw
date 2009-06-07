@@ -1,6 +1,12 @@
 - @posts.each do |post|
   .post-card
-    %p
+    %h3
       = link_to post.title, post_path(post), :class => 'link-post'
+    %p
+      criado por
+      = link_to post.user.login, user_path(post.user), :class => 'link-user'
+      , em
+      %span.date
+        = post.created_at
     %p
       = post.body
