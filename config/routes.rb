@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :posts
   map.resources :users
 
-  map.admin_root '/admin',  :controller => 'posts', :action => 'index'
+  map.admin_root '/admin',  :controller => 'admin/users', :action => 'index'
   map.namespace(:admin) do |admin|
     admin.resource :session
     admin.resources :users
