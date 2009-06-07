@@ -1,18 +1,21 @@
 %h4
-  = @post.title
+  = link_to @post.title, post_path(@post), :class => 'link-post'
 .post
   .post_header
     %span
       = link_to @post.user.login, post_path(@post.user), :class => 'link-user'
-    %span
-      , criada em
+      ,
+    %span.date
+      criada em
       = l(@post.created_at, :format => 'short')
-    %span
-      , última edição em
+      ,
+    %span.date-edit
+      última edição em
       = l(@post.edited_at, :format => 'short')
   %p
     = @post.body
 
 .comments
   %p
-    Comentários abaixo:
+    %span
+      Comentários abaixo:

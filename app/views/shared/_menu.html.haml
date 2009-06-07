@@ -1,6 +1,17 @@
 .menu
   %h1 I might be W.R.O.N.G.
-  %ul
-    %li
-      = link_to "login", login_path, :class => 'link-login' unless current_user
-      = link_to "sair", logout_path, :class => 'link-logout' if current_user
+  .main_menu
+    %ul
+      %li
+        = link_to "Writing", posts_path
+      %li
+        Reading
+      %li
+        Occupied With
+      %li
+        Nannying
+      %li
+        Grist
+      %li
+        = link_to "login", login_path, :class => 'link-login' unless current_user
+        = link_to "sair", logout_path, :class => 'link-logout' if current_user
