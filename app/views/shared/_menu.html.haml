@@ -12,7 +12,12 @@
         Nannying
       %li
         Grist
-      %li
-        = link_to "login", login_path, :class => 'link-login' unless current_user
-        = link_to "sair", logout_path, :class => 'link-logout' if current_user
+      - unless current_user
+        %li
+          = link_to "login", login_path, :class => 'link-login'
+      - else
+        %li
+          = link_to "admin", admin_root_path, :class => 'link-admin'
+        %li
+          = link_to "sair", logout_path, :class => 'link-logout'
   .clear
