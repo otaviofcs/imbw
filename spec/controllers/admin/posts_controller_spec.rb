@@ -13,6 +13,24 @@ describe Admin::PostsController do
     controller.should be_an_instance_of(Admin::PostsController)
   end
 
+  describe "GET /admin/posts/new" do
+    before(:each) do
+      @post = mock_model(Post)
+      Post.stub!(:new).and_return(@post)
+    end
+    def call_action(params={})
+      default_params = {}
+      params = default_params.merge!(params)
+      get :new, params
+    end
+    it_should_not_be_accessible_if_not_logged_in
+    it_should_assign_a_page_title
+    it "should retrieve posts" do
+      Post.should_receive(:new).and_return(@post)
+      call_action
+    end
+  end
+
   describe "GET /admin/posts/1/edit" do
     before(:each) do
       @post = mock_model(Post)
