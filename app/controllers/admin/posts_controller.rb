@@ -1,4 +1,4 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < AdminController
 
   # GET /admin/posts/new
   # Via: new_admin_posts_path
