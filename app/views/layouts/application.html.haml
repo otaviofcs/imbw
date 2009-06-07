@@ -8,14 +8,14 @@
     = stylesheet_link_tag "default.css"
     = javascript_include_tag :defaults
     %title= h(@page_title) if @page_title
-  %body.gray
+  %body.main
     .content-all
       = render :partial => 'shared/menu'
       = display_flashes()
       = yield
       .clear
-    #footer
-      %span.powered
-        Powered by
-        %a{:href => "http://imightbewrong.com.br"}
-          IMbW, the blog
+      #footer
+        %span.powered
+          Powered by
+          %a{:href => "http://imightbewrong.com.br"}
+            IMbW, the blog
