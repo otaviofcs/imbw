@@ -1,8 +1,8 @@
 - @posts.each do |post|
   .post-card
-    %h3
+    %h2
       = link_to post.title, post_path(post), :class => 'link-post'
-    %p
+    %h5
       criado por
       = link_to post.user.login, user_path(post.user), :class => 'link-user'
       , em
