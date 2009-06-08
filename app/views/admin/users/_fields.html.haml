@@ -1,0 +1,20 @@
+= f.error_messages
+%p
+  = f.label_l :login
+  %span.info obrigatório
+  %br
+  = f.text_field :login
+%p
+  = f.label_l :email
+  %span.info obrigatório
+  %br
+  = f.text_field :email
+%p
+  = f.label_l :password
+  %span.info só preencher se quiser alterar a senha
+  %br
+  = f.password_field :password
+%p
+  = f.label_l :password_confirmation
+  %br
+  = f.password_field :password_confirmation

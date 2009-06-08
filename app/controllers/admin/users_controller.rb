@@ -31,6 +31,36 @@ class Admin::UsersController < AdminController
     @page_title = "Editando User ##{@user.id}"
   end
 
+  # POST /admin/users
+  # Via: admin_user_path
+  # Available: [administradores]
+  #
+  # Criar novo usuário
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:success] = "Usuário criado com sucesso."
+      redirect_to admin_users_path
+    else
+      @page_title = "Novo Usuário"
+      render :action => 'new'
+    end
+  end
 
+  # PUT /admin/users/1
+  # Via: admin_users_path
+  # Disponível: [admin]
+  #
+  # Atualiza dados do usuário
+  def update
+    @user = User.find params[:id]
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Usuário alterado com sucesso"
+      redirect_to admin_users_path
+    else
+      @page_title = "Editando User ##{@user.id}"
+      render :action => 'edit'
+    end
+  end
 
 end
