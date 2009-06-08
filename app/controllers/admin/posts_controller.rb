@@ -6,7 +6,7 @@ class Admin::PostsController < AdminController
   #
   # lista de posts
   def index
-    @post = Post.by_id
+    @posts = Post.by_id
     @page_title = "Lista de Posts"
   end
 
@@ -31,5 +31,16 @@ class Admin::PostsController < AdminController
   end
 
 
+  # DELETE /admin/posts/1
+  # Via: admin_post_path(1)
+  # Disponível: [admin]
+  #
+  # excluindo post
+  def destroy
+    @post = Post.find params[:id]
+    @post.destroy
+    @page_title = "Post excluído com sucesso"
+    redirect_to admin_posts_path
+  end
 
 end
