@@ -52,7 +52,6 @@ describe Admin::UsersController do
 
   describe "GET /admin/users/1/edit" do
     before(:each) do
-      @user = mock_model(User)
       User.stub!(:find).and_return(@user)
     end
     def call_action(params={})
