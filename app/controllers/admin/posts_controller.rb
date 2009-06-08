@@ -1,5 +1,15 @@
 class Admin::PostsController < AdminController
 
+  # GET /admin/posts
+  # Via: admin_posts_path
+  # Disponível: [admin]
+  #
+  # lista de posts
+  def index
+    @post = Post.by_id
+    @page_title = "Lista de Posts"
+  end
+
   # GET /admin/posts/new
   # Via: new_admin_posts_path
   # Disponível: [admin]
