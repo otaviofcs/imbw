@@ -6,8 +6,8 @@
     %th #
   - @posts.each do |post|
     %tr
-      %td= link_to post.title, admin_post_path(post)
-      %td= link_to l(post.edited_at, :format => :short), admin_post_path(post)
+      %td= link_to post.title, edit_admin_post_path(post)
+      %td= link_to l(post.edited_at, :format => :short), edit_admin_post_path(post)
       %td
         = link_to "ver", post_path(post), :class => 'link-show'
         ou
