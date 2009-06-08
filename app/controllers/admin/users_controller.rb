@@ -63,4 +63,15 @@ class Admin::UsersController < AdminController
     end
   end
 
+  # DELETE /admin/users/1
+  # Via: admin_user_path(1)
+  # Disponível: [admin]
+  #
+  # apaga usuário
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy
+    flash[:success] = "Usuário apagado com sucesso"
+    redirect_to admin_users_path
+  end
 end
