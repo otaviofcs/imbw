@@ -167,22 +167,22 @@ describe Admin::UsersController do
         User.should_receive(:find).with("10").and_return(@user)
         call_action :id => 10
       end
-      it "should try to destroy user" do
-        @user.should_receive(:save).and_return(true)
+      it "should try to update user" do
+        @user.should_receive(:update_attributes).and_return(true)
         call_action
       end
       it_should_set_a_flash_message(:success)
     end
     describe "on failure" do
       before(:each) do
-        @user.stub!(:save).and_return(false)
+        @user.stub!(:update_attributes).and_return(false)
       end
       it "should assing not a flash success on error" do
-        @user.should_receive(:save).and_return(false)
+        @user.should_receive(:update_attributes).and_return(false)
         call_action
         flash[:success].should be_blank
       end
-      it "should render new template" do
+      it "should render edit template" do
         call_action
         response.should render_template(:edit)
       end

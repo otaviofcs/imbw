@@ -30,6 +30,37 @@ class Admin::PostsController < AdminController
     @page_title = "Editando Post ##{@post.id}"
   end
 
+  # POST /admin/posts
+  # Via: admin_posts_path
+  # Available: [administradores]
+  #
+  # Criar novo post
+  def create
+    @post = Post.new(params[:post])
+    if @post.save
+      flash[:success] = "Post criado com sucesso."
+      redirect_to admin_posts_path
+    else
+      @page_title = "Novo Post"
+      render :action => 'new'
+    end
+  end
+
+  # PUT /admin/posts/1
+  # Via: admin_posts_path
+  # Disponível: [admin]
+  #
+  # Atualiza dados do post
+  def update
+    @post = Post.find params[:id]
+    if @post.update_attributes(params[:post])
+      flash[:success] = "Post alterado com sucesso"
+      redirect_to admin_posts_path
+    else
+      @page_title = "Editando Post ##{@post.id}"
+      render :action => 'edit'
+    end
+  end
 
   # DELETE /admin/posts/1
   # Via: admin_post_path(1)
@@ -40,6 +71,7 @@ class Admin::PostsController < AdminController
     @post = Post.find params[:id]
     @post.destroy
     @page_title = "Post excluído com sucesso"
+    flash[:success] = "Post excluído com sucesso"
     redirect_to admin_posts_path
   end
 
