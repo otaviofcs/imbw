@@ -1,0 +1,10 @@
+.list
+  = link_to "novo usuário", new_admin_user_path, :class => 'link-new'
+  %table
+    %tr
+      %th Id
+      %th login
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, admin_user_path(user)
+        %td= link_to user.login, admin_user_path(user)
