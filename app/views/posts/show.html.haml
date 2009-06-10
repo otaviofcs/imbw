@@ -15,7 +15,5 @@
   %p
     = @post.body
 
-.comments
-  %p
-    %span.comments
-      Comentários abaixo:
+#comments_container
+  = disqus_comments_tag(Settings::DISQUS_SITE_ID)

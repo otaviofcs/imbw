@@ -1,0 +1,15 @@
+# http://settingslogic.rubyforge.org/
+defaults: &defaults
+  disqus_in_development: false
+
+development:
+  <<: *defaults
+  disqus_site_id: "some-site-id-devel"
+
+test:
+  <<: *defaults
+  disqus_site_id: "some-site-id-devel"
+
+production:
+  <<: *defaults
+  disqus_site_id: "some-site-id"
