@@ -16,4 +16,9 @@ describe Gallery do
     it { should have_many(:photos, :dependent => :destroy) }
   end
 
+  
+  describe "named_scopes" do
+    it { should have_scope(:recent).order("id DESC") }
+  end
+
 end

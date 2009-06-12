@@ -6,7 +6,7 @@ class Admin::GalleryPhotosController < AdminController
   #
   # lista de usuários
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.recent
     @page_title = "Álbuns"
   end
 
