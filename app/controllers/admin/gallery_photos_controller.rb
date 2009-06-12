@@ -1,77 +1,85 @@
 class Admin::GalleryPhotosController < AdminController
 
-  # GET /admin/galleries
-  # Via: admin_galleries_path
+  before_filter :load_gallery
+
+  # GET /admin/gallery/1/photos
+  # Via: admin_gallery_photos_path(1)
   # Disponível: [admin]
   #
-  # lista de usuários
+  # lista de fotos de um álbum
   def index
-    @galleries = Gallery.recent
-    @page_title = "Álbuns"
+    @photos = @gallery.photos.recent
+    @page_title = "Fotos do álbum"
   end
 
-  # GET /admin/galleries/new
-  # Via: new_admin_galleries_path
+  # GET /admin/gallery/1/photos/new
+  # Via: new_admin_gallery_photos_path
   # Disponível: [admin]
   #
-  # novo gallery
+  # nova foto para o álbum
   def new
-    @gallery = Gallery.new
-    @page_title = "Novo Álbum"
+    @photo = @gallery.photos.new
+    @page_title = "Nova Foto do álbum"
   end
 
-  # GET /admin/galleries/1/edit
-  # Via: edit_admin_galleries_path(1)
+  # GET /admin/gallery/1/photo/1/edit
+  # Via: edit_admin_gallery_photo_path(1, 1)
   # Disponível: [admin]
   #
-  # editando gallery
+  # editando foto
   def edit
-    @gallery = Gallery.find params[:id]
-    @page_title = "Editando Álbum ##{@gallery.id}"
+    @photo = @gallery.photos.find params[:id]
+    @page_title = "Editando Foto do álbum ##{@photo.id}"
   end
 
   # POST /admin/galleries
-  # Via: admin_gallery_path
+  # Via: admin_gallery_photos_path
   # Available: [administradores]
   #
-  # Criar novo usuário
+  # Criar nova foto
   def create
-    @gallery = Gallery.new(params[:gallery])
-    if @gallery.save
-      flash[:success] = "Álbum criado com sucesso."
-      redirect_to admin_galleries_path
+    @photo = @gallery.photos.new(params[:photos])
+    if @photo.save
+      flash[:success] = "Foto do álbum criado com sucesso."
+      redirect_to admin_gallery_path(@gallery)
     else
-      @page_title = "Novo Álbum"
+      @page_title = "Novo Foto do álbum"
       render :action => 'new'
     end
   end
 
-  # PUT /admin/galleries/1
-  # Via: admin_galleries_path
+  # PUT /admin/gallery/1/photo/1
+  # Via: admin_gallery_photo_path(1, 1)
   # Disponível: [admin]
   #
   # Atualiza dados do usuário
   def update
-    @gallery = Gallery.find params[:id]
-    if @gallery.update_attributes(params[:gallery])
-      flash[:success] = "Álbum alterado com sucesso"
-      redirect_to admin_galleries_path
+    @photo = @gallery.photos.find params[:id]
+    if @photo.update_attributes(params[:photos])
+      flash[:success] = "Foto do álbum alterado com sucesso"
+      redirect_to admin_gallery_path(@gallery)
     else
-      @page_title = "Editando Álbum ##{@gallery.id}"
+      @page_title = "Editando Foto do álbum ##{@photo.id}"
       render :action => 'edit'
     end
   end
 
   # DELETE /admin/galleries/1
-  # Via: admin_gallery_path(1)
+  # Via: admin_@gallery.photos_path(1)
   # Disponível: [admin]
   #
   # apaga usuário
   def destroy
-    @gallery = Gallery.find params[:id]
-    @gallery.destroy
-    flash[:success] = "Álbum apagado com sucesso"
-    redirect_to admin_galleries_path
+    @photo = @gallery.photos.find params[:id]
+    @photo.destroy
+    flash[:success] = "Foto do álbum apagado com sucesso"
+    redirect_to admin_gallery_path(@gallery)
   end
+
+  protected
+
+    def load_gallery
+     @gallery = Gallery.find params[:gallery_id]
+    end
 
 end

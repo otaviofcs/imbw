@@ -16,4 +16,8 @@ describe Photo do
     it { should belong_to(:gallery) }
   end
 
+  describe "named_scopes" do
+    it { should have_scope(:recent).order("id DESC") }
+  end
+
 end
