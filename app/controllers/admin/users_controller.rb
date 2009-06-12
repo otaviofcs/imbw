@@ -1,5 +1,4 @@
 class Admin::UsersController < AdminController
-
   
   # GET /admin/users
   # Via: admin_users_path
