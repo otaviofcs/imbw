@@ -4,9 +4,16 @@ describe Gallery do
   before(:each) do
     @valid_attributes = {
     }
+    @gallery = Gallery.new(@valid_attributes)
   end
 
   it "should create a new instance given valid attributes" do
-    Gallery.create!(@valid_attributes)
+    @gallery.save.should be_true
   end
+
+  describe "associations" do
+    it { should belong_to(:user) }
+    it { should have_many(:photos, :dependent => :destroy) }
+  end
+
 end

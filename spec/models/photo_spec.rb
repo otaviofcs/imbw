@@ -4,10 +4,11 @@ describe Photo do
   before(:each) do
     @valid_attributes = {
     }
+    @photo = Photo.new(@valid_attributes)
   end
 
   it "should create a new instance given valid attributes" do
-    Photo.create!(@valid_attributes)
+    @photo.save.should be_true
   end
 
   describe "associations" do
