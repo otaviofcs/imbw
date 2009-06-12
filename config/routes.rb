@@ -39,12 +39,21 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :posts
   map.resources :users
-
+  
   map.admin_root '/admin',  :controller => 'admin/users', :action => 'index'
   map.namespace(:admin) do |admin|
     admin.resource :session
     admin.resources :users
     admin.resources :posts
+    admin.resources :galleries do |gallery|
+      gallery.resources :photos
+    end
+  end
+
+  map.namespace(:open) do |open|
+    open.resources :galleries do |gallery|
+      gallery.resources :photos
+    end
   end
 
   map.login  '/login',  :controller => 'admin/sessions', :action => 'new'
