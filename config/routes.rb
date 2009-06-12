@@ -46,13 +46,13 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :posts
     admin.resources :galleries do |gallery|
-      gallery.resources :photos
+      gallery.resources :photos, :controller => "gallery_photos"
     end
   end
 
   map.namespace(:open) do |open|
     open.resources :galleries do |gallery|
-      gallery.resources :photos
+      gallery.resources :photos, :controller => "gallery_photos"
     end
   end
 
