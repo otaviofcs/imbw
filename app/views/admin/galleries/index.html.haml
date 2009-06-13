@@ -5,5 +5,8 @@
   - @galleries.each do |gallery|
     .gallery
       %p= link_to image_tag('gallery_template.png'), admin_gallery_path(gallery), :class => 'link-show'
-      %h7= link_to gallery.title, edit_admin_gallery_path(gallery)
-      %h7= link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+      %p
+        = link_to gallery.title, admin_gallery_path(gallery), :class => 'link-show'
+        %br
+        = link_to "editar", edit_admin_gallery_path(gallery), :class => 'link-edit'
+        = link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
