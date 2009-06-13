@@ -2,9 +2,11 @@
   Nova foto para o álbum
   = @gallery.title
 
-- form_for @photo, admin_gallery_photo_path, :method => :post, :html => { :multipart => true } do |f|
+- form_for @photo, :url => admin_gallery_photos_path, :html => { :multipart => true } do |f|
+  = f.error_messages
   %p
     = f.label_l :title
     %br
     = f.text_field :title
   %p
+    teste

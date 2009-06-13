@@ -32,7 +32,7 @@ class Admin::GalleryPhotosController < AdminController
     @page_title = "Editando Foto do álbum ##{@photo.id}"
   end
 
-  # POST /admin/galleries
+  # POST /admin/galleries/1/photos
   # Via: admin_gallery_photos_path
   # Available: [administradores]
   #
