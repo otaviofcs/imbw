@@ -4,10 +4,20 @@ class Admin::GalleriesController < AdminController
   # Via: admin_galleries_path
   # Disponível: [admin]
   #
-  # lista de usuários
+  # lista de álbuns
   def index
     @galleries = Gallery.recent
     @page_title = "Álbuns"
+  end
+
+  # GET /admin/galleries/1
+  # Via: admin_gallery_path(1)
+  # Disponível: [admin]
+  #
+  # view de um álbum
+  def show
+    @photos = @gallery.photos.recent
+    @page_title = "Fotos do álbum #{@gallery.title}"
   end
 
   # GET /admin/galleries/new

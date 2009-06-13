@@ -2,14 +2,14 @@ class Admin::GalleryPhotosController < AdminController
 
   before_filter :load_gallery
 
-  # GET /admin/gallery/1/photos
+  # GET /admin/gallery/all/photos
   # Via: admin_gallery_photos_path(1)
   # Disponível: [admin]
   #
-  # lista de fotos de um álbum
+  # lista de fotos em geral
   def index
-    @photos = @gallery.photos.recent
-    @page_title = "Fotos do álbum #{@gallery.title}"
+    @photos = Photo.recent.paginate(params[:page])
+    @page_title = "todas as fotos"
   end
 
   # GET /admin/gallery/1/photos/new
