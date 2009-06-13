@@ -9,4 +9,10 @@
     %br
     = f.text_field :title
   %p
-    teste
+    = f.label_l :photo
+    %br
+    = file_field_tag :photo
+  %p
+    = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+    ou
+    = link_to 'cancelar', admin_gallery_photos_path(@gallery)
