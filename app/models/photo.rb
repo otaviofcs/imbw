@@ -7,8 +7,10 @@ class Photo < ActiveRecord::Base
     :storage => :file_system,
     :path_prefix => 'public/files',
     :size => 0.megabyte..3.megabytes,
-    :resize_to => '450x450>',
-    :thumbnails => { :thumb => '150x150>' }
+    :thumbnails => {
+      :small => '150x150>',
+      :medium => '450x450>'
+    }
 
   named_scope :recent, :order => 'id DESC'
 

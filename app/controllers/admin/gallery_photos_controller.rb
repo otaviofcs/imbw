@@ -55,7 +55,7 @@ class Admin::GalleryPhotosController < AdminController
   # Atualiza dados do usuário
   def update
     @photo = @gallery.photos.find params[:id]
-    if @photo.update_attributes(params[:photos])
+    if @photo.update_attributes(params[:photo])
       flash[:success] = "Foto do álbum alterado com sucesso"
       redirect_to admin_gallery_photos_path(@gallery)
     else
