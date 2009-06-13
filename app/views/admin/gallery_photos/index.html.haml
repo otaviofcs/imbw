@@ -1,0 +1,14 @@
+%h2 
+  Álbum
+  = @gallery.title
+%p
+  = link_to "adicionar foro", new_admin_gallery_photos_path(@gallery), :class => 'link-new'
+.photos
+  - @photos.each do |photo|
+    .photo-box
+      .photo
+        = link_to image_tag(photo.image.public_filename(:medium)), photo.image.public_filename, :target => '_blank', :alt => 'clique na imagem para ver a mesma em uma nova página no tamanho original.'
+        = link_to gallery.title, admin_gallery_photo_path(@gallery, photo), :class => 'link-show'
+        %br
+        = link_to "editar", edit_admin_gallery_photo_path(@gallery, photo), :class => 'link-edit'
+        = link_to "excluir", admin_gallery_photo_path(@gallery, photo), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'

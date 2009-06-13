@@ -9,7 +9,7 @@ class Admin::GalleryPhotosController < AdminController
   # lista de fotos de um álbum
   def index
     @photos = @gallery.photos.recent
-    @page_title = "Fotos do álbum"
+    @page_title = "Fotos do álbum #{@gallery.title}"
   end
 
   # GET /admin/gallery/1/photos/new
@@ -41,7 +41,7 @@ class Admin::GalleryPhotosController < AdminController
     @photo = @gallery.photos.new(params[:photos])
     if @photo.save
       flash[:success] = "Foto do álbum criado com sucesso."
-      redirect_to admin_gallery_path(@gallery)
+      redirect_to admin_gallery_photos_path(@gallery)
     else
       @page_title = "Novo Foto do álbum"
       render :action => 'new'
@@ -57,7 +57,7 @@ class Admin::GalleryPhotosController < AdminController
     @photo = @gallery.photos.find params[:id]
     if @photo.update_attributes(params[:photos])
       flash[:success] = "Foto do álbum alterado com sucesso"
-      redirect_to admin_gallery_path(@gallery)
+      redirect_to admin_gallery_photos_path(@gallery)
     else
       @page_title = "Editando Foto do álbum ##{@photo.id}"
       render :action => 'edit'
@@ -73,7 +73,7 @@ class Admin::GalleryPhotosController < AdminController
     @photo = @gallery.photos.find params[:id]
     @photo.destroy
     flash[:success] = "Foto do álbum apagado com sucesso"
-    redirect_to admin_gallery_path(@gallery)
+    redirect_to admin_gallery_photos_path(@gallery)
   end
 
   protected

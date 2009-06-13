@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Gallery do
   before(:each) do
     @valid_attributes = {
+      :title => 'my title'
     }
     @gallery = Gallery.new(@valid_attributes)
   end
@@ -18,6 +19,10 @@ describe Gallery do
   
   describe "named_scopes" do
     it { should have_scope(:recent).order("id DESC") }
+  end
+
+  describe "creating or updating" do
+    it { should validate_presence_of(:title) }
   end
 
 end
