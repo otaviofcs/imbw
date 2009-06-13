@@ -9,12 +9,14 @@
     = javascript_include_tag :defaults
     %title= h(@page_title) if @page_title
   %body.main
-    .content-all
-      = render :partial => 'shared/menu'
-      = render :partial => 'shared/submenu_admin'
-      = display_flashes()
-      = yield
-      .clear
+    .all
+      .content-menu
+        = render :partial => 'shared/menu'
+        = render :partial => 'shared/submenu_admin'
+      .content-all
+        = display_flashes()
+        = yield
+        .clear
       #footer
         %span.powered
           Powered by
