@@ -38,7 +38,7 @@ class Admin::GalleryPhotosController < AdminController
   #
   # Criar nova foto
   def create
-    @photo = @gallery.photos.build(params[:photos])
+    @photo = @gallery.photos.new(params[:photo])
     if @photo.save
       flash[:success] = "Foto do álbum criado com sucesso."
       redirect_to admin_gallery_photos_path(@gallery)
