@@ -9,4 +9,4 @@ log/*
 tmp/**/*
 coverage
 public/stylesheets/default.css
-public/files/*
+public/photos/*
