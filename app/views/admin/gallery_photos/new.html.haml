@@ -1,0 +1,10 @@
+%h2
+  Nova foto para o álbum
+  = @gallery.title
+
+- form_for @photo, admin_gallery_photo_path, :method => :post, :html => { :multipart => true } do |f|
+  %p
+    = f.label_l :title
+    %br
+    = f.text_field :title
+  %p

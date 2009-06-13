@@ -10,5 +10,7 @@ class Photo < ActiveRecord::Base
     :thumbnails => { :thumb => '150x150>' }
 
   named_scope :recent, :order => 'id DESC'
+
+  validates_as_attachment
   
 end
