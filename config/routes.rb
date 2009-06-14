@@ -51,9 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.namespace(:open) do |open|
-    open.resources :galleries do |gallery|
-      gallery.resources :photos, :controller => "gallery_photos"
-    end
+    open.resources :galleries
   end
 
   map.login  '/login',  :controller => 'admin/sessions', :action => 'new'

@@ -1,2 +1,0 @@
-module Open::GalleryPhotosHelper
-end
