@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20090614041902) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "galery_hash"
+    t.string   "gallery_hash"
   end
 
   create_table "photos", :force => true do |t|
