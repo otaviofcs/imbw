@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      gallery: "álbum"
+    attributes:
+      gallery:
+        user_id: "usuário"
+        title: "título"
+        description: "descrição"
+        created_at: "criado em"
+        updated_at: "atualizado em"

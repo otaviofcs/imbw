@@ -47,7 +47,7 @@ class Admin::GalleriesController < AdminController
   #
   # Criar novo usuário
   def create
-    @gallery = Gallery.new(params[:gallery])
+    @gallery = current_user.galleries.new(params[:gallery])
     if @gallery.save
       flash[:success] = "Álbum criado com sucesso."
       redirect_to admin_galleries_path

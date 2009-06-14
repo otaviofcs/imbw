@@ -19,6 +19,7 @@ describe User do
 
   describe "associations" do
     it { should have_many(:posts) }
+    it { should have_many(:galleries) }
   end
 
   describe "on creation" do
