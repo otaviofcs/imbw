@@ -16,8 +16,4 @@
         = display_flashes()
         = yield
         .clear
-      #footer
-        %span.powered
-          Powered by
-          %a{:href => "http://imightbewrong.com.br"}
-            I might be Wrong
+        = render :partial => 'shared/footer'
