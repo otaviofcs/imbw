@@ -22,16 +22,6 @@ class Admin::GalleryPhotosController < AdminController
     @page_title = "Nova Foto do álbum"
   end
 
-  # GET /admin/gallery/1/photo/1/edit
-  # Via: edit_admin_gallery_photo_path(1, 1)
-  # Disponível: [admin]
-  #
-  # editando foto
-  def edit
-    @photo = @gallery.photos.find params[:id]
-    @page_title = "Editando Foto do álbum ##{@photo.id}"
-  end
-
   # POST /admin/galleries/1/photos
   # Via: admin_gallery_photos_path
   # Available: [administradores]
@@ -45,22 +35,6 @@ class Admin::GalleryPhotosController < AdminController
     else
       @page_title = "Novo Foto do álbum"
       render :action => 'new'
-    end
-  end
-
-  # PUT /admin/gallery/1/photo/1
-  # Via: admin_gallery_photo_path(1, 1)
-  # Disponível: [admin]
-  #
-  # Atualiza dados do usuário
-  def update
-    @photo = @gallery.photos.find params[:id]
-    if @photo.update_attributes(params[:photo])
-      flash[:success] = "Foto do álbum alterado com sucesso"
-      redirect_to admin_gallery_path(@gallery)
-    else
-      @page_title = "Editando Foto do álbum ##{@photo.id}"
-      render :action => 'edit'
     end
   end
 
