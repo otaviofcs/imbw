@@ -9,8 +9,8 @@ class Photo < ActiveRecord::Base
     :path_prefix => 'public/photos',
     :size => 0.megabyte..3.megabytes,
     :thumbnails => {
-      :small => '150x150>',
-      :medium => '450x450>'
+      :small => [150,150],
+      :medium => [450,450]
     }
 
   named_scope :recent, :order => 'id DESC'
