@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090614041649) do
+ActiveRecord::Schema.define(:version => 20090614041902) do
 
   create_table "galleries", :force => true do |t|
     t.integer  "user_id"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20090614041649) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "galery_hash"
   end
 
   create_table "photos", :force => true do |t|
