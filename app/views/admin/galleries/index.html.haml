@@ -4,7 +4,8 @@
 .galleries
   - @galleries.each do |gallery|
     .gallery
-      %p= link_to image_tag('gallery_template.png'), admin_gallery_path(gallery), :class => 'link-show'
+      %p= link_to image_tag('gallery_template.png'), admin_gallery_path(gallery), :class => 'link-show' unless gallery.photos.size > 0
+      %p= link_to image_tag(gallery.photos.first.public_filename(:small)), admin_gallery_path(gallery), :class => 'link-show' if gallery.photos.size > 0
       %p
         = link_to gallery.title, admin_gallery_path(gallery), :class => 'link-show'
         %br
