@@ -7,9 +7,8 @@
   - @photos.each do |photo|
     .photo-box
       .photo
-        = link_to image_tag(photo.public_filename(:small)), photo.public_filename, :target => '_blank', :alt => 'clique na imagem para ver a mesma em uma nova página no tamanho original.'
+        = lightbox_link_to ((photo.title) ? photo.title : "" ), photo.public_filename, @gallery.title
         %p
-          = link_to photo.title, admin_gallery_photo_path(@gallery, photo), :class => 'link-show' if photo.title
           %br
           = link_to "editar", edit_admin_gallery_photo_path(@gallery, photo), :class => 'link-edit'
           = link_to "excluir", admin_gallery_photo_path(@gallery, photo), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
