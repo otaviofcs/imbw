@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
     :path_prefix => 'public/photos',
     :size => 0.megabyte..3.megabytes,
     :thumbnails => {
-      :small => [150,150],
+      :small => [100,100],
       :medium => [450,450]
     }
 

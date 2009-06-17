@@ -31,4 +31,5 @@ ActionView::Base.class_eval do
   include ActionView::Helpers::LightBoxHelper
 end
 
+ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'builder'
 ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'lightbox'
