@@ -6,6 +6,7 @@ class Photo < ActiveRecord::Base
   has_attachment :content_type => :image,
     :processor => :rmagick,
     :storage => :s3,
+    :s3_access => :private,
     :size => 0.megabyte..3.megabytes,
     :thumbnails => {
       :small => "x120", # seta só a altura e a largura muda proporcionalmente
