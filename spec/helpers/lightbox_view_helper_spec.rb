@@ -10,7 +10,7 @@ describe LightboxViewHelper do
 
   describe ".lightbox_init()" do
     it "should return nil if there are no flashes to show" do
-      helper.lightbox_init.should == "<script type=\"text/javascript\">\n//<![CDATA[\nLightboxOptions.fileLoadingImage = '/images/lightbox/loading.gif?1245204872';\nLightboxOptions.fileBottomNavCloseImage = '/images/lightbox/closelabel.gif?1245204872';\nLightboxOptions.labelImage = 'Imagem';\nLightboxOptions.labelOf = 'de';\n//]]>\n</script>\n"
+      helper.lightbox_init.should == "<script type=\"text/javascript\">\n//<![CDATA[\nLightboxOptions.fileLoadingImage = '#{ image_path('lightbox/loading.gif') }';\nLightboxOptions.fileBottomNavCloseImage = '#{ image_path('lightbox/closelabel.gif') }';\nLightboxOptions.labelImage = 'Imagem';\nLightboxOptions.labelOf = 'de';\n//]]>\n</script>\n"
     end
   end
 
