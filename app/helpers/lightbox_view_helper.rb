@@ -14,18 +14,23 @@ module LightboxViewHelper
   end
 
   # inicializa lightbox
-  def lightbox_setup
+  def lightbox_init
     html = ""
     html << "<script type=\"text/javascript\">\n"
+    html << "//<![CDATA[\n"
     html << "LightboxOptions.fileLoadingImage = '#{ image_path('lightbox/loading.gif') }';\n"
     html << "LightboxOptions.fileBottomNavCloseImage = '#{ image_path('lightbox/closelabel.gif') }';\n"
     html << "LightboxOptions.labelImage = 'Imagem';\n"
     html << "LightboxOptions.labelOf = 'de';\n"
+    html << "//]]>\n"
     html << "</script>\n"
     html
   end
 
 end
 
-ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'builder'
-ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'lightbox'
+# Se quiser que o lightbox seja carregado direto nos defaults de javascript
+# adicione as linhas abaixo a uma lib (não pode ficar nesse helper porque senão
+# vai ser adicionado várias vezes e dá pau na aplicação
+# ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'builder'
+# ActionView::Helpers::AssetTagHelper.register_javascript_include_default 'lightbox'

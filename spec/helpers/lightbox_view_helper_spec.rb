@@ -8,9 +8,9 @@ describe LightboxViewHelper do
     included_modules.should include(LightboxViewHelper)
   end
 
-  describe ".lightbox_setup()" do
+  describe ".lightbox_init()" do
     it "should return nil if there are no flashes to show" do
-      helper.lightbox_setup.should == "<script type=\"text/javascript\">\nLightboxOptions.fileLoadingImage = '/images/lightbox/loading.gif?1245204872';\nLightboxOptions.fileBottomNavCloseImage = '/images/lightbox/closelabel.gif?1245204872';\nLightboxOptions.labelImage = 'Imagem';\nLightboxOptions.labelOf = 'de';\n</script>\n"
+      helper.lightbox_init.should == "<script type=\"text/javascript\">\n//<![CDATA[\nLightboxOptions.fileLoadingImage = '/images/lightbox/loading.gif?1245204872';\nLightboxOptions.fileBottomNavCloseImage = '/images/lightbox/closelabel.gif?1245204872';\nLightboxOptions.labelImage = 'Imagem';\nLightboxOptions.labelOf = 'de';\n//]]>\n</script>\n"
     end
   end
 
