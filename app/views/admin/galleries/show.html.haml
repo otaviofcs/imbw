@@ -9,7 +9,7 @@
   - @photos.each do |photo|
     .photo-box
       .photo
-        = lightbox_image_tag(photo.public_filename(:small), photo.public_filename(:medium), {:class=>"images"}, :title => "#{ ((photo.title) ? photo.title : "sem título" ) }")
+        = lightbox_image_tag(photo.public_filename(:small), photo.public_filename(:medium), {:class=>"images"}, :title => "#{ ((photo.title) ? photo.title : "sem título" ) }", :rel => "lightbox[roadtrip]")
         %p
           %br
           = link_to "editar", edit_admin_gallery_photo_path(@gallery, photo), :class => 'link-edit'
