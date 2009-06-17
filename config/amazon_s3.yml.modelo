@@ -1,0 +1,14 @@
+development:
+  bucket_name: my_new_app_development
+  access_key_id: 394ksm349d9jkd949d91
+  secret_access_key: +wksmrbn4sl3ldo5oLLksmweR50693dJHR90912w
+
+test:
+  bucket_name: my_new_app_test
+  access_key_id: 394ksm349d9jkd949d91
+  secret_access_key: +wksmrbn4sl3ldo5oLLksmweR50693dJHR90912w
+
+production:
+  bucket_name: my_new_app
+  access_key_id: 394ksm349d9jkd949d91
+  secret_access_key: +wksmrbn4sl3ldo5oLLksmweR50693dJHR90912w
