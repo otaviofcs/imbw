@@ -46,8 +46,8 @@
 //  Configurationl
 //
 LightboxOptions = Object.extend({
-    fileLoadingImage:        'images/lightbox/loading.gif',
-    fileBottomNavCloseImage: 'images/lightbox/closelabel.gif',
+    fileLoadingImage:        '/images/loading.gif',
+    fileBottomNavCloseImage: '/images/closelabel.gif',
 
     overlayOpacity: 0.8,   // controls transparency of shadow overlay
 
@@ -58,8 +58,8 @@ LightboxOptions = Object.extend({
 
 	// When grouping images this is used to write: Image # of #.
 	// Change it for non-english localization
-	labelImage: "Image",
-	labelOf: "of"
+	labelImage: "Imagem",
+	labelOf: "de"
 }, window.LightboxOptions || {});
 
 // -----------------------------------------------------------------------------------
