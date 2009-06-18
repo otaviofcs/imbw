@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
+  before_save :update_edited_at
 
   #
   # Validations
@@ -27,6 +28,11 @@ class Post < ActiveRecord::Base
   validates_length_of :body, :minimum => 20
 
   validates_presence_of :edited_at
-  
+
+  protected
+
+    def update_edited_at
+      self.edited_at = Time.now
+    end
 
 end
