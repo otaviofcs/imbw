@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090614041902) do
+ActiveRecord::Schema.define(:version => 20090618010501) do
 
   create_table "galleries", :force => true do |t|
     t.integer  "user_id"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20090614041902) do
   create_table "posts", :force => true do |t|
     t.string   "title",                          :null => false
     t.text     "body",                           :null => false
-    t.text     "body_html",                      :null => false
     t.boolean  "active",       :default => true, :null => false
     t.datetime "published_at"
     t.datetime "edited_at",                      :null => false
