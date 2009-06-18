@@ -29,6 +29,8 @@ Rails::Initializer.run do |config|
   # paginação
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '>= 2.3.11', :source => 'http://gems.github.com'
 
+  config.gem 'RedCloth', :version => '>= 3.0.4'
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
