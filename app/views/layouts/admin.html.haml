@@ -14,8 +14,8 @@
     .all
       .content-menu
         = render :partial => 'shared/menu'
-        = render :partial => 'shared/submenu_admin'
       .content-all
+        = render :partial => 'shared/submenu_admin'
         = display_flashes()
         = yield
         .clear

@@ -9,8 +9,8 @@ class Photo < ActiveRecord::Base
     :s3_access => :private,
     :size => 0.megabyte..3.megabytes,
     :thumbnails => {
-      :small => "x120", # seta só a altura e a largura muda proporcionalmente
-      :medium => "x450"
+      :small => "x100", # seta só a altura e a largura muda proporcionalmente
+      :medium => "x500"
     }
 
   named_scope :recent, :order => 'id DESC'
