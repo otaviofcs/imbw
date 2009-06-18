@@ -1,12 +1,19 @@
-- @posts.each do |post|
-  .post-card
-    %h2
-      = link_to post.title, post_path(post), :class => 'link-post'
-    %h5
-      criado por
-      = link_to post.user.login, user_path(post.user), :class => 'link-user'
-      , em
-      %span.date
-        = post.created_at
-    %p
-      = post.body
+#posts
+  - @posts.each do |post|
+    .post-card
+      %h2
+        = link_to post.title, post_path(post), :class => 'link-post'
+      %hr
+      %h5
+        criado por
+        = link_to post.user.login, user_path(post.user), :class => 'link-user'
+        , em
+        %span.date
+          = post.created_at
+      %p
+        = post.body
+
+.sidebar
+  %h4 Sobre
+  %p
+    Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.
