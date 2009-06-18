@@ -4,5 +4,4 @@ first_post:
   user: the_blogger
   title: my first post
   body: text text, it should be long enough to be considered correct.
-  body_html: <p>text text, it should be long enough to be considered correct.</p>
   edited_at: <%= Time.current %>
