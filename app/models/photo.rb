@@ -16,5 +16,14 @@ class Photo < ActiveRecord::Base
   named_scope :recent, :order => 'id DESC'
 
   validates_as_attachment
+
+  #
+  # Instance Methods
+  #
+
+  def public_filename(thumbnail = nil, expires_in=1.hour)
+    thumb = thumbnail.to_s if thumbnail
+    self.authenticated_s3_url(thumb, :expires_in => expires_in)
+  end
   
 end
