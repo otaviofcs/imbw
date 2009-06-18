@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
   named_scope :available, :conditions => ["posts.active = ? and (not posts.published_at is null)", true]
   named_scope :by_id, :order => "id desc"
 
+  cattr_reader :per_page
+  @@per_page = 10
+
+
   #
   # Validations
   #
