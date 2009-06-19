@@ -1,15 +1,15 @@
 .main_menu.span-24.header
   %ul
     %li
-      = link_to "Writing", posts_path
+      = link_to "<span class='wrong_high'>W</span>riting", posts_path
     %li
-      Reading
+      <span class='wrong_high'>R</span>eading
     %li
-      Online
+      <span class='wrong_high'>O</span>nline
     %li
-      Nannying
+      <span class='wrong_high'>N</span>annying
     %li
-      Gristing
+      <span class='wrong_high'>G</span>risting
     - unless current_user
       %li
         = link_to "login", login_path, :class => 'link-login'
