@@ -10,4 +10,5 @@ log/*
 tmp/**/*
 coverage
 public/stylesheets/default.css
+public/stylesheets/application.css
 public/photos/*
