@@ -1,10 +1,5 @@
 /* Begin Tags gerais
 
-body
-  :background-color #fff
-  :font-family verdana
-  :font-size 12px
-
 ul
   :margin 0
 
@@ -42,26 +37,12 @@ body.main
   :background-color #47565E
   :font-family Arial, Helvetica, sans-serif
   :text-align center
-  :margin 0
-  :padding 0
 
 #footer
   :text-align left
-
-.all
-  :margin-top 0
-  :margin-left auto
-  :margin-right auto
-
-.content-menu
-  :background-color white
-  img
-    :border none
   
 .content-all
-  :padding 0 1.4em 1.4em 1.4em
   :background-color #f0fbff
-  :margin-top 3em
   :text-align left
 
 hr
@@ -128,27 +109,26 @@ span.comments
 
 /* Begin tags especializadas
 
-.menu
-  .main_menu
-    :background-image url(../images/menu_back.png)
+.main_menu
+  :background-image url(../images/menu_back.png)
+  :background-repeat repeat-x
+  :padding 8px 10px
+  :margin-left 1px
+  ul
+    :float right
+  ul li
+    :list-style none
+    :display inline
+    :background-image url(../images/menu_button_back.png)
     :background-repeat repeat-x
+    :border-left 1px solid white
+    :color white
     :padding 8px 10px
     :margin-left 1px
-    ul
-      :float right
-    ul li
-      :list-style none
-      :display inline
-      :background-image url(../images/menu_button_back.png)
-      :background-repeat repeat-x
-      :border-left 1px solid white
+    a
       :color white
-      :padding 8px 10px
-      :margin-left 1px
-      a
-        :color white
-        :text-decoration none
-        :font-weight bold
+      :text-decoration none
+      :font-weight bold
 
 .submenu
   :padding 8px 10px
