@@ -13,8 +13,9 @@
   %body.main
     .container
       = render :partial => 'shared/menu'
-      .menu.span-24
-        = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+      .span-24
+        .menu
+          = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
       .clear
       .content-all.span-24
         = display_flashes()
