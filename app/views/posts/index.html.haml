@@ -2,7 +2,7 @@
   - @posts.each do |post|
     .post-card
       %h2
-        = link_to post.title, post_path(post), :class => 'link-post'
+        = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
       %hr
       %h5
         criado por
@@ -15,6 +15,23 @@
 
 .span-8.last
   .sidebar
-    %h4 Sobre
-    %p
-      Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.
+    .about
+      %h4 Sobre
+      %p
+        Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.
+    .more
+      %h4 Achou pouco?
+      %p
+        Chegou até aqui e achou pouco? Quer outras idéias?
+        Dá uma olhada nesses sites aqui de baixo.
+      %p
+        No
+        %a{ :href => "http://blog.riopro.com.br" }Blog da Riopro
+        você vai ler sobre desenvolvimento de software, gerenciamento de projetos, Linux.
+      %p
+        Acha que o legal é ver algo meio Truman Show, acompanhe o
+        Lifestream do Rodrigo na
+        %a{ :href => "http://pittlandia.net" }Pittlandia.
+      %p
+        Está tudo sério demais na sua vida? Ok, vota aqui na
+        %a{ :href => "http://peneirando.com/contests/15-qual-e-a-melhor-tirinha-dos-malvados" }melhor tirinha dos Malvados.
