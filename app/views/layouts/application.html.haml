@@ -11,9 +11,12 @@
     = stylesheet_link_tag "lightbox.css"
     = lightbox_init
   %body.main
-    .all
+    .all.span-24
       .content-menu
         = render :partial => 'shared/menu'
+      .menu
+        = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+      .clear
       .content-all
         = display_flashes()
         = yield

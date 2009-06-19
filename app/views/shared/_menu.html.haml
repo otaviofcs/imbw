@@ -1,24 +1,21 @@
-.menu
-  = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.")
-  .main_menu
-    %ul
+.main_menu
+  %ul
+    %li
+      = link_to "Writing", posts_path
+    %li
+      Reading
+    %li
+      Online
+    %li
+      Nannying
+    %li
+      Gristing
+    - unless current_user
       %li
-        = link_to "Writing", posts_path
+        = link_to "login", login_path, :class => 'link-login'
+    - else
       %li
-        Reading
+        = link_to "admin", admin_root_path, :class => 'link-admin'
       %li
-        Online
-      %li
-        Nannying
-      %li
-        Gristing
-      - unless current_user
-        %li
-          = link_to "login", login_path, :class => 'link-login'
-      - else
-        %li
-          = link_to "admin", admin_root_path, :class => 'link-admin'
-        %li
-          = link_to "sair", logout_path, :class => 'link-logout'
-    .clear
+        = link_to "sair", logout_path, :class => 'link-logout'
   .clear
