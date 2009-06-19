@@ -15,7 +15,3 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
-
-# Obriga a existência do Rails Footnotes apenas
-# para o ambiente de desenvolvimento e usa a gem do mesmo
-config.gem "josevalim-rails-footnotes",  :lib => "rails-footnotes", :source => "http://gems.github.com"
