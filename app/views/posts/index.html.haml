@@ -1,4 +1,4 @@
-#posts
+#posts.span-16
   - @posts.each do |post|
     .post-card
       %h2
@@ -13,7 +13,8 @@
       %p
         = post.body
 
-.sidebar
-  %h4 Sobre
-  %p
-    Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.
+.span-8.last
+  .sidebar
+    %h4 Sobre
+    %p
+      Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.

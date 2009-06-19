@@ -104,15 +104,15 @@ span.comments
   :background-repeat no-repeat
   :padding-left 1.5em
 
+span.wrong_high
+  :font-size 1.2em
+  :font-weight bold
 
 /* Begin tags especializadas
 
 .main_menu
   :background-image url(../images/menu_back.png)
   :background-repeat repeat-x
-  span.wrong_high
-    :font-size 1.2em
-    :font-weight bold
   ul
     :float right
     :padding 8px 10px
@@ -129,7 +129,11 @@ span.comments
     a
       :color white
       :text-decoration none
-
+  li.active
+    :background-color white
+    :background-image none
+    a
+      :color #8C95A0
 .submenu
   :padding 8px 10px
   :margin-left 1px
@@ -157,7 +161,6 @@ span.comments
   :border-bottom 0.5px dotted #E4EFE7
 
 .sidebar
-  :margin-top 1em
   :background-color #E1E5E5
   :padding 1em
 

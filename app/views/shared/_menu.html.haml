@@ -1,6 +1,6 @@
 .main_menu.span-24.header
   %ul
-    %li
+    %li{ :class => "#{"active" if controller.controller_name == 'posts' }" }
       = link_to "<span class='wrong_high'>W</span>riting", posts_path
     %li
       <span class='wrong_high'>R</span>eading
