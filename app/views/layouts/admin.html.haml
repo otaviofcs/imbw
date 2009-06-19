@@ -7,14 +7,16 @@
     = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
     = stylesheet_link_tag "blueprint/print.css", :media => "print"
     == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
-    = stylesheet_link_tag "default.css"
+    = stylesheet_link_tag "application.css"
     = stylesheet_link_tag "lightbox.css"
     = lightbox_init
   %body.main
     .all
-      .content-menu
-        = render :partial => 'shared/menu'
-      .content-all
+      = render :partial => 'shared/menu'
+      .menu.span-24
+        = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+      .clear
+      .content-all.span-24
         = render :partial => 'shared/submenu_admin'
         = display_flashes()
         = yield
