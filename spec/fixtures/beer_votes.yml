@@ -5,3 +5,5 @@ first:
   :vote 1.5
   :comment Maltada, escura
   :country Inglaterra
+  :twitter_profile otaviofcs
+  :commented_at <%= Time.now %>

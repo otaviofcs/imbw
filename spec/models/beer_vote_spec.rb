@@ -3,7 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe BeerVote do
   before(:each) do
     @valid_attributes = {
-      :title => 'Batemans'
+      :title => 'Batemans',
+      :twitter_profile => 'otaviofcs',
+      :commented_at => Time.current,
     }
     @beer_vote = BeerVote.new(@valid_attributes)
   end
@@ -14,5 +16,7 @@ describe BeerVote do
 
   describe "validations" do
     it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:twitter_profile) }
+    it { should validate_presence_of(:commented_at) }
   end
 end
