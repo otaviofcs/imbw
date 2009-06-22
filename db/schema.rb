@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20090622020409) do
   create_table "beer_votes", :force => true do |t|
     t.string   "title"
     t.float    "vote"
-    t.string   "description"
+    t.string   "comment"
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"

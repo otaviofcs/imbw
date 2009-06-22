@@ -1,4 +1,4 @@
-class BeerVotes < ActiveRecord::Base
+class BeerVote < ActiveRecord::Base
 
 
   #

@@ -3,7 +3,7 @@ class CreateBeerVotes < ActiveRecord::Migration
     create_table :beer_votes do |t|
       t.string  :title
       t.float   :vote
-      t.string  :description
+      t.string  :comment
       t.string  :country
       t.timestamps
     end
