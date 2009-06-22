@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090618010501) do
+ActiveRecord::Schema.define(:version => 20090622020409) do
+
+  create_table "beer_votes", :force => true do |t|
+    t.string   "title"
+    t.float    "vote"
+    t.string   "description"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "galleries", :force => true do |t|
     t.integer  "user_id"
