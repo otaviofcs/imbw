@@ -23,7 +23,10 @@ class BeerVote < ActiveRecord::Base
 
   def self.create_one_vote(twitter_update)
     @beer_vote = BeerVote.new(:twitter_profile => twitter_update.from_user, :commented_at => twitter_update.created_at.to_datetime)
-
+    fields = BeerVote.parse_vote twitter_update.text
+    fields.each do |key, value|
+      @beer_vote.send "#{BeerVote::AVAILABLE_FIELDS[key]}=".to_sym, value if BeerVote::AVAILABLE_FIELDS[key]
+    end
     if @beer_vote.save
       true
     else
@@ -42,11 +45,11 @@ class BeerVote < ActiveRecord::Base
     hashtags = vote_description.scan(/#([a-z0-9_]+)/i)
     hashtags.each do |tag|
       final_value = ( vote_description =~ /##{tag}/i )
-      parsed = parsed.merge( { tag_name => vote_description[initial_value..final_value - 1] } ) if initial_value > 0
+      parsed = parsed.merge( { tag_name => vote_description[initial_value..final_value - 1].strip } ) if initial_value > 0
       tag_name = tag.to_s
       initial_value = final_value + tag.to_s.size + 1
     end
-    parsed = parsed.merge( { tag_name => vote_description[initial_value..vote_description.size] } ) if initial_value < vote_description.size
+    parsed = parsed.merge( { tag_name => vote_description[initial_value..vote_description.size].strip } ) if initial_value < vote_description.size
     parsed.delete "beer"
     parsed
   end
