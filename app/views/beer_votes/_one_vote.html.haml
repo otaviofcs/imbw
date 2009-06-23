@@ -2,3 +2,12 @@
   %h3
     Cerveja
     = beer_vote.title
+    - if beer_vote.country
+      País
+      = beer_vote.country
+  %p
+    Voto
+    = beer_vote.vote if beer_vote.vote
+  %p
+    Comentário
+    = beer_vote.comment if beer_vote.comment
