@@ -1,6 +1,6 @@
 class BeerVote < ActiveRecord::Base
 
-  HASHTAGS_AVAILABLE = {
+  AVAILABLE_FIELDS = {
     "bv" => :vote,
     "vote" => :vote,
     "bt" => :title,

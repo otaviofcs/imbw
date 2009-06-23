@@ -26,7 +26,7 @@ describe BeerVote do
         @vote_description = "#beer #bv 3.5 #bt Beck's #bd teste agora"
       end
       it "should parse a vote correctly" do
-
+        BeerVote.parse_vote(@vote_description).should == {"beer"=>" ", "bt"=>" Beck's ", "bv"=>" 3.5 "}
       end
     end
   end
