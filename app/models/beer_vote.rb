@@ -37,7 +37,7 @@ class BeerVote < ActiveRecord::Base
       tag_name = tag.to_s
       initial_value = final_value + tag.to_s.size + 1
     end
-
+    parsed = parsed.merge( { tag_name => vote_description[initial_value..vote_description.size] } ) if initial_value < vote_description.size
     parsed
   end
 

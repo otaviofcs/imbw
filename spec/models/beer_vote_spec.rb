@@ -22,11 +22,9 @@ describe BeerVote do
 
   describe "object methods" do
     describe "parse_vote(vote_description)" do
-      before(:each) do
-        @vote_description = "#beer #bv 3.5 #bt Beck's #bd teste agora"
-      end
       it "should parse a vote correctly" do
-        BeerVote.parse_vote(@vote_description).should == {"beer"=>" ", "bt"=>" Beck's ", "bv"=>" 3.5 "}
+        BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bd teste agora").should == {"beer"=>" ", "bt"=>" Beck's ", "bv"=>" 3.5 ", "bd" => " teste agora"}
+        BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #description teste agora").should == {"beer"=>" ", "bt"=>" Beck's ", "bv"=>" 3.5 ", "description" => " teste agora"}
       end
     end
   end
