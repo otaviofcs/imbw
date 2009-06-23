@@ -25,6 +25,7 @@ describe BeerVote do
       it "should parse a vote correctly" do
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bd teste agora").should == {"bt"=>" Beck's ", "bv"=>" 3.5 ", "bd" => " teste agora"}
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #description teste agora").should == {"bt"=>" Beck's ", "bv"=>" 3.5 ", "description" => " teste agora"}
+        BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bc Alemanha #description teste agora").should == {"bc" => " Alemanha ", "bt"=>" Beck's ", "bv"=>" 3.5 ", "description" => " teste agora"}
       end
     end
   end
