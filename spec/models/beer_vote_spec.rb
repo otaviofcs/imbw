@@ -21,11 +21,30 @@ describe BeerVote do
   end
 
   describe"object methods"do
-    describe"parse_vote(vote_description)"do
+    describe"self.parse_vote(vote_description)"do
       it"should parse a vote correctly"do
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bd teste agora").should == {"bt"=>"Beck's","bv"=>"3.5","bd"=>"teste agora"}
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #description teste agora").should == {"bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bc Alemanha #description teste agora").should == {"bc"=>"Alemanha","bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
+      end
+    end
+    describe"self.create_one_vote(twitter_update)"do
+      it"should create a BeerVote correctly"do
+        @twitter_update = mock_model(Mash, {
+          :created_at => "Sat, 20 Jun 2009 17:02:15 +0000",
+          :from_user => "otaviofcs",
+          :from_user_id => 19454543,
+          :id => 2254625870,
+          :iso_language_code => "pt",
+          :profile_image_url => "http://s3.amazonaws.com/twitter_production/profile_images/255710892/avatar_mini_normal.jpg",
+          :source => "&lt;a href=&quot;http://twitterhelp.blogspot.com/2008/05/twitter-via-mobile-web-mtwittercom.html&quot;&gt;mobile web&lt;/a&gt;",
+          :text => "#beer #bt Beck's #bv 3.5 #bd comparando a Heineken e a Beck's, a última tem muito mais corpo e presença. Mas ambas tem aquele amargo no fim do gole.",
+          :to_user_id => nil
+        })
+        BeerVote.destroy_all
+        BeerVote.create_one_vote(@twitter_update).should be_true
+        BeerVote.first.title.should == "Beck's"
+        BeerVote.first.vote.should == 3.5
       end
     end
   end
