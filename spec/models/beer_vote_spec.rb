@@ -14,6 +14,11 @@ describe BeerVote do
     @beer_vote.save.should be_true
   end
 
+  
+  describe "named_scopes" do
+    it { should have_scope(:by_id).order("id desc") }
+  end
+
   describe"validations"do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:twitter_profile) }

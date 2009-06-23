@@ -1,5 +1,7 @@
 class BeerVote < ActiveRecord::Base
 
+  named_scope :by_id, :order => "id desc"
+
   AVAILABLE_FIELDS = {
     "bv" => :vote,
     "vote" => :vote,
