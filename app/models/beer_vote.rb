@@ -2,13 +2,13 @@ class BeerVote < ActiveRecord::Base
 
   named_scope :by_id, :order => "id desc"
 
-  AVAILABLE_FIELDS = {
+  FIELDS_ALIASES = {
     "bv" => :vote,
     "vote" => :vote,
     "bt" => :title,
     "title" => :title,
     "bc" => :country,
-    "country" => :title,
+    "country" => :country,
     "bd" => :comment,
     "description" => :comment
   }
@@ -27,7 +27,7 @@ class BeerVote < ActiveRecord::Base
     @beer_vote = BeerVote.new(:twitter_profile => twitter_update.from_user, :commented_at => twitter_update.created_at.to_datetime)
     fields = BeerVote.parse_vote twitter_update.text
     fields.each do |key, value|
-      @beer_vote.send "#{BeerVote::AVAILABLE_FIELDS[key]}=".to_sym, value if BeerVote::AVAILABLE_FIELDS[key]
+      @beer_vote.send "#{BeerVote::FIELDS_ALIASES[key]}=".to_sym, value if BeerVote::FIELDS_ALIASES[key]
     end
     if @beer_vote.save
       true
