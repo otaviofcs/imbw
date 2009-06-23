@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     ## admin - administração da conta
 
   map.resources :posts
+  map.resources :beer_votes
   map.resources :users
   
   map.admin_root '/admin',  :controller => 'admin/users', :action => 'index'
