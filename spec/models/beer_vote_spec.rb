@@ -19,4 +19,16 @@ describe BeerVote do
     it { should validate_presence_of(:twitter_profile) }
     it { should validate_presence_of(:commented_at) }
   end
+
+  describe "object methods" do
+    describe "parse_vote(vote_description)" do
+      before(:each) do
+        @vote_description = "#beer #bv 3.5 #bt Beck's #bd teste agora"
+      end
+      it "should parse a vote correctly" do
+
+      end
+    end
+  end
+
 end
