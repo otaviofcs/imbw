@@ -23,6 +23,19 @@ class BeerVote < ActiveRecord::Base
 
   validates_presence_of :commented_at
 
+  def self.last_update
+    vote = BeerVote.find(:first, :order => 'beer_votes.commented_at desc')
+    if vote
+      vote.commented_at
+    else
+      nil
+    end
+  end
+
+  def self.create_votes
+    l.each { |twitter_update| BeerVote.create_one_vote twitter_update }
+  end
+
   def self.create_one_vote(twitter_update)
     @beer_vote = BeerVote.new(:twitter_profile => twitter_update.from_user, :commented_at => twitter_update.created_at.to_datetime)
     fields = BeerVote.parse_vote twitter_update.text

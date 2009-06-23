@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 first:
-  :title XXX Batemans
-  :vote 1.5
-  :comment Maltada, escura
-  :country Inglaterra
-  :twitter_profile otaviofcs
-  :commented_at <%= Time.now %>
+  title: XXX Batemans
+  vote: 1.5
+  comment: Maltada, escura
+  country: Inglaterra
+  twitter_profile: otaviofcs
+  commented_at: <%= '2009-06-11 17:02:15 UTC'.to_time %>

@@ -26,6 +26,17 @@ describe BeerVote do
   end
 
   describe"object methods"do
+    describe "self.last_update" do
+      fixtures :beer_votes
+      it "should retrive last commented at datetime" do
+        @beer_vote = beer_votes(:first)
+        BeerVote.last_update.should == @beer_vote.commented_at
+      end
+      it "should return nil if there is no vote" do
+        BeerVote.destroy_all
+        BeerVote.last_update.should be_nil
+      end
+    end
     describe"self.parse_vote(vote_description)"do
       it"should parse a vote correctly"do
         BeerVote.parse_vote("#beer #bv 3.5 #bt Beck's #bd teste agora").should == {"bt"=>"Beck's","bv"=>"3.5","bd"=>"teste agora"}
