@@ -2,12 +2,17 @@
   %h3
     Cerveja
     = beer_vote.title
-    - if beer_vote.country
-      País
-      = beer_vote.country
   %p
     Voto
     = beer_vote.vote if beer_vote.vote
   %p
-    Comentário
+    - if beer_vote.country
+      Pa&iacute;s
+      = beer_vote.country
+  %p
+    Coment&aacute;io
     = beer_vote.comment if beer_vote.comment
+  %p
+    %span.info
+      coment&aacute;rio criado em
+      = l(beer_vote.commented_at, :format => :long)
