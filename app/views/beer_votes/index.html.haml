@@ -12,9 +12,9 @@
     ao menos para mim, a cerveja ser tão especial.
 .span-2
 
-#beer_votes.span-16
+#beer_votes.span-15
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
-.sidebar.span-7
+.sidebar.span-8
   %p
     Busca:
