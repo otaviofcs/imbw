@@ -12,7 +12,7 @@
     ao menos para mim, a cerveja ser tão especial.
 .span-2
 
-.span-24
+.span-18
   .profile
     = image_tag @user.twitter_profile_image
     %h1
@@ -20,10 +20,10 @@
       , talking about #beer
     .clear
 
-#beer_votes.span-15
+#beer_votes.span-18
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
 
-.sidebar.span-8
+.sidebar.span-5
   %p
     Busca:
