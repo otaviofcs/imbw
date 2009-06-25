@@ -2,9 +2,7 @@
   %h3
     Cerveja
     = beer_vote.title
-  %p
-    Voto
-    = star_rating beer_vote.vote if beer_vote.vote
+  = star_rating beer_vote.vote if beer_vote.vote
   %p
     - if beer_vote.country
       Pa&iacute;s
