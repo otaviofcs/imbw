@@ -10,6 +10,7 @@ class BeerVotesController < ApplicationController
   def index
     @beer_votes = BeerVote.by_id
     @page_title = "Cervejas que eu bebi, hoje e ontem - I Might be W.R.O.N.G."
+    @user = User.first
   end
 
 end
