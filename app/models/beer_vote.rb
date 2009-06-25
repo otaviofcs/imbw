@@ -1,6 +1,6 @@
 class BeerVote < ActiveRecord::Base
 
-  attr_accessible :location_id
+  attr_accessible :title, :vote, :comment, :country, :twitter_profile, :commented_at
 
   named_scope :last_commented_at, :order => "commented_at desc"
 
