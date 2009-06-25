@@ -10,10 +10,11 @@
     numa determinada bebida. Nesse caso, cerveja. E é essa mistura que faz,
     ao menos para mim, a cerveja ser tão especial.
 
-#beer_votes.span-24
+.span-24
   .profile
     = image_tag @user.twitter_profile_image
     %h1
       = link_to @user.twitter_profile, "http://twitter.com/#{@user.twitter_profile}"
+#beer_votes.span-24
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
