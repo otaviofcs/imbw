@@ -17,10 +17,13 @@
     = image_tag @user.twitter_profile_image
     %h1
       = link_to @user.twitter_profile, "http://twitter.com/#{@user.twitter_profile}"
+      , talking about #beer
+    .clear
 
 #beer_votes.span-15
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
+
 .sidebar.span-8
   %p
     Busca:
