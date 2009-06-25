@@ -33,7 +33,11 @@ class BeerVote < ActiveRecord::Base
   end
 
   def self.create_votes
-    l.each { |twitter_update| BeerVote.create_one_vote twitter_update }
+    @twitter_updates = Twitter::Search.new.from('otaviofcs').containing('#beer')
+    @twitter_updates.each do |twitter_update|
+      BeerVote.create_one_vote twitter_update
+    end
+
   end
 
   def self.create_one_vote(twitter_update)
