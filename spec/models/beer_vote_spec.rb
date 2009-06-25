@@ -17,6 +17,7 @@ describe BeerVote do
   
   describe "named_scopes" do
     it { should have_scope(:by_id).order("id desc") }
+    it { should have_scope(:last_commented_at).order("commented_at desc") }
   end
 
   describe"validations"do

@@ -1,5 +1,9 @@
 class BeerVote < ActiveRecord::Base
 
+  attr_accessible :location_id
+
+  named_scope :last_commented_at, :order => "commented_at desc"
+
   named_scope :by_id, :order => "id desc"
 
   FIELDS_ALIASES = {

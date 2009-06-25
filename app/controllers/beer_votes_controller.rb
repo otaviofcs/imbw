@@ -8,7 +8,7 @@ class BeerVotesController < ApplicationController
   #
   # lista de beer_votes
   def index
-    @beer_votes = BeerVote.by_id
+    @beer_votes = BeerVote.last_commented_at
     @page_title = "Cervejas que eu bebi, hoje e ontem - I Might be W.R.O.N.G."
     @user = User.first
   end
