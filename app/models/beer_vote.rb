@@ -44,7 +44,7 @@ class BeerVote < ActiveRecord::Base
     search_term = "#beer since:#{last_updated_at.to_date.to_s}"
     @twitter_updates = Twitter::Search.new(search_term).from('otaviofcs')
     @twitter_updates.each do |twitter_update|
-      if twitter_upinddate.created_at.to_time > last_updated_at
+      if twitter_update.created_at.to_time > last_updated_at
         result = BeerVote.create_one_vote(twitter_update)
         votes_created += 1 if result == true
         logger.debug "#{result.errors.inspect} #{twitter_update.text}" unless result == true
