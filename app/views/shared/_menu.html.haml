@@ -7,7 +7,7 @@
     %li
       <span class='wrong_high'>O</span>nline
     %li
-      <span class='wrong_high'>N</span>annying
+      = link_to "<span class='wrong_high'>N</span>annying", children_path
     %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }" }
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
     - unless current_user
