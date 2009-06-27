@@ -38,7 +38,7 @@ class BeerVote < ActiveRecord::Base
 
   # Searchs for the most recent updates on Twitter. Avoids
   # repetition based on last updated beer vote
-  def self.create_votes
+  def self.fetch_and_create_votes
     votes_created = 0
     last_updated_at = BeerVote.last_updated_at
     search_term = "#beer since:#{last_updated_at.to_date.to_s}"
