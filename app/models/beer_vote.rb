@@ -65,15 +65,14 @@ class BeerVote < ActiveRecord::Base
     final_value = 0
     tag_name = ""
 
-    hashtags = vote_description.scan(/#([a-z0-9_]+)/i)
+    hashtags = vote_description.scan(/&([a-z0-9_]+)/i)
     hashtags.each do |tag|
-      final_value = ( vote_description =~ /##{tag}/i )
+      final_value = ( vote_description =~ /&#{tag}/i )
       parsed = parsed.merge( { tag_name => vote_description[initial_value..final_value - 1].strip } ) if initial_value > 0
       tag_name = tag.to_s
       initial_value = final_value + tag.to_s.size + 1
     end
     parsed = parsed.merge( { tag_name => vote_description[initial_value..vote_description.size].strip } ) if initial_value < vote_description.size
-    parsed.delete "beer"
     parsed
   end
 
