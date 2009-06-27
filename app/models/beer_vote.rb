@@ -27,7 +27,7 @@ class BeerVote < ActiveRecord::Base
 
   validates_presence_of :commented_at
 
-  def self.last_update
+  def self.last_updated_at
     vote = BeerVote.find(:first, :order => 'beer_votes.commented_at desc')
     if vote
       vote.commented_at
@@ -36,10 +36,14 @@ class BeerVote < ActiveRecord::Base
     end
   end
 
+  # Searchs for the most recent updates on Twitter. Avoids
+  # repetition based on last updated beer vote
   def self.create_votes
-    @twitter_updates = Twitter::Search.new.from('otaviofcs').containing('#beer')
+    last_updated_at = BeerVote.last_updated_at
+    search_term = "#beer since:#{last_updated_at.to_date.to_s}"
+    @twitter_updates = Twitter::Search.new(search_term).from('otaviofcs')
     @twitter_updates.each do |twitter_update|
-      BeerVote.create_one_vote twitter_update
+      BeerVote.create_one_vote twitter_update if twitter_update.created_at.to_time > last_updated_at
     end
 
   end
