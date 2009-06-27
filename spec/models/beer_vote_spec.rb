@@ -27,22 +27,23 @@ describe BeerVote do
   end
 
   describe"object methods"do
-    describe "self.last_update" do
+    describe "self.last_updated_at" do
       fixtures :beer_votes
       it "should retrive last commented at datetime" do
         @beer_vote = beer_votes(:first)
-        BeerVote.last_update.should == @beer_vote.commented_at
+        BeerVote.last_updated_at.should == @beer_vote.commented_at
       end
       it "should return nil if there is no vote" do
         BeerVote.destroy_all
-        BeerVote.last_update.should be_nil
+        BeerVote.last_updated_at.should be_nil
       end
     end
     describe"self.parse_vote(vote_description)"do
       it"should parse a vote correctly"do
-        BeerVote.parse_vote("#beer &bv 3.5 &bd teste agora &bt Beck's").should == {"bt"=>"Beck's","bv"=>"3.5","bd"=>"teste agora"}
-        BeerVote.parse_vote("#beer &bv 3.5 &bt Beck's &description teste agora").should == {"bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
-        BeerVote.parse_vote("#beer &bv 3.5 &bt Beck's &bc Alemanha &description teste agora").should == {"bc"=>"Alemanha","bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
+        BeerVote.parse_vote("#beer %bv 3.5 %bd teste agora %bt Beck's").should == {"bt"=>"Beck's","bv"=>"3.5","bd"=>"teste agora"}
+        BeerVote.parse_vote("#beer %bv 3.5 %bt Beck's %description teste agora").should == {"bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
+        BeerVote.parse_vote("#beer %bv 3.5 %bt Beck's %bc Alemanha %description teste agora").should == {"bc"=>"Alemanha","bt"=>"Beck's","bv"=>"3.5","description"=>"teste agora"}
+        BeerVote.parse_vote("#beer %bt Eisenbahn Kölsch %bd o detalhe final é o malte de trigo que lembra mel.").should == {"bd"=>"o detalhe final é o malte de trigo que lembra mel.", "bt"=>"Eisenbahn Kölsch"}
       end
     end
     describe"self.create_one_vote(twitter_update)"do
@@ -55,7 +56,7 @@ describe BeerVote do
           :iso_language_code => "pt",
           :profile_image_url => "http://s3.amazonaws.com/twitter_production/profile_images/255710892/avatar_mini_normal.jpg",
           :source => "&lt;a href=&quot;http://twitterhelp.blogspot.com/2008/05/twitter-via-mobile-web-mtwittercom.html&quot;&gt;mobile web&lt;/a&gt;",
-          :text => "#beer &bt Beck's &bv 3.5 &bd comparando a Heineken e a Beck's, a última tem muito mais corpo e presença. Mas ambas tem aquele amargo no fim do gole.",
+          :text => "#beer %bt Beck's %bv 3.5 %bd comparando a Heineken e a Beck's, a última tem muito mais corpo e presença. Mas ambas tem aquele amargo no fim do gole.",
           :to_user_id => nil
         })
         BeerVote.destroy_all

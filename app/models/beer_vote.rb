@@ -39,13 +39,18 @@ class BeerVote < ActiveRecord::Base
   # Searchs for the most recent updates on Twitter. Avoids
   # repetition based on last updated beer vote
   def self.create_votes
+    votes_created = 0
     last_updated_at = BeerVote.last_updated_at
     search_term = "#beer since:#{last_updated_at.to_date.to_s}"
     @twitter_updates = Twitter::Search.new(search_term).from('otaviofcs')
     @twitter_updates.each do |twitter_update|
-      BeerVote.create_one_vote twitter_update if twitter_update.created_at.to_time > last_updated_at
+      if twitter_update.created_at.to_time > last_updated_at
+        result = BeerVote.create_one_vote(twitter_update)
+        votes_created += 1 if result == true
+        logger.debug "#{result.errors.inspect} #{twitter_update.text}" unless result == true
+      end
     end
-
+    "criados #{votes_created} votos"
   end
 
   def self.create_one_vote(twitter_update)
@@ -69,9 +74,9 @@ class BeerVote < ActiveRecord::Base
     final_value = 0
     tag_name = ""
 
-    hashtags = vote_description.scan(/&([a-z0-9_]+)/i)
+    hashtags = vote_description.scan(/%([a-z0-9_]+)/i)
     hashtags.each do |tag|
-      final_value = ( vote_description =~ /&#{tag}/i )
+      final_value = ( vote_description =~ /%#{tag}/i )
       parsed = parsed.merge( { tag_name => vote_description[initial_value..final_value - 1].strip } ) if initial_value > 0
       tag_name = tag.to_s
       initial_value = final_value + tag.to_s.size + 1
