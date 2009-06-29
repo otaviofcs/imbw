@@ -8,7 +8,7 @@ describe BeerVotesController do
   end
 
   describe "GET /index" do
-    def call_action(params)
+    def call_action(params={})
       get :index, params
     end
     it_should_be_accessible_if_not_logged_in
