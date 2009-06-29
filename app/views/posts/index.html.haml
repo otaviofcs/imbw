@@ -1,6 +1,11 @@
 #posts.span-16
   .order_by
-    
+    = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
+    ou
+    = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize
+    ou
+    = order @search, :by => :published_at, :as => t("activerecord.attributes.post.published_at").humanize
+
   - @posts.each do |post|
     .post-card
       %h2
