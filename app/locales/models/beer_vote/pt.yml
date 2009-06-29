@@ -1,0 +1,12 @@
+pt:
+  activerecord:
+    models:
+      beer_vote: "voto em cerveja"
+    attributes:
+      beer_vote:
+        user_id: "usuário"
+        user: "usuário"
+        vote: "voto"
+        title: "título"
+        comment: "comentário"
+        commented_at: "comentado em"
