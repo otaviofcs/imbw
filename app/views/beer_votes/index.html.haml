@@ -25,5 +25,16 @@
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
 
 .sidebar.span-5
-  %p
-    Busca:
+  - form_for @search do |f|
+    %p
+      %label Título contendo
+      %br/
+      = f.text_field :title_like, :size => 20
+    %p
+      %label Comentário Contendo
+      %br/
+      = f.text_field :comment_like, :size => 20
+    %p
+      = submit_tag 'filtrar', :disable_with => '...'
+    %p
+      = link_to "limpar filtros", beer_votes_path
