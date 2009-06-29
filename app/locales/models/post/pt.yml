@@ -1,0 +1,13 @@
+pt:
+  activerecord:
+    models:
+      post: "artigo"
+    attributes:
+      post:
+        user_id: "usuário"
+        user: "usuário"
+        title: "título"
+        body: "texto"
+        edited_at: "última edição em"
+        published_at: "publicado em"
+
