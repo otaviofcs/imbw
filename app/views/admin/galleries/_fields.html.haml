@@ -8,9 +8,9 @@
   %br/
   = f.text_field :description
 %p
-  Código Público
+  = f.label_l :public_code
   %br/
-  = f.text_field :gallery_code
+  = f.text_field :public_code
 %p
   = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
   ou

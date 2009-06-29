@@ -2,11 +2,11 @@
   Álbum
   = @gallery.title
 %p
-  = link_to "Link público", open_gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}")
+  = link_to "Link público", gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}")
 %p
   Código público:
-  - if @gallery.gallery_code
-    = "#{@gallery.id}-#{@gallery.gallery_code}"
+  - if @gallery.public_code
+    = "#{@gallery.id}-#{@gallery.public_code}"
   -else
     %span Sem código público
 %p

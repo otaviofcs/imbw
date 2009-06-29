@@ -3,5 +3,5 @@
     Editando álbum
     = @gallery.title
 
-  - form_for @gallery, :url => admin_galleries_path, :method => :put do |f|
+  - form_for @gallery, :url => admin_gallery_path(@gallery), :method => :put do |f|
     = render :partial => 'admin/galleries/fields', :locals => { :f => f, :gallery => @gallery }

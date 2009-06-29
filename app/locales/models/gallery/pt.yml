@@ -7,5 +7,6 @@ pt:
         user_id: "usuário"
         title: "título"
         description: "descrição"
+        public_code: "código público"
         created_at: "criado em"
         updated_at: "atualizado em"
