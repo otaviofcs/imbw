@@ -6,6 +6,10 @@ class BeerVote < ActiveRecord::Base
 
   named_scope :by_id, :order => "id desc"
 
+  cattr_reader :per_page
+  @@per_page = 10
+
+
   FIELDS_ALIASES = {
     "bv" => :vote,
     "vote" => :vote,

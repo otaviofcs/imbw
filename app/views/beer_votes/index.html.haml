@@ -30,6 +30,8 @@
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
 
+  %p.paginate
+    = will_paginate @beer_votes
 .sidebar.span-5
   - form_for @search do |f|
     %p
