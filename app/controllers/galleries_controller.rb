@@ -28,8 +28,8 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find params[:id]
     valid = true
-    valid = false if "#{@gallery.id}-" == params[:id]
     valid = false unless ("#{@gallery.id}-#{@gallery.gallery_hash}" == params[:id] || "#{@gallery.id}-#{@gallery.public_code}" == params[:id])
+    valid = false if "#{@gallery.id}-" == params[:id]
     render :text => "você não possui permissão!", :status => 404 unless valid
     @photos = @gallery.photos.recent
     @page_title = "Fotos do álbum #{@gallery.title}"
