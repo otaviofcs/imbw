@@ -4,6 +4,12 @@
 %p
   = link_to "Link público", open_gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}")
 %p
+  Código público:
+  - if @gallery.gallery_code
+    = "#{@gallery.id}-#{@gallery.gallery_code}"
+  -else
+    %span Sem código público
+%p
   = link_to "adicionar foto", new_admin_gallery_photo_path(@gallery), :class => 'link-new'
 .photos
   - @photos.each do |photo|

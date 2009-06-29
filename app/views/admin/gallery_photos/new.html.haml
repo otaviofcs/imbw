@@ -1,20 +1,21 @@
-%h2
-  Nova foto para o álbum
-  = @gallery.title
+.general
+  %h2
+    Nova foto para o álbum
+    = @gallery.title
 
-- form_for @photo, :url => admin_gallery_photos_path, :html => { :multipart => true } do |f|
-  = f.error_messages
-  %p
-    = f.label_l :title
-    %br
-    = f.text_field :title
-  %p
-    = f.label_l :uploaded_data
-    %br
-    = f.file_field :uploaded_data
-    %br
-    %span.field_info Arquivos .png, .jpg. ou .gif, com até 3mb de tamanho
-  %p
-    = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
-    ou
-    = link_to 'cancelar', admin_gallery_photos_path(@gallery)
+  - form_for @photo, :url => admin_gallery_photos_path, :html => { :multipart => true } do |f|
+    = f.error_messages
+    %p
+      = f.label_l :title
+      %br
+      = f.text_field :title
+    %p
+      = f.label_l :uploaded_data
+      %br
+      = f.file_field :uploaded_data
+      %br
+      %span.field_info Arquivos .png, .jpg. ou .gif, com até 3mb de tamanho
+    %p
+      = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+      ou
+      = link_to 'cancelar', admin_gallery_photos_path(@gallery)

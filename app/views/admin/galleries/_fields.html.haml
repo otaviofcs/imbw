@@ -1,12 +1,16 @@
 = f.error_messages
 %p
   = f.label_l :title
-  %br
+  %br/
   = f.text_field :title
 %p
   = f.label_l :description
-  %br
+  %br/
   = f.text_field :description
+%p
+  Código Público
+  %br/
+  = f.text_field :gallery_code
 %p
   = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
   ou
