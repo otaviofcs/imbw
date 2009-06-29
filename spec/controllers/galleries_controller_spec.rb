@@ -40,5 +40,28 @@ describe GalleriesController do
     end
   end
 
+  describe "GET /show/1-294829382" do
+    fixtures :galleries
+    def call_action params={}
+      get :show, params
+    end
+    describe "no access" do
+      it "should have access denied" do
+        galleries(:two)
+        call_action :id => "#{@gallery.id}-"
+        response.response_code.should == 404
+      end
+    end
+    describe "success" do
+      it "should redirect to gallery path" do
+        @gallery = galleries(:one)
+        call_action :id => "#{@gallery.id}-#{@gallery.public_code}"
+        response.should redirect_to(gallery_path(:id => "#{@gallery.id}-#{@gallery.public_code}"))
+        call_action :id => "#{@gallery.id}-#{@gallery.gallery_hash}"
+        response.should redirect_to(gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}"))
+      end
+    end
+  end
+
 
 end
