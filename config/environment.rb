@@ -26,6 +26,12 @@ Rails::Initializer.run do |config|
   # Biblioteca para escrever views em haml ao inves de html
   config.gem "haml", :lib => "haml", :version => ">= 2.0.9"
 
+  # gem para tornar mais simples buscas e ordenação
+  config.gem "binarylogic-searchlogic", :lib => 'searchlogic', :source => 'http://gems.github.com', :version => '~> 2.0.1'
+
+  # tagging
+  config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.5', :source => 'http://gems.github.com'
+
   # paginação
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '>= 2.3.11', :source => 'http://gems.github.com'
 
