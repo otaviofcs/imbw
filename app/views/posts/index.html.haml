@@ -20,6 +20,9 @@
       %p
         = post.body
 
+  %p.paginate
+    = will_paginate @posts
+
 .span-8.last
   .sidebar
     .about

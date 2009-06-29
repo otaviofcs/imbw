@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     params_search = { :order => 'descend_by_id'}
     params_search = params_search.merge(params[:search]) unless params[:search]
     @search = Post.search params_search
-    @posts = @search.available
+    @posts = @search.available.paginate(:page => params[:page])
     @page_title = "Posts I Might be W.R.O.N.G."
   end
 
