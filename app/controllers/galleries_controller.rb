@@ -1,4 +1,4 @@
-class Open::GalleriesController < ApplicationController
+class GalleriesController < ApplicationController
 
   # GET /open/galleries/dfdsfdfdsf56rgrty
   # Via: open_gallery_path(dfdsfdfdsf56rgrty)

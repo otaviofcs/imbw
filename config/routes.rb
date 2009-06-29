@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :beer_votes
   map.resources :users
   map.resources :children
-
+  map.resources :galleries
   
   map.admin_root '/admin',  :controller => 'admin/users', :action => 'index'
   map.namespace(:admin) do |admin|
@@ -51,10 +51,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :galleries do |gallery|
       gallery.resources :photos, :controller => "gallery_photos"
     end
-  end
-
-  map.namespace(:open) do |open|
-    open.resources :galleries
   end
 
   map.login  '/login',  :controller => 'admin/sessions', :action => 'new'
