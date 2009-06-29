@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :beer_votes
   map.resources :users
   map.resources :children
-  map.resources :galleries
+  map.resources :galleries, :collection => { :search => :get }
   
   map.admin_root '/admin',  :controller => 'admin/users', :action => 'index'
   map.namespace(:admin) do |admin|

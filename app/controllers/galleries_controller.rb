@@ -10,8 +10,17 @@ class GalleriesController < ApplicationController
     @page_title = "Digite o código do álbum que quer buscar"
   end
 
-  # GET /open/galleries/dfdsfdfdsf56rgrty
-  # Via: open_gallery_path(dfdsfdfdsf56rgrty)
+  def search
+    if(params[:id])
+      redirect_to gallery_path(params[:id])
+    else
+      flash[:notice] = "Digite o id do álbum!"
+      redirect_to galleries_path
+    end
+  end
+
+  # GET /galleries/dfdsfdfdsf56rgrty
+  # Via: gallery_path(dfdsfdfdsf56rgrty)
   # Disponível: [público]
   #
   # view de um álbum por um link via hash, checa id com
@@ -19,7 +28,7 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find params[:id]
     valid = true
-    valid = false unless "#{@gallery.id}-" == params[:id]
+    valid = false if "#{@gallery.id}-" == params[:id]
     valid = false unless "#{@gallery.id}-#{@gallery.gallery_hash}" == params[:id]
     render :text => "você não possui permissão!", :status => 404 unless valid
     @photos = @gallery.photos.recent
