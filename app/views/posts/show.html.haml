@@ -14,6 +14,11 @@
       = l(@post.edited_at, :format => 'short')
   %p
     = @post.body
+  .post_tags
+    %p
+      - @post.tags_list.each do |t|
+        %span
+          = link_to t, "#"
 
 #comments_container
   = disqus_comments_tag(Settings::DISQUS_SITE_ID)

@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
 
   acts_as_textiled :body
 
+  acts_as_taggable_on :tags
+
   #
   # Association
   #

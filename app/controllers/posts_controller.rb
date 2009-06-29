@@ -8,7 +8,10 @@ class PostsController < ApplicationController
   #
   # lista de posts
   def index
-    @posts = Post.available.by_id
+    params_search = { :order => 'descend_by_id'}
+    params_search = params_search.merge(params[:search]) unless params[:search]
+    @search = Post.search params_search
+    @posts = @search.available
     @page_title = "Posts I Might be W.R.O.N.G."
   end
 
