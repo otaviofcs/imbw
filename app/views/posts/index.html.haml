@@ -1,5 +1,6 @@
 #posts.span-16
   .order_by
+    Ordene por
     = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
     ou
     = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize

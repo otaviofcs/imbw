@@ -22,6 +22,7 @@
 
 #beer_votes.span-18
   .order_by
+    Ordene por
     = order @search, :by => :commented_at, :as => t("activerecord.attributes.beer_vote.commented_at").humanize
     ou
     = order @search, :by => :title, :as => t("activerecord.attributes.beer_vote.title").humanize
