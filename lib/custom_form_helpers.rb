@@ -4,7 +4,7 @@ module ActionView
     module FormHelper
 
       # precisa?
-      def label_l(object_name, method, text = nil, options = {})
+      def label_t(object_name, method, text = nil, options = {})
         unless text
           text = I18n.t("activerecord.attributes.#{object_name.to_s}.#{method.to_s}").humanize
         end
@@ -16,7 +16,7 @@ module ActionView
     class FormBuilder
 
       # como o label normal, porém pega o nome do atributo já traduzido automagicamente, se text for nil
-      def label_l(method, text = nil, options = {})
+      def label_t(method, text = nil, options = {})
         unless text
           text = I18n.t("activerecord.attributes.#{@object_name.to_s}.#{method.to_s}").humanize
         end
