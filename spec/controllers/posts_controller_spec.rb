@@ -23,8 +23,9 @@ describe PostsController do
     it_should_assign_a_page_title
     it "should retrieve posts" do
       @post = mock_model(Post)
-      Post.should_receive(:available).and_return(posts = [@post])
-      posts.should_receive(:by_id).and_return(posts)
+      Post.should_receive(:available).and_return(posts = @post)
+      @post.should_receive(:search).and_return(posts = @post)
+      @post.should_receive(:paginate).and_return([@post])
       call_action
     end
   end

@@ -11,8 +11,8 @@
     %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }" }
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
     - unless current_user
-      %li
-        = link_to "login", login_path, :class => 'link-login'
+      %li{ :class => "#{"active" if controller.controller_name == 'session' }" }
+        = link_to "login", login_path
     - else
       %li
         = link_to "admin", admin_root_path, :class => 'link-admin'
