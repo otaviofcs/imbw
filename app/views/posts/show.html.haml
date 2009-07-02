@@ -1,24 +1,26 @@
-%h4
-  = link_to @post.title, post_path(@post), :class => 'link-post'
-.post
-  .post_header
-    %span
-      = link_to @post.user.login, user_path(@post.user), :class => 'link-user'
-      ,
-    %span.date
-      criada em
-      = l(@post.created_at, :format => 'short')
-      ,
-    %span.date-edit
-      última edição em
-      = l(@post.edited_at, :format => 'short')
-  %p
-    = @post.body
-  .post_tags
-    %p
-      - @post.tags_list.each do |t|
+.span-18
+  #post
+    %h2
+      = link_to @post.title, post_path(@post), :class => 'link-post'
+    .post
+      .post_header
         %span
-          = link_to t, "#"
-
-#comments_container
-  = disqus_comments_tag(Settings::DISQUS_SITE_ID)
+          = link_to @post.user.login, user_path(@post.user), :class => 'link-user'
+          ,
+        %span.date
+          criada em
+          = l(@post.created_at, :format => 'short')
+          ,
+        %span.date-edit
+          última edição em
+          = l(@post.edited_at, :format => 'short')
+      %p
+        = @post.body
+      .post_tags
+        %p
+          - @post.tag_list.each do |t|
+            %span
+              = link_to t, "#"
+.span-18
+  #comments_container
+    = disqus_comments_tag(Settings::DISQUS_SITE_ID)

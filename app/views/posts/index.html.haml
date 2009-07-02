@@ -1,4 +1,4 @@
-#posts.span-16
+.span-16
   .order_by
     Ordene por
     = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
@@ -6,23 +6,24 @@
     = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize
     ou
     = order @search, :by => :published_at, :as => t("activerecord.attributes.post.published_at").humanize
+.span-16
+  #posts
+    - @posts.each do |post|
+      .post-card
+        %h2
+          = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
+        %hr
+        %h5
+          criado por
+          = link_to post.user.login, user_path(post.user), :class => 'link-user'
+          , em
+          %span.date
+            = post.created_at
+        %p
+          = post.body
 
-  - @posts.each do |post|
-    .post-card
-      %h2
-        = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
-      %hr
-      %h5
-        criado por
-        = link_to post.user.login, user_path(post.user), :class => 'link-user'
-        , em
-        %span.date
-          = post.created_at
-      %p
-        = post.body
-
-  %p.paginate
-    = will_paginate @posts
+    %p.paginate
+      = will_paginate @posts
 
 .span-8.last
   .sidebar
