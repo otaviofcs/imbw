@@ -21,13 +21,14 @@
     .clear
 
 #beer_votes.span-18
-  .order_by
-    Ordene por
-    = order @search, :by => :commented_at, :as => t("activerecord.attributes.beer_vote.commented_at").humanize
-    ou
-    = order @search, :by => :title, :as => t("activerecord.attributes.beer_vote.title").humanize
-    ou
-    = order @search, :by => :vote, :as => t("activerecord.attributes.beer_vote.vote").humanize
+  %p
+    .order_by
+      Ordene por
+      = order @search, :by => :commented_at, :as => t("activerecord.attributes.beer_vote.commented_at").humanize
+      ou
+      = order @search, :by => :title, :as => t("activerecord.attributes.beer_vote.title").humanize
+      ou
+      = order @search, :by => :vote, :as => t("activerecord.attributes.beer_vote.vote").humanize
   - @beer_votes.each do |beer_vote|
     = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
 
