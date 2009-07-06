@@ -1,13 +1,14 @@
-%h2 Álbuns
-%p
-  = link_to "novo álbum", new_admin_gallery_path, :class => 'link-new'
-.galleries
-  - @galleries.each do |gallery|
-    .gallery
-      %p= link_to image_tag('gallery_template.png'), admin_gallery_path(gallery), :class => 'link-show' unless gallery.photos.size > 0
-      %p= link_to image_tag(gallery.photos.first.public_filename(:small)), admin_gallery_path(gallery), :class => 'link-show' if gallery.photos.size > 0
-      %p
-        = link_to gallery.title, admin_gallery_path(gallery), :class => 'link-show'
-        %br
-        = link_to "editar", edit_admin_gallery_path(gallery), :class => 'link-edit'
-        = link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+.general
+  %h2 Álbuns
+  %p
+    = link_to "novo álbum", new_admin_gallery_path, :class => 'link-new'
+  .galleries
+    - @galleries.each do |gallery|
+      .gallery
+        %p= link_to image_tag('gallery_template.png'), admin_gallery_path(gallery), :class => 'link-show' unless gallery.photos.size > 0
+        %p= link_to image_tag(gallery.photos.first.public_filename(:small)), admin_gallery_path(gallery), :class => 'link-show' if gallery.photos.size > 0
+        %p
+          = link_to gallery.title, admin_gallery_path(gallery), :class => 'link-show'
+          %br
+          = link_to "editar", edit_admin_gallery_path(gallery), :class => 'link-edit'
+          = link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
