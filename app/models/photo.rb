@@ -13,7 +13,7 @@ class Photo < ActiveRecord::Base
       :medium => "x500"
     }
 
-  named_scope :recent, :order => 'id DESC'
+  named_scope :recent, :order => 'id ASC'
 
   validates_as_attachment
 
