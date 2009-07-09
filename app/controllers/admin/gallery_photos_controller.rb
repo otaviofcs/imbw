@@ -30,16 +30,42 @@ class Admin::GalleryPhotosController < AdminController
   def create
     @photo = @gallery.photos.new(params[:photo])
     if @photo.save
-      flash[:success] = "Foto do álbum criado com sucesso."
-      redirect_to admin_gallery_path(@gallery)
+      flash[:success] = "Foto do álbum criado com sucesso. Envie outra se quiser."
+      redirect_to new_admin_gallery_photos_path
     else
       @page_title = "Novo Foto do álbum"
       render :action => 'new'
     end
   end
 
+  # GET /admin/galleries/1/photos/2/edit
+  # Via: edit_admin_gallery_photo_path(1,2)
+  # Disponível: [admin]
+  #
+  # editando foto da galleria
+  def edit
+    @photo = @gallery.photos.find params[:id]
+    @page_title = "Editando Foto ##{@gallery.id}"
+  end
+
+  # PUT /admin/galleries/1/photos/2
+  # Via: admin_gallery_photo_path(1)
+  # Disponível: [admin]
+  #
+  # Atualiza dados do usuário
+  def update
+    @photo = @gallery.photos.find params[:id]
+    if @photo.update_attributes(params[:gallery])
+      flash[:success] = "Foto atualizada com sucesso"
+      redirect_to admin_gallery_path(@photo)
+    else
+      @page_title = "Editando Foto ##{@photo.id}"
+      render :action => 'edit'
+    end
+  end
+
   # DELETE /admin/galleries/1
-  # Via: admin_@gallery.photos_path(1)
+  # Via: admin_gallery_photos_path(1)
   # Disponível: [admin]
   #
   # apaga usuário
