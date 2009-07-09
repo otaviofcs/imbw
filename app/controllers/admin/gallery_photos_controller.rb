@@ -31,7 +31,7 @@ class Admin::GalleryPhotosController < AdminController
     @photo = @gallery.photos.new(params[:photo])
     if @photo.save
       flash[:success] = "Foto do álbum criado com sucesso. Envie outra se quiser."
-      redirect_to new_admin_gallery_photo
+      redirect_to new_admin_gallery_photo_path(@gallery)
     else
       @page_title = "Novo Foto do álbum"
       render :action => 'new'
