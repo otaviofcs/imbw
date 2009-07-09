@@ -3,7 +3,7 @@
     Editando foto do álbum
     = @gallery.title
 
-  - form_for @photo, :url => admin_gallery_photos_path do |f|
+  - form_for @photo, :url => admin_gallery_photo_path(@gallery), :method => :put do |f|
     = f.error_messages
     %p
       = f.label_t :title
@@ -18,4 +18,4 @@
     %p
       = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
       ou
-      = link_to 'cancelar', admin_gallery_photos_path(@gallery)
+      = link_to 'cancelar', admin_gallery_path(@gallery)

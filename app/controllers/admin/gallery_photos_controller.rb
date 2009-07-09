@@ -31,7 +31,7 @@ class Admin::GalleryPhotosController < AdminController
     @photo = @gallery.photos.new(params[:photo])
     if @photo.save
       flash[:success] = "Foto do álbum criado com sucesso. Envie outra se quiser."
-      redirect_to new_admin_gallery_photos_path
+      redirect_to new_admin_gallery_photo
     else
       @page_title = "Novo Foto do álbum"
       render :action => 'new'
@@ -55,9 +55,9 @@ class Admin::GalleryPhotosController < AdminController
   # Atualiza dados do usuário
   def update
     @photo = @gallery.photos.find params[:id]
-    if @photo.update_attributes(params[:gallery])
+    if @photo.update_attributes(params[:photo])
       flash[:success] = "Foto atualizada com sucesso"
-      redirect_to admin_gallery_path(@photo)
+      redirect_to admin_gallery_path(@gallery)
     else
       @page_title = "Editando Foto ##{@photo.id}"
       render :action => 'edit'
