@@ -4,6 +4,10 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  # prevents a user from submitting a crafted form that bypasses activation
+  # anything else you want your user to change should be added here.
+  attr_accessible :title, :body, :active
+
   #
   # Association
   #
