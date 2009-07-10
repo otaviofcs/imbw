@@ -1,0 +1,17 @@
+= f.error_messages
+%p
+  = f.label_t :title
+  %br/
+  = f.text_field :title
+%p
+  = f.label_t :body
+  %br/
+  = f.text_area :body
+%p
+  = f.label_t :active
+  %br/
+  = f.check_box :active
+%p
+  = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+  ou
+  = link_to 'cancelar', admin_posts_path

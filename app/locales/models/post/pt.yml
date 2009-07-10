@@ -10,4 +10,5 @@ pt:
         body: "texto"
         edited_at: "última edição em"
         published_at: "publicado em"
+        active: "ativo"
 
