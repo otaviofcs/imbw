@@ -37,6 +37,7 @@ class Admin::PostsController < AdminController
   # Criar novo post
   def create
     @post = Post.new(params[:post])
+    @post.published_at = Time.current if params[:publish]
     if @post.save
       flash[:success] = "Post criado com sucesso."
       redirect_to admin_posts_path
@@ -53,6 +54,7 @@ class Admin::PostsController < AdminController
   # Atualiza dados do post
   def update
     @post = Post.find params[:id]
+    @post.published_at = Time.current if params[:publish]
     if @post.update_attributes(params[:post])
       flash[:success] = "Post alterado com sucesso"
       redirect_to admin_posts_path
