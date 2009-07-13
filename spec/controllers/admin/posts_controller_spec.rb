@@ -6,7 +6,7 @@ describe Admin::PostsController do
   before(:each) do
     @user = users(:the_blogger)
     login_as @user
-    @post = mock_model(Post, { :destroy => true, :save => true, :update_attributes => true })
+    @post = mock_model(Post, { :destroy => true, :save => true, :update_attributes => true, :edited_at => nil, :published_at => nil })
   end
 
   #Delete this example and add some real ones
