@@ -4,7 +4,7 @@
       = link_to "<span class='wrong_high'>W</span>riting", posts_path
     %li
       <span class='wrong_high'>R</span>eading
-    %li{ :class => "#{"active" if controller.controller_name == 'galleries' }" }
+    %li{ :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }" }
       = link_to "<span class='wrong_high'>O</span>bserving", galleries_path
     %li
       = link_to "Taking <span class='wrong_high'>N</span>otes", "#"

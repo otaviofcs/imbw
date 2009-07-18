@@ -1,0 +1,8 @@
+.general
+  %h2
+    Foto
+    = @photo.title
+  .photos
+    = image_tag @photo.public_filename(:medium)
+    %p
+      = @photo.title if @photo.title
