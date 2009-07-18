@@ -1,14 +1,14 @@
 .main_menu.span-24.header
   %ul
-    %li{ :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('#menuwriting').hide();", :onmouseover => "$('#menuwriting').show();" }
+    %li{ :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();" }
       = link_to "<span class='wrong_high'>W</span>riting", posts_path
-    %li
+    %li{ :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"}
       <span class='wrong_high'>R</span>eading
-    %li{ :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }" }
+    %li{ :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"}
       = link_to "<span class='wrong_high'>O</span>bserving", galleries_path
-    %li
+    %li{ :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"}
       = link_to "Taking <span class='wrong_high'>N</span>otes", "#"
-    %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }" }
+    %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"}
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
     - unless current_user
       %li{ :class => "#{"active" if controller.controller_name == 'session' }" }
@@ -18,13 +18,15 @@
         = link_to "admin", admin_root_path, :class => 'link-admin'
       %li
         = link_to "sair", logout_path, :class => 'link-logout'
-  #menuwriting.description{ :style => 'display:none;' }
-    o blog, aqui fica o blog.
-  #menureading.description{ :style => 'display:none;' }
-    links interessantes de coisas que ando lendo.
-  #menuobserving.description{ :style => 'display:none;' }
-    a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas
-  #menutaking_notes.description{ :style => 'display:none;' }
-    comentários rápidos. coisas simples.
-  #menugristing.description{ :style => 'display:none;' }
-    cerveja! aqui só entra cerveja!
+  .clear
+  .menu_description
+    #menuwriting.description{ :style => 'display:none;' }
+      o blog, aqui fica o blog.
+    #menureading.description{ :style => 'display:none;' }
+      links interessantes de coisas que ando lendo.
+    #menuobserving.description{ :style => 'display:none;' }
+      a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas
+    #menutaking_notes.description{ :style => 'display:none;' }
+      comentários rápidos. coisas simples.
+    #menugristing.description{ :style => 'display:none;' }
+      cerveja! aqui só entra cerveja!
