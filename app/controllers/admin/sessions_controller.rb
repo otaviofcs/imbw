@@ -26,7 +26,7 @@ class Admin::SessionsController < AdminController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:success] = " login bem sucedido!"
-      redirect_back_or_default root_path
+      redirect_back_or_default admin_root_path
     else
       @page_title = 'Fazer Login'
       note_failed_signin
