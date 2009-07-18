@@ -1,6 +1,6 @@
 .main_menu.span-24.header
   %ul
-    %li{ :class => "#{"active" if controller.controller_name == 'posts' }" }
+    %li{ :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('#menuwriting').hide();", :onmouseover => "$('#menuwriting').show();" }
       = link_to "<span class='wrong_high'>W</span>riting", posts_path
     %li
       <span class='wrong_high'>R</span>eading
@@ -18,13 +18,13 @@
         = link_to "admin", admin_root_path, :class => 'link-admin'
       %li
         = link_to "sair", logout_path, :class => 'link-logout'
-#menu_writing.description{ :style => 'visibility:hidden;' }
-  o blog, aqui fica o blog.
-#menu_reading.description{ :style => 'visibility:hidden;' }
-  links interessantes de coisas que ando lendo.
-#menu_observing.description{ :style => 'visibility:hidden;' }
-  a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas
-#menu_taking_notes.description{ :style => 'visibility:hidden;' }
-  comentários rápidos. coisas simples.
-#menu_gristing.description{ :style => 'visibility:hidden;' }
-  cerveja! aqui só entra cerveja!
+  #menuwriting.description{ :style => 'display:none;' }
+    o blog, aqui fica o blog.
+  #menureading.description{ :style => 'display:none;' }
+    links interessantes de coisas que ando lendo.
+  #menuobserving.description{ :style => 'display:none;' }
+    a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas
+  #menutaking_notes.description{ :style => 'display:none;' }
+    comentários rápidos. coisas simples.
+  #menugristing.description{ :style => 'display:none;' }
+    cerveja! aqui só entra cerveja!
