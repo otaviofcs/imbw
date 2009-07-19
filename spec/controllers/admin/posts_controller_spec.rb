@@ -6,7 +6,7 @@ describe Admin::PostsController do
   before(:each) do
     @user = users(:the_blogger)
     login_as @user
-    @post = mock_model(Post, { :destroy => true, :save => true, :update_attributes => true, :edited_at => nil, :published_at => nil })
+    @post = mock_model(Post, { :destroy => true, :save => true, :update_attributes => true, :edited_at => nil, :edited_at= => nil, :published_at => nil })
   end
 
   #Delete this example and add some real ones
@@ -161,7 +161,7 @@ describe Admin::PostsController do
       end
       it "should receive a posts find with 10" do
         Post.should_receive(:find).with("10").and_return(@post)
-        call_action :id => 10
+        call_action
       end
       it "should try to update post attributes" do
         @post.should_receive(:update_attributes).and_return(true)
