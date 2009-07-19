@@ -154,13 +154,13 @@ describe Admin::PostsController do
         call_action
         response.should redirect_to(admin_posts_path)
       end
-      it "should receive a posts new" do
+      it "should receive a posts find" do
         Post.stub!(:find).and_return(@post)
         call_action
         assigns[:post].should == @post
       end
       it "should receive a posts find with 10" do
-        Post.should_receive(:find).with("10").and_return(@post)
+        Post.should_receive(:find).and_return(@post)
         call_action
       end
       it "should try to update post attributes" do
