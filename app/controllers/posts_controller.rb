@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     @search = Post.available.search params_search
     @posts = @search.paginate(:page => params[:page])
     @page_title = "Posts I Might be W.R.O.N.G."
+    @tags = Post.tag_counts :limit => 10
   end
 
   # GET /posts/1

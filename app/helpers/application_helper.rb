@@ -52,4 +52,19 @@ module ApplicationHelper
     html
   end
 
+  # modificado em relação ao original para evitar bug quando
+  # a lista de itens da núvem está vazia.
+  #
+  # Antes fazia apenas:
+  # include TagsHelper
+  def tag_cloud(tags, classes)
+    unless tags.empty?
+      max_count = tags.sort_by(&:count).last.count.to_f
+
+      tags.each do |tag|
+        index = ((tag.count / max_count) * (classes.size - 1)).round
+        yield tag, classes[index]
+      end
+    end
+  end
 end

@@ -1,22 +1,28 @@
-.span-16
-  .order_by
-    - form_for @search do |f|
-      %p
-        Busca no texto
-        = f.text_field :body_like, :size => 20
-        ou nas tags
-        = f.text_field :tagged_with_on_tags, :size => 20
-        %br/
-        = submit_tag "Enviar", :disable => 'buscando...'
-        ou
-        = link_to "limpar", posts_path
+.prepend-top.prepend-1.span-15
+  - form_for @search do |f|
     %p
-      Ordene por
-      = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
+      Busca no texto
+      = f.text_field :body_like, :size => 20
+      ou nas tags
+      = f.text_field :tagged_with_on_tags, :size => 20
+      %br/
+      = submit_tag "Enviar", :disable => 'buscando...'
       ou
-      = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize
-      ou
-      = order @search, :by => :published_at, :as => t("activerecord.attributes.post.published_at").humanize
+      = link_to "limpar", posts_path
+  .tag_cloud
+    %p
+      Núvem de tags
+      %br/
+      - if @tags.size > 0
+        - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
+          = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
+  %p
+    Ordene por
+    = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
+    ou
+    = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize
+    ou
+    = order @search, :by => :published_at, :as => t("activerecord.attributes.post.published_at").humanize
 
   #posts
     - @posts.each do |post|
