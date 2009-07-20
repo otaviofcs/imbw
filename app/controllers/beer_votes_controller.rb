@@ -8,7 +8,7 @@ class BeerVotesController < ApplicationController
   #
   # lista de beer_votes
   def index
-    search_params = {:order => :descend_by_commented_at}
+    search_params = {"order" => :descend_by_commented_at}
     search_params = search_params.merge(params[:search]) if params[:search]
     @search = BeerVote.search(search_params)
     @beer_votes = @search.paginate :page => params[:page]
