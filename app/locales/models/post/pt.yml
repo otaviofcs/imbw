@@ -12,4 +12,4 @@ pt:
         published_at: "publicado em"
         publish: "publicar?"
         active: "ativo?"
-
+        tag_list: "rótulos"

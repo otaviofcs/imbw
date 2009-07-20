@@ -1,18 +1,21 @@
 %h2 Posts
 %p
   = link_to "novo post", new_admin_post_path, :class => 'link-new'
-%table
-  %tr
-    %th artigo
-    %th última edição
-    %th publicado em
-    %th #
-  - @posts.each do |post|
+.prepend-top.prepend-1.append-1.span-22
+  %table
     %tr
-      %td= link_to post.title, edit_admin_post_path(post)
-      %td= link_to l(post.edited_at, :format => :short), edit_admin_post_path(post)
-      %td= link_to l(post.published_at, :format => :short), edit_admin_post_path(post) if post.published_at
-      %td
-        = link_to "ver", post_path(post), :class => 'link-show'
-        ou
-        = link_to "excluir", admin_post_path(post), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+      %th artigo
+      %th última edição
+      %th publicado em
+      %th #
+    - @posts.each do |post|
+      %tr
+        %td= link_to post.title, edit_admin_post_path(post)
+        %td= link_to l(post.edited_at, :format => :short), edit_admin_post_path(post)
+        %td= link_to l(post.published_at, :format => :short), edit_admin_post_path(post) if post.published_at
+        %td
+          = link_to "ver", post_path(post), :class => 'link-show'
+          ou
+          = link_to "editar", edit_post_path(post), :class => 'link-edit'
+          ou
+          = link_to "excluir", admin_post_path(post), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
