@@ -16,6 +16,6 @@
         %td
           = link_to "ver", post_path(post), :class => 'link-show'
           ou
-          = link_to "editar", edit_post_path(post), :class => 'link-edit'
+          = link_to "editar", edit_admin_post_path(post), :class => 'link-edit'
           ou
           = link_to "excluir", admin_post_path(post), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'

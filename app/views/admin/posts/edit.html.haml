@@ -3,5 +3,5 @@
     Editando Post
     = "##{@post.id}"
 
-  - form_for @post, :url => admin_posts_path, :method => :put do |f|
+  - form_for @post, :url => admin_post_path, :method => :put do |f|
     = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }

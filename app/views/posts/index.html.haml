@@ -1,5 +1,15 @@
 .span-16
   .order_by
+    - form_for @search do |f|
+      %p
+        Busca no texto
+        = f.text_field :body_like, :size => 20
+        ou nas tags
+        = f.text_field :tagged_with_on_tags, :size => 20
+        %br/
+        = submit_tag "Enviar", :disable => 'buscando...'
+        ou
+        = link_to "limpar", posts_path
     %p
       Ordene por
       = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
@@ -7,19 +17,29 @@
       = order @search, :by => :title, :as => t("activerecord.attributes.post.title").humanize
       ou
       = order @search, :by => :published_at, :as => t("activerecord.attributes.post.published_at").humanize
-.span-16
+
   #posts
     - @posts.each do |post|
       .post-card
         %h2
           = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
         %hr
-        %h5
-          criado por
-          = link_to post.user.login, user_path(post.user), :class => 'link-user'
-          , em
+        .post-header
+          %span
+            = link_to post.user.login, user_path(post.user), :class => 'link-user'
+            ,
           %span.date
-            = post.created_at
+            criada em
+            = l(post.created_at, :format => 'short')
+            ,
+          %span.date-edit
+            última edição em
+            = l(post.edited_at, :format => 'short')
+        .post-tags
+          %p
+            - post.tag_list.each do |t|
+              %span
+                = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
         %p
           = post.body
 
