@@ -41,6 +41,8 @@ Rails::Initializer.run do |config|
 
   config.gem "twitter", :lib => "twitter", :version => ">= 0.6.12"
 
+  config.gem "crack", :lib => "crack", :version => ">= 0.1.4"
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
