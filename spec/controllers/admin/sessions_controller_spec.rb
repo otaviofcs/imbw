@@ -35,7 +35,7 @@ describe Admin::SessionsController do
       UserSession.find.should_not be_nil
       UserSession.find.record.should == users(:the_blogger)
       flash[:success].should_not be_nil
-      response.should redirect_to(root_path)
+      response.should redirect_to(admin_root_path)
     end
     [
       {:login => "the_blogger",        :password => "senha_errada"},
@@ -45,7 +45,7 @@ describe Admin::SessionsController do
         call_action :user_session => params_hash
         UserSession.find.should be_nil
         flash[:error].should_not be_nil
-        response.should_not redirect_to(root_path)
+        response.should_not redirect_to(admin_root_path)
         response.should render_template(:new)
       end
     end

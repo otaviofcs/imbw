@@ -15,7 +15,7 @@ class Photo < ActiveRecord::Base
       :medium => "x500"
     }
 
-  named_scope :recent, :order => 'id ASC'
+  named_scope :by_id, :order => 'id ASC'
 
   #
   # Callbacks

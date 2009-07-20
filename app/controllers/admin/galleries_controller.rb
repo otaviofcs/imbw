@@ -17,7 +17,7 @@ class Admin::GalleriesController < AdminController
   # view de um álbum
   def show
     @gallery = Gallery.find params[:id]
-    @photos = @gallery.photos.recent
+    @photos = @gallery.photos.by_id
     @page_title = "Fotos do álbum #{@gallery.title}"
   end
 
