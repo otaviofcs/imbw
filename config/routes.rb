@@ -37,12 +37,17 @@ ActionController::Routing::Routes.draw do |map|
 
     ## admin - administração da conta
 
+  # Writing
   map.resources :posts
+  # Gristing
   map.resources :beer_votes
   map.resources :users
   map.resources :children
+  # Observing
   map.resources :galleries, :collection => { :search => :get }
   map.resources :photos
+  # Reading
+  map.resources :links
   
   map.admin_root '/admin',  :controller => 'admin/posts', :action => 'index'
   map.namespace(:admin) do |admin|
