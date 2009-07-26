@@ -1,21 +1,12 @@
-.prepend-top.prepend-1.span-15
-  - form_for @search do |f|
-    %p
-      Busca no texto
-      = f.text_field :body_like, :size => 20
-      ou nas tags
-      = f.text_field :tagged_with_on_tags, :size => 20
-      %br/
-      = submit_tag "Enviar", :disable => 'buscando...'
-      ou
-      = link_to "limpar", posts_path
-  .tag_cloud
-    %p
-      Núvem de tags
-      %br/
-      - if @tags.size > 0
-        - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
-          = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
+.prepend-top
+  .span-2
+  .span-20
+    .explain
+      %span.featured
+        Writing
+      Um blog. Apenas mais um blog. Sobre tudo que não for trabalho. Papo à toa.
+  .span-2
+.prepend-1.span-15
   %p
     Ordene por
     = order @search, :by => :edited_at, :as => t("activerecord.attributes.post.edited_at").humanize
@@ -54,10 +45,26 @@
 
 .span-8.last
   .sidebar
-    .about
-      %h4 Sobre
+    - form_for @search do |f|
       %p
-        Este é um blog sobre nada. E sobre tudo. Tudo que não for trabalho. Papo à toa.
+        Busca no texto
+        %br/
+        = f.text_field :body_like, :size => 20
+        %br/
+        ou nas tags
+        %br/
+        = f.text_field :tagged_with_on_tags, :size => 20
+      %p
+        = submit_tag "Enviar", :disable => 'buscando...'
+        ou
+        = link_to "limpar", posts_path
+    .tag_cloud
+      %p
+        Núvem de tags
+        %br/
+        - if @tags.size > 0
+          - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
+            = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
     .more
       %h4 Achou pouco?
       %p
