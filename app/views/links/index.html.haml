@@ -7,7 +7,7 @@
     Portanto, divirta-se.
 .span-2
 
-.span-18
+.prepend-1.span-17
   %p
     .order_by
       Ordene por
@@ -39,4 +39,4 @@
       %br/
       - if @tags.size > 0
         - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
-          = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
+          = link_to tag.name, links_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class

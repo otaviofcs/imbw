@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      link: "link"
+    attributes:
+      link:
+        title: "título"
+        description: "descrição"
+        linked_at: "link criado em"
+        tag_list: "rótulos"
+        tags: "rótulos"
