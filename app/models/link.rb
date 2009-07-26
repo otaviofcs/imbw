@@ -41,6 +41,7 @@ class Link < ActiveRecord::Base
       @link = Link.new(
         :link => item[:link],
         :title => item[:title],
+        :description => item[:description],
         :linked_at => item[:pubDate].to_time
       )
       @link.tag_list = item[:categories].join(", ")

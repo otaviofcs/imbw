@@ -1,11 +1,11 @@
 .link
-  %p
+  %h3
     = link.title
-    %br/
+  %p.description
     = link.description
-    %br
-    = link_to "link", link.link
   %p
+    = link_to truncate(link.link, 60), link.link
+  %p.tags
     tags:
     - link.tags.each do |tag|
       = link_to tag.name, links_path(:search => { :tagged_with_on_tags => tag.name })
