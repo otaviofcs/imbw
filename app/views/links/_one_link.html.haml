@@ -1,9 +1,10 @@
 .link
   %h3
     = link.title
-  %p.description
-    = link.description
   %p
+    %span
+      = link.description
+    %br/
     = link_to truncate(link.link, 60), link.link
   %p.tags
     tags:
