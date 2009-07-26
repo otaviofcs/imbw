@@ -4,15 +4,27 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  #
+  # Options
+  #
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :title, :body, :active, :tag_list
+
+  cattr_reader :per_page
+  @@per_page = 10
+
 
   #
   # Association
   #
 
   belongs_to :user
+
+  #
+  # Named Scopes
+  #
 
   named_scope :available, :conditions => ["posts.active = ? and (not posts.published_at is null)", true]
   named_scope :by_id, :order => "id desc"
@@ -23,9 +35,6 @@ class Post < ActiveRecord::Base
     options = { :on => :tags, :match_all => true }
     find_options_for_find_tagged_with(tag, options)
   }
-
-  cattr_reader :per_page
-  @@per_page = 10
 
   before_save :update_edited_at
 

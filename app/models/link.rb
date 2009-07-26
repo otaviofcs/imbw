@@ -11,6 +11,17 @@ class Link < ActiveRecord::Base
   attr_accessible :title, :link, :description, :tag_list, :linked_at
 
   #
+  # Named Scopes
+  #
+
+  named_scope :tagged_with_on_tags, lambda { |tag|
+    # match_all é para que as condições sejam associativas.
+    # ou seja, o objeto tem que ter todas as tags descritas
+    options = { :on => :tags, :match_all => true }
+    find_options_for_find_tagged_with(tag, options)
+  }
+
+  #
   # Validations
   #
   

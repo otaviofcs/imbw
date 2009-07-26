@@ -34,9 +34,9 @@
     %p
       = link_to "limpar filtros", links_path
   .tag_cloud
-      %p
-        Núvem de tags
-        %br/
-        - if @tags.size > 0
-          - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
-            = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
+    %p
+      Núvem de tags
+      %br/
+      - if @tags.size > 0
+        - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
+          = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
