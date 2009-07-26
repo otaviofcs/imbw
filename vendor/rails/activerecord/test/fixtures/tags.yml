@@ -5,3 +5,7 @@ general:
 misc:
   id: 2
   name: Misc
+
+viagem:
+  id: 3
+  name: viagem
