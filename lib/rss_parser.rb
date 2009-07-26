@@ -1,6 +1,9 @@
+# lib/rss_parser.rb
 module RssParser
 
-  # lib/rss_parser.rb
+  # Parser Rss
+  #
+  # RssParser::WithReXML.run 'links.riopro.com.br',443,'https://links.riopro.com.br/rss.php/otavio', true
   class WithReXML
     require 'rexml/document'
 
