@@ -1,7 +1,6 @@
 class LinksController < ApplicationController
 
-  # GET /posts
-  # GET /
+  # GET /links
   # Via: links_path
   # Disponivel: [todos]
   #

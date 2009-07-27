@@ -14,8 +14,8 @@
       = link_to "<span class='wrong_high'>R</span>eading", links_path
     %li{ :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"}
       = link_to "<span class='wrong_high'>O</span>bserving", galleries_path
-    %li{ :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"}
-      = link_to "Taking <span class='wrong_high'>N</span>otes", "#"
+    %li{ :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"}
+      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path
     %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"}
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
   .clear
