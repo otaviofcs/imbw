@@ -4,6 +4,18 @@ class Note < ActiveRecord::Base
 
   attr_accessible :note, :note_taked_at, :twit_id
 
+
+  #
+  # Validations
+  #
+
+  validates_presence_of :twit_id
+  validates_uniqueness_of :twit_id
+
+  validates_presence_of :note_taked_at
+  validates_presence_of :note
+
+
   #
   # Named Scopes
   #
