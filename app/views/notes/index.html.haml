@@ -1,0 +1,37 @@
+.span-2
+.span-20
+  .explain
+    %span.featured
+      Taking Notes
+    Anotações, coisas do dia-a-dia.
+.span-2
+
+.prepend-1.span-17
+  %p
+    .order_by
+      Ordene por
+      = order @search, :by => :note_taked_at, :as => t("activerecord.attributes.note.note_taked_at").humanize
+      ou
+      = order @search, :by => :note, :as => t("activerecord.attributes.note.note").humanize
+  - @notes.each do |note|
+    = render :partial => 'one_note', :locals => { :note => note }
+
+  %p.paginate
+    = will_paginate @notes
+.sidebar.span-5
+  - form_for @search do |f|
+    %p
+      %label Anotação contendo
+      %br/
+      = f.text_field :note_like, :size => 20
+    %p
+      = submit_tag 'filtrar', :disable_with => '...'
+    %p
+      = link_to "limpar filtros", notes_path
+  .tag_cloud
+    %p
+      Núvem de tags
+      %br/
+      - if @tags.size > 0
+        - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
+          = link_to tag.name, notes_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class

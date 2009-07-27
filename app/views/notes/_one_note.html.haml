@@ -1,0 +1,11 @@
+.twit
+  %p
+    %span
+      = note.note
+    %br/
+    Em
+    = t(note.note_taked_at)
+  %p.tags
+    tags:
+    - note.tags.each do |tag|
+      = link_to tag.name, notes_path(:search => { :tagged_with_on_tags => tag.name })
