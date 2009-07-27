@@ -3,6 +3,7 @@ class CreateNotes < ActiveRecord::Migration
     create_table :notes do |t|
       t.string    :note
       t.datetime  :note_taked_at
+      t.decimal   :twit_id
       t.timestamps
     end
   end

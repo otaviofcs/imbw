@@ -2,7 +2,7 @@ class Note < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  attr_accessible :note, :note_taked_at
+  attr_accessible :note, :note_taked_at, :twit_id
 
   def self.create_notes_from_twitter
     @notes = []
@@ -15,7 +15,7 @@ class Note < ActiveRecord::Base
   end
 
   def self.create_one_note(twit)
-    note = Note.new :note => twit.text, :note_taked_at => twit.created_at.to_time
+    note = Note.new :note => twit.text, :note_taked_at => twit.created_at.to_time, :twit_id => twit.id
     hashtags = twit.text.scan(/#([a-z0-9_]+)/i)
     note.tag_list = hashtags.each{ |tag| tag }.join(", ")
     note

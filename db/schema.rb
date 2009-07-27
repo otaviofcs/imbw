@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20090726170143) do
   create_table "notes", :force => true do |t|
     t.string   "note"
     t.datetime "note_taked_at"
+    t.integer  "twit_id",       :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
