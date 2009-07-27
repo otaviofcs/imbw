@@ -25,6 +25,10 @@
       %br/
       = f.text_field :note_like, :size => 20
     %p
+      %label Rótulo igual a
+      %br/
+      = f.text_field :tagged_with_on_tags, :size => 20
+    %p
       = submit_tag 'filtrar', :disable_with => '...'
     %p
       = link_to "limpar filtros", notes_path

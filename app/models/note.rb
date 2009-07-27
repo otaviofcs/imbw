@@ -4,6 +4,17 @@ class Note < ActiveRecord::Base
 
   attr_accessible :note, :note_taked_at, :twit_id
 
+  #
+  # Named Scopes
+  #
+  
+  named_scope :tagged_with_on_tags, lambda { |tag|
+    # match_all é para que as condições sejam associativas.
+    # ou seja, o objeto tem que ter todas as tags descritas
+    options = { :on => :tags, :match_all => true }
+    find_options_for_find_tagged_with(tag, options)
+  }
+
   def self.create_notes_from_twitter
     @notes = []
     @twitter_updates = Twitter::Search.new.from("otaviofcs")

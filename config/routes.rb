@@ -48,6 +48,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :photos
   # Reading
   map.resources :links
+  # Taking Notes
+  map.resources :notes
   
   map.admin_root '/admin',  :controller => 'admin/posts', :action => 'index'
   map.namespace(:admin) do |admin|
