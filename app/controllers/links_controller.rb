@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   #
   # lista de links
   def index
-    params_search = { "order" => :descend_linked_at }
+    params_search = { "order" => :descend_by_linked_at }
     params_search = params_search.merge(params[:search]) if params[:search]
     @search = Link.search params_search
     @links = @search.paginate(:page => params[:page])

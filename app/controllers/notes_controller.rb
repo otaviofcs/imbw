@@ -7,7 +7,7 @@ class NotesController < ApplicationController
   #
   # lista de notas no twitter
   def index
-    params_search = { "order" => :descend_note_taked_at }
+    params_search = { "order" => :descend_by_note_taked_at }
     params_search = params_search.merge(params[:search]) if params[:search]
     @search = Note.search params_search
     @notes = @search.paginate(:page => params[:page])
