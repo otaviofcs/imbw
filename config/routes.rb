@@ -42,7 +42,6 @@ ActionController::Routing::Routes.draw do |map|
   # Gristing
   map.resources :beer_votes
   map.resources :users
-  map.resources :children
   # Observing
   map.resources :galleries, :collection => { :search => :get }
   map.resources :photos
