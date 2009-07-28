@@ -35,6 +35,7 @@ class Note < ActiveRecord::Base
       note = Note.create_one_note twit
       @notes << note if note.save
     end
+    @notes
   end
 
   def self.create_one_note(twit)
