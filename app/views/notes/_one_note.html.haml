@@ -4,7 +4,7 @@
       = note.note
     %br/
     Em
-    = t(note.note_taked_at)
+    = l(note.note_taked_at, :format => :long)
   %p.tags
     tags:
     - note.tags.each do |tag|
