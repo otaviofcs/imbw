@@ -2,6 +2,12 @@ class Note < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  #
+  # Options
+  #
+  cattr_reader :per_page
+  @@per_page = 20
+
   attr_accessible :note, :note_taked_at, :twit_id
 
 
