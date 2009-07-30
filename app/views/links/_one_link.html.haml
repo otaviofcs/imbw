@@ -5,7 +5,7 @@
     %span
       = link.description
       , em
-      l(link.linked_at, :format => :long) if link.linked_at
+      = l(link.linked_at, :format => :long) if link.linked_at
     %br/
     = link_to truncate(link.link, 60), link.link
   %p.tags
