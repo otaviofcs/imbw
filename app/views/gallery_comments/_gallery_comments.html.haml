@@ -1,7 +1,8 @@
 .span-16
   %h3 Comentários sobre esse álbum
-  - if comments.size  >0
+  - if comments.size > 0
     - comments.each do |comment|
+      = render :partial => 'comment', :locals => { :comment => comment }
   - else
     %p Seja o primeiro a comentar.
 .span-8

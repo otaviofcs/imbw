@@ -1,1 +1,1 @@
-page.replace_html 'new_comment', :partial => 'new_comment', :locals => { :new_comment => @new_comment }
+page.replace_html 'new_comment', :partial => 'new_comment', :locals => { :new_comment => @new_comment, :gallery => @gallery }

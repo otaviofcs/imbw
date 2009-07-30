@@ -1,5 +1,6 @@
 class GalleryCommentsController < ApplicationController
 
+  layout false
 
   # GET /gallery/:gallery_id/comments
   # Via: gallery_comments_path(:gallery_id)
