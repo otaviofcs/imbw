@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090726170143) do
+ActiveRecord::Schema.define(:version => 20090730172707) do
 
   create_table "beer_votes", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20090726170143) do
     t.datetime "updated_at"
     t.string   "twitter_profile"
     t.datetime "commented_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.string   "website"
+    t.string   "email"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "galleries", :force => true do |t|

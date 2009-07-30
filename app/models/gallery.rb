@@ -4,6 +4,7 @@ class Gallery < ActiveRecord::Base
 
   belongs_to :user
   has_many :photos, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   named_scope :recent, :order => 'id DESC'
   
