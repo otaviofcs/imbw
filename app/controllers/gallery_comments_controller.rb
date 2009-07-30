@@ -1,0 +1,2 @@
+class GalleryCommentsController < ApplicationController
+end
