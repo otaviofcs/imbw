@@ -43,7 +43,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :beer_votes
   map.resources :users
   # Observing
-  map.resources :galleries, :collection => { :search => :get }
+  map.resources :galleries, :collection => { :search => :get } do |gallery|
+    gallery.resources :comments, :controller => "gallery_comments"
+  end
   map.resources :photos
   # Reading
   map.resources :links
@@ -57,7 +59,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts
     admin.resources :galleries do |gallery|
       gallery.resources :photos, :controller => "gallery_photos"
-      gallery.resources :comments, :controller => "gallery_comments"
     end
   end
 

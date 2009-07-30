@@ -1,0 +1,9 @@
+.span-16
+  %h3 Comentários sobre esse álbum
+  - if comments.size  >0
+    - comments.each do |comment|
+  - else
+    %p Seja o primeiro a comentar.
+.span-8
+  #new_comment
+    = render :partial => 'new_comment', :locals => { :new_comment => new_comment }
