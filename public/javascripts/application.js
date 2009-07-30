@@ -4,5 +4,5 @@
 function loadComments(gallery_id)
 {
   var url = '/galleries/' + gallery_id + '/comments';
-  new Ajax.Updater('comments',  url, { method: 'get' } );
+  new Ajax.Request(url, { method: 'get', asynchronous:true, evalScripts:true } );
 }
