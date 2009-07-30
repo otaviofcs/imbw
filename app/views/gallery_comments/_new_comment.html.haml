@@ -1,0 +1,20 @@
+- form_for new_comment, :url => gallery_comments_path, :method => :post do |f|
+  = f.error_messages
+  %p
+    = f.label_t :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label_t :website
+    %br
+    = f.text_field :website
+  %p
+    = f.label_t :email
+    %br
+    = f.text_field :email
+  %p
+    = f.label_t :comment
+    %br
+    = f.text_area :comment, :size => "20x20",
+  %p
+    = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
