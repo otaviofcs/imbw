@@ -1,11 +1,10 @@
 .comment
   %p
-    Feito por
-    = comment.name if comment.website.blank?
-    = link_to comment.name, comment.website unless comment.website.blank?
-    , em
-    = l(comment.created_at, :format => :long) if comment.created_at
-  %p
-    Comentário:
+    %i
+      Feito por
+      = comment.name if comment.website.blank?
+      = link_to comment.name, comment.website unless comment.website.blank?
+      ,
+      = l(comment.created_at, :format => :long) if comment.created_at
     %br
     = comment.comment

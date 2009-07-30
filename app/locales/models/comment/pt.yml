@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      comment: "comentário"
+    attributes:
+      comment:
+        name: "nome"
+        website: "site"
+        email: "email"
+        comment: "comentário"
+

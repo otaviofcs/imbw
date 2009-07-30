@@ -1,10 +1,10 @@
-.span-10
+.span-11
   %h3 Comentários sobre esse álbum
   - if comments.size > 0
     - comments.each do |comment|
       = render :partial => 'comment', :locals => { :comment => comment }
   - else
     %p Seja o primeiro a comentar.
-.span-10.last
+.sidebar.span-11.last
   #new_comment
     = render :partial => 'new_comment', :locals => { :new_comment => new_comment, :gallery => gallery }
