@@ -5,3 +5,8 @@
 #
 # two:
 #   column: value
+
+twit_one:
+  note: qualquer coisa
+  note_taked_at: <%= Time.current %>
+  twit_id: 1212
