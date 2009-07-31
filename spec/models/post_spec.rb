@@ -1,14 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Post do
+  fixtures :users
+
   before(:each) do
     @valid_attributes = {
       :title => 'my first post',
-      :body => ', it should be long enough to be considered correct',
-      :edited_at => Time.current,
-      :user_id => 1
+      :body => ', it should be long enough to be considered correct'
     }
-    @post = Post.new(@valid_attributes)
+    @post = users(:the_blogger).posts.new(@valid_attributes)
+    @post.edited_at = Time.current
   end
 
   it "should create a new instance given valid attributes" do
