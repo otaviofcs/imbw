@@ -24,8 +24,20 @@ module RioproConstants
   DOMAIN_HEAD_REGEX = '(?:[A-Z0-9\-]+\.)+'
   DOMAIN_TLD_REGEX  = '(?:[A-Z]{2}|com|edu|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)'
 
+  # formatação para Website
+  #
+  # Exemplo de uso:
+  #
+  # validates_format_of :website,
+  #   :with => WEB_SITE_REGEX,
+  #   :allow_blank => true
+  #
+  # Exemplo de teste (com Remarkable):
+  #
+  # it { should allow_values_for(:website, 'http://bar.com', 'http://newskool-tld.museum', 'http://bit.ly', 'http://twoletter-tld.de', 'http://nonexistant-tld.qq', 'https://gmail.com', 'https://funnychar.com','http://can.haz.many.sub.doma.in') }
+  # it { should_not allow_values_for(:website, 'http://@nobadchars.com', 'http://no-rep-dots..com', 'http://toolongtld.abcdefg','http://Iñtërnâtiônàlizætiøn@hasnt.com', 'need.domain.de', "http://tab\t", "http://newline\n", 'http://.wk') }
   WEB_SITE_REGEX = /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(([0-9]{1,5})?\/.*)?$)/ix
-  
+
   # formatação para Email
   #
   # Exemplo de uso:
@@ -36,8 +48,15 @@ module RioproConstants
   #
   # Exemplo de teste (com Remarkable):
   #
-  # it { should allow_values_for(:contact_email, 'otavio@eu.com', 'otavio@eu.com.br', 'otavio@my.company.com', 'otavio@eu.company.com.br', 'otavio.sampaio@eu.company.com.br') }
-  # it { should_not allow_values_for(:contact_email, 'ds!dsa', 'dsa@com', 'da@.com', "á@br.com", "ter@eroer.com\n") }
+  # it { should allow_values_for(:email, 'foo@bar.com', 'foo@newskool-tld.museum', 'foo@twoletter-tld.de', 'foo@nonexistant-tld.qq',
+  #   'r@a.wk', '1234567890-234567890-234567890-234567890-234567890-234567890-234567890-234567890-234567890@gmail.com',
+  #   'hello.-_there@funnychar.com', 'uucp%addr@gmail.com', 'hello+routing-str@gmail.com',
+  #   'domain@can.haz.many.sub.doma.in'
+  # ) }
+  # it { should_not allow_values_for(:email, '!!@nobadchars.com', 'foo@no-rep-dots..com', 'foo@badtld.xxx', 'foo@toolongtld.abcdefg',
+  #   'Iñtërnâtiônàlizætiøn@hasnt.happened.to.email', 'need.domain.and.tld@de', "tab\t", "newline\n", 'r@.wk',
+  #   'uucp!addr@gmail.com', 'semicolon;@gmail.com', 'quote"@gmail.com', 'tick\'@gmail.com', 'backtick`@gmail.com', 'space @gmail.com', 'bracket<@gmail.com', 'bracket>@gmail.com'
+  #  ) }
   EMAIL_REGEX       = /\A#{EMAIL_NAME_REGEX}@#{DOMAIN_HEAD_REGEX}#{DOMAIN_TLD_REGEX}\z/i
 
   # formatação para Login (only (ascii) letters, numbers and .-_)
