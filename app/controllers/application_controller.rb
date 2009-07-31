@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
   # o mesmo esteja logado.
   before_filter :set_user_time_zone
 
+  # Seta +TimeZone+ da requisição atual para a TimeZone do usuário atual, caso
+  # o mesmo esteja logado.
+  before_filter :browser_verified
+
   protected
     # before_filter: Seta +TimeZone+ da requisição atual para a TimeZone do
     # usuário atual, caso o mesmo esteja logado.
@@ -87,5 +91,12 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+
+    # garante que só vou questionar o browser uma vez e não
+    # várias vezes.
+    def browser_verified
+      @browser_verified = session[:browser_verified]
+      session[:browser_verified] = true
     end
 end
