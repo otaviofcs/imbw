@@ -5,3 +5,9 @@
 #
 # two:
 #   column: value
+
+link_b:
+  link: http://teste.com
+  linked_at: <%= Time.current %>
+  title: my title
+  description: describing
