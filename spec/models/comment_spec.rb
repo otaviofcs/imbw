@@ -72,8 +72,8 @@ describe Comment do
       end
     end
     describe 'disallows illegitimate websites' do
-      ['http://@nobadchars.com', 'http://no-rep-dots..com', 'http://badtld.xxx', 'http://toolongtld.abcdefg',
-       'http://Iñtërnâtiônàlizætiøn@hasnt.happened.to', 'need.domain.de', "http://tab\t", "http://newline\n", 'http://.wk',
+      ['http://@nobadchars.com', 'http://no-rep-dots..com', 'http://toolongtld.abcdefg',
+       'http://Iñtërnâtiônàlizætiøn@hasnt.com', 'need.domain.de', "http://tab\t", "http://newline\n", 'http://.wk',
       ].each do |website_str|
         it "'#{website_str}'" do
           doing {

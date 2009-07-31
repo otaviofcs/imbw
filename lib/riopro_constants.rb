@@ -24,7 +24,7 @@ module RioproConstants
   DOMAIN_HEAD_REGEX = '(?:[A-Z0-9\-]+\.)+'
   DOMAIN_TLD_REGEX  = '(?:[A-Z]{2}|com|edu|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)'
 
-  WEB_SITE_REGEX = /^http(s?):\/\/+#{DOMAIN_HEAD_REGEX}#{DOMAIN_TLD_REGEX}\z/
+  WEB_SITE_REGEX = /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(([0-9]{1,5})?\/.*)?$)/ix
   
   # formatação para Email
   #
