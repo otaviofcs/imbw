@@ -1,5 +1,5 @@
 .span-15
-  %h3 Comentários sobre esse álbum
+  %h3 Mural de Recados
   - if comments.size > 0
     - comments.each do |comment|
       = render :partial => 'comment', :locals => { :comment => comment }
