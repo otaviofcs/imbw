@@ -45,7 +45,8 @@ class BeerVote < ActiveRecord::Base
   def self.fetch_and_create_votes
     votes_created = 0
     last_updated_at = BeerVote.last_updated_at
-    search_term = "#beer since:#{last_updated_at.to_date.to_s}"
+    # search_term = "#beer since:#{last_updated_at.to_date.to_s}"
+    search_term = "#beer"
     @twitter_updates = Twitter::Search.new(search_term).from('otaviofcs')
     @twitter_updates.each do |twitter_update|
       if twitter_update.created_at.to_time > last_updated_at
@@ -53,7 +54,7 @@ class BeerVote < ActiveRecord::Base
         votes_created += 1 if result == true
         logger.debug "#{result.errors.inspect} #{twitter_update.text}" unless result == true
       end
-    end
+    end if @twitter_updates
     "criados #{votes_created} votos"
   end
 
