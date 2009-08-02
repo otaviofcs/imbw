@@ -14,6 +14,13 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :name, :comment, :website, :email
 
+
+  #
+  # Named Scopes
+  #
+  named_scope :by_id, :order => "id desc"
+  
+
   validates_presence_of :gallery_id
   validates_presence_of :name
   validates_presence_of :comment

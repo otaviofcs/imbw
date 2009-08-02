@@ -13,6 +13,7 @@ class Link < ActiveRecord::Base
   #
   # Named Scopes
   #
+  named_scope :by_id, :order => "id desc"
 
   named_scope :tagged_with_on_tags, lambda { |tag|
     # match_all é para que as condições sejam associativas.
