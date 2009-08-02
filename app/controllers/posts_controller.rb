@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   # GET /posts
-  # GET /
   # Via: posts_path
   # Disponível: [todos]
   #

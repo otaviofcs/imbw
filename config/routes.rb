@@ -37,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
 
     ## admin - administração da conta
 
+  # Home
+  map.resources :pages
   # Writing
   map.resources :posts
   # Gristing
@@ -65,8 +67,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login  '/login',  :controller => 'admin/sessions', :action => 'new'
   map.logout '/logout', :controller => 'admin/sessions', :action => 'destroy'
 
-  map.root :controller => "beer_votes", :action => "index"
-
+  map.root :controller => "pages", :action => "index"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

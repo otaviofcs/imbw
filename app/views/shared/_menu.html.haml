@@ -8,6 +8,8 @@
         = link_to "admin", admin_root_path, :class => 'link-admin'
       %li
         = link_to "sair", logout_path, :class => 'link-logout'
+    %li{ :class => "#{"active" if controller.controller_name == 'pages' }", :onmouseout =>  "$('menuhome').hide();", :onmouseover => "$('menuhome').show();" }
+      = link_to image_tag('home.gif', :alt=> 'home', :title => 'página inicial', :class => 'home_image'), pages_path
     %li{ :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();" }
       = link_to "<span class='wrong_high'>W</span>riting", posts_path
     %li{ :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"}
@@ -19,6 +21,9 @@
     %li{ :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"}
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
   .clear
+  .prepend-13
+    #menuhome.description{ :style => 'display:none;' }
+      a página inicial do imbw.
   .prepend-12
     #menuwriting.description{ :style => 'display:none;' }
       o blog, aqui fica o blog.
