@@ -21,13 +21,13 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
 
   # sistema de autenticação
-  config.gem "authlogic"
+  config.gem "authlogic", :version => ">= 2.1.1"
 
   # Biblioteca para escrever views em haml ao inves de html
-  config.gem "haml", :lib => "haml", :version => ">= 2.0.9"
+  config.gem "haml", :lib => "haml", :version => ">= 2.2.2"
 
   # gem para tornar mais simples buscas e ordenação
-  config.gem "binarylogic-searchlogic", :lib => 'searchlogic', :source => 'http://gems.github.com', :version => '~> 2.1.1'
+  config.gem "binarylogic-searchlogic", :lib => 'searchlogic', :source => 'http://gems.github.com', :version => '~> 2.2.3'
 
   # tagging
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.5', :source => 'http://gems.github.com'
@@ -39,7 +39,7 @@ Rails::Initializer.run do |config|
 
   config.gem "aws-s3", :lib => "aws/s3", :version => ">= 0.6.2"
 
-  config.gem "twitter", :lib => "twitter", :version => ">= 0.6.12"
+  config.gem "twitter", :lib => "twitter", :version => ">= 0.6.13"
 
   config.gem "crack", :lib => "crack", :version => ">= 0.1.4"
 
