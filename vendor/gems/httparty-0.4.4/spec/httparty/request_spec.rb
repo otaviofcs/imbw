@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'spec_helper')
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 describe HTTParty::Request do
   def stub_response(body, code = 200)
@@ -33,7 +33,12 @@ describe HTTParty::Request do
     
     it 'should not use ssl for port 80' do
       request = HTTParty::Request.new(Net::HTTP::Get, 'http://foobar.com')
-      @request.send(:http).use_ssl?.should == false
+      request.send(:http).use_ssl?.should == false
+    end
+    
+    it "should use ssl for https scheme" do
+      request = HTTParty::Request.new(Net::HTTP::Get, 'https://foobar.com')
+      request.send(:http).use_ssl?.should == true
     end
 
     it "should use basic auth when configured" do
@@ -109,7 +114,6 @@ describe HTTParty::Request do
     end
     
     describe 'with non-200 responses' do
-
       it 'should return a valid object for 4xx response' do
         stub_response '<foo><bar>yes</bar></foo>', 401
         resp = @request.perform
@@ -125,7 +129,6 @@ describe HTTParty::Request do
         resp.body.should == "<foo><bar>error</bar></foo>"
         resp['foo']['bar'].should == "error"
       end
-
     end
   end
 
