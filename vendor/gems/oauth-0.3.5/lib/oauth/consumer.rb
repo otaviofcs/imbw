@@ -25,6 +25,7 @@ module OAuth
       :authorize_path     => '/oauth/authorize',
       :access_token_path  => '/oauth/access_token',
 
+      :proxy              => nil,
       # How do we send the oauth values to the server see
       # http://oauth.net/core/1.0/#consumer_req_param for more info
       #
@@ -97,18 +98,40 @@ module OAuth
       end
     end
 
+    def get_access_token(request_token, request_options = {}, *arguments)
+      response = token_request(http_method, (access_token_url? ? access_token_url : access_token_path), request_token, request_options, *arguments)
+      OAuth::AccessToken.from_hash(self, response)
+    end
+
     # Makes a request to the service for a new OAuth::RequestToken
     #
     #  @request_token = @consumer.get_request_token
     #
+    # To include OAuth parameters:
+    #
+    #  @request_token = @consumer.get_request_token \
+    #    :oauth_callback => "http://example.com/cb"
+    #
+    # To include application-specific parameters:
+    #
+    #  @request_token = @consumer.get_request_token({}, :foo => "bar")
+    #
+    # TODO oauth_callback should be a mandatory parameter
     def get_request_token(request_options = {}, *arguments)
+      # if oauth_callback wasn't provided, it is assumed that oauth_verifiers
+      # will be exchanged out of band
+      request_options[:oauth_callback] ||= OAuth::OUT_OF_BAND
+
       response = token_request(http_method, (request_token_url? ? request_token_url : request_token_path), nil, request_options, *arguments)
-      OAuth::RequestToken.new(self, response[:oauth_token], response[:oauth_token_secret])
+      OAuth::RequestToken.from_hash(self, response)
     end
 
     # Creates, signs and performs an http request.
     # It's recommended to use the OAuth::Token classes to set this up correctly.
-    # The arguments parameters are a hash or string encoded set of parameters if it's a post request as well as optional http headers.
+    # request_options take precedence over consumer-wide options when signing
+    #   a request.
+    # arguments are POST and PUT bodies (a Hash, string-encoded parameters, or
+    #   absent), followed by additional HTTP headers.
     #
     #   @consumer.request(:get,  '/people', @token, { :scheme => :query_string })
     #   @consumer.request(:post, '/people', @token, {}, @person.to_xml, { 'Content-Type' => 'application/xml' })
@@ -159,7 +182,14 @@ module OAuth
       case response.code.to_i
 
       when (200..299)
-        CGI.parse(response.body).inject({}) { |h,(k,v)| h[k.to_sym] = v.first; h }
+        # symbolize keys
+        # TODO this could be considered unexpected behavior; symbols or not?
+        # TODO this also drops subsequent values from multi-valued keys
+        CGI.parse(response.body).inject({}) do |h,(k,v)|
+          h[k.to_sym] = v.first
+          h[k]        = v.first
+          h
+        end
       when (300..399)
         # this is a redirect
         response.error!
@@ -225,6 +255,10 @@ module OAuth
       @options.has_key?(:access_token_url)
     end
 
+    def proxy
+      @options[:proxy]
+    end
+
   protected
 
     # Instantiates the http object
@@ -235,7 +269,12 @@ module OAuth
         our_uri = URI.parse(_url)
       end
 
-      http_object = Net::HTTP.new(our_uri.host, our_uri.port)
+      if proxy.nil?
+        http_object = Net::HTTP.new(our_uri.host, our_uri.port)
+      else
+        proxy_uri = proxy.is_a?(URI) ? proxy : URI.parse(proxy)
+        http_object = Net::HTTP.new(our_uri.host, our_uri.port, proxy_uri.host, proxy_uri.port, proxy_uri.user, proxy_uri.password)
+      end
 
       http_object.use_ssl = (our_uri.scheme == 'https')
 
@@ -255,7 +294,7 @@ module OAuth
       http_method = http_method.to_sym
 
       if [:post, :put].include?(http_method)
-        data = arguments.shift
+        data = (arguments.shift || {}).reject { |k,v| v.nil? }
       end
 
       headers = arguments.first.is_a?(Hash) ? arguments.shift : {}
@@ -280,8 +319,19 @@ module OAuth
       if data.is_a?(Hash)
         request.set_form_data(data)
       elsif data
-        request.body = data.to_s
-        request["Content-Length"] = request.body.length
+        if data.respond_to?(:read)
+          request.body_stream = data
+          if data.respond_to?(:length)
+            request["Content-Length"] = data.length
+          elsif data.respond_to?(:stat) && data.stat.respond_to?(:size)
+            request["Content-Length"] = data.stat.size
+          else
+            raise ArgumentError, "Don't know how to send a body_stream that doesn't respond to .length or .stat.size"
+          end
+        else
+          request.body = data.to_s
+          request["Content-Length"] = request.body.length
+        end
       end
 
       request

@@ -6,7 +6,9 @@ module OAuth
     SUPPORTED_COMMANDS = {
       "authorize" => "Obtain an access token and secret for a user",
       "debug"     => "Verbosely generate an OAuth signature",
-      "sign"      => "Generate an OAuth signature"
+      "query"     => "Query a protected resource",
+      "sign"      => "Generate an OAuth signature",
+      "version"   => "Display the current version of the library"
     }
 
     attr_reader :command
@@ -41,38 +43,66 @@ module OAuth
         case command
         # TODO move command logic elsewhere
         when "authorize"
-          # Y! token authority requires realm=yahoo.com when headers are in use
-          # TODO remove :scheme when that's been fixed
-          # TODO determine endpoints w/ X-RDS-Simple
+          begin
+            consumer = OAuth::Consumer.new \
+              options[:oauth_consumer_key],
+              options[:oauth_consumer_secret],
+              :access_token_url  => options[:access_token_url],
+              :authorize_url     => options[:authorize_url],
+              :request_token_url => options[:request_token_url],
+              :scheme            => options[:scheme]
+
+            # parameters for OAuth 1.0a
+            oauth_verifier = nil
+
+            # get a request token
+            request_token = consumer.get_request_token({ :oauth_callback => options[:oauth_callback] }, { :scope => options[:scope] })
+
+            if request_token.callback_confirmed?
+              stdout.puts "Server appears to support OAuth 1.0a; enabling support."
+              options[:version] = "1.0a"
+            end
+
+            stdout.puts "Please visit this url to authorize:"
+            stdout.puts request_token.authorize_url
+
+            if options[:version] == "1.0a"
+              stdout.puts "Please enter the verification code provided by the SP (oauth_verifier):"
+              oauth_verifier = stdin.gets.chomp
+            else
+              stdout.puts "Press return to continue..."
+              stdin.gets
+            end
+
+            begin
+              # get an access token
+              access_token = request_token.get_access_token(:oauth_verifier => oauth_verifier)
+
+              stdout.puts "Response:"
+              access_token.params.each do |k,v|
+                stdout.puts "  #{k}: #{v}" unless k.is_a?(Symbol)
+              end
+            rescue OAuth::Unauthorized => e
+              stderr.puts "A problem occurred while attempting to obtain an access token:"
+              stderr.puts e
+              stderr.puts e.request.body
+            end
+          rescue OAuth::Unauthorized => e
+            stderr.puts "A problem occurred while attempting to authorize:"
+            stderr.puts e
+            stderr.puts e.request.body
+          end
+        when "query"
           consumer = OAuth::Consumer.new \
             options[:oauth_consumer_key],
             options[:oauth_consumer_secret],
-            :access_token_url  => options[:access_token_url],
-            :authorize_url     => options[:authorize_url],
-            :request_token_url => options[:request_token_url],
-            :scheme            => :query_string
+            :scheme => options[:scheme]
 
-          # get a request token
-          request_token = consumer.get_request_token
+          access_token = OAuth::AccessToken.new(consumer, options[:oauth_token], options[:oauth_token_secret])
 
-          stdout.puts "Please visit this url to authorize:"
-          stdout.puts request_token.authorize_url
-
-          stdout.puts "Press return to continue..."
-          stdin.gets
-
-          begin
-            # get an access token
-            access_token = request_token.get_access_token
-
-            stdout.puts "Response:"
-            access_token.params.each do |k,v|
-              stdout.puts "  #{k}: #{v}"
-            end
-          rescue OAuth::Unauthorized => e
-            stderr.puts "A problem occurred while attempting to obtain an access token:"
-            stderr.puts e
-          end
+          response = access_token.request(options[:method].downcase.to_sym, options[:uri])
+          puts "#{response.code} #{response.message}"
+          puts response.body
         when "sign"
           parameters = prepare_parameters
 
@@ -134,6 +164,8 @@ module OAuth
           else
             stdout.puts request.oauth_signature
           end
+        when "version"
+          puts "OAuth for Ruby #{OAuth::VERSION}"
         end
       else
         usage
@@ -147,7 +179,9 @@ module OAuth
       parse_options(arguments[0..-1])
     end
 
-    def option_parser
+    def option_parser(arguments = "")
+      # TODO add realm parameter
+      # TODO add user-agent parameter
       option_parser = OptionParser.new do |opts|
         opts.banner = "Usage: #{$0} [options] <command>"
 
@@ -157,6 +191,8 @@ module OAuth
         options[:oauth_timestamp] = OAuth::Helper.generate_timestamp
         options[:oauth_version] = "1.0"
         options[:params] = []
+        options[:scheme] = :header
+        options[:version] = "1.0"
 
         ## Common Options
 
@@ -168,7 +204,21 @@ module OAuth
           options[:oauth_consumer_secret] = v
         end
 
-        ## Options for signing
+        opts.on("-H", "--header", "Use the 'Authorization' header for OAuth parameters (default).") do
+          options[:scheme] = :header
+        end
+
+        opts.on("-Q", "--query-string", "Use the query string for OAuth parameters.") do
+          options[:scheme] = :query_string
+        end
+
+        opts.on("-O", "--options FILE", "Read options from a file") do |v|
+          arguments.unshift(*open(v).readlines.map { |l| l.chomp.split(" ") }.flatten)
+        end
+
+        ## Options for signing and making requests
+
+        opts.separator("\n  options for signing and querying")
 
         opts.on("--method METHOD", "Specifies the method (e.g. GET) to use when signing.") do |v|
           options[:method] = v
@@ -206,8 +256,12 @@ module OAuth
           options[:uri] = v
         end
 
-        opts.on("--version VERSION", "Specifies the OAuth version to use.") do |v|
-          options[:oauth_version] = v
+        opts.on(:OPTIONAL, "--version VERSION", "Specifies the OAuth version to use.") do |v|
+          if v
+            options[:oauth_version] = v
+          else
+            @command = "version"
+          end
         end
 
         opts.on("--no-version", "Omit oauth_version.") do
@@ -225,6 +279,8 @@ module OAuth
 
         ## Options for authorization
 
+        opts.separator("\n  options for authorization")
+
         opts.on("--access-token-url URL", "Specifies the access token URL.") do |v|
           options[:access_token_url] = v
         end
@@ -233,14 +289,22 @@ module OAuth
           options[:authorize_url] = v
         end
 
+        opts.on("--callback-url URL", "Specifies a callback URL.") do |v|
+          options[:oauth_callback] = v
+        end
+
         opts.on("--request-token-url URL", "Specifies the request token URL.") do |v|
           options[:request_token_url] = v
+        end
+
+        opts.on("--scope SCOPE", "Specifies the scope (Google-specific).") do |v|
+          options[:scope] = v
         end
       end
     end
 
     def parse_options(arguments)
-      option_parser.parse!(arguments)
+      option_parser(arguments).parse!(arguments)
     end
 
     def prepare_parameters
@@ -274,6 +338,8 @@ module OAuth
         options[:oauth_consumer_key] && options[:oauth_consumer_secret] &&
           options[:access_token_url] && options[:authorize_url] &&
           options[:request_token_url]
+      when "version"
+        true
       else
         options[:oauth_consumer_key] && options[:oauth_consumer_secret] &&
           options[:method] && options[:uri]
