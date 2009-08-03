@@ -27,7 +27,7 @@ describe User do
     it { should validate_uniqueness_of(:login, :case_sensitive => false) }
     it { should validate_length_of(:login, :within => 3..40) }
     it { should allow_values_for(:login, 'lala', '3213', 'das.das-aDS_dsa', 'áçãoü32') }
-    it { should_not allow_values_for(:login, nil, '', 'ds!dsa', 'dsa d sad', '#dasd', "ádsa\n") }
+    it { should_not allow_values_for(:login, nil, 'ds!dsa', 'dsa d sad', '#dasd', "ádsa\n") }
 
     it { should validate_presence_of(:password) }
     it { should validate_length_of(:password, :within => 6..40) }
