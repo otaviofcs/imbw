@@ -1,35 +1,62 @@
 .span-24
-  .span-15
-    .span-7
+  .span-17
+    .span-8
       .index_box
         %h3
           = image_tag 'w_mini.png', :alt => 'Writing', :title => 'Writing'
           = link_to 'Writing', posts_path
+        %p
+          Artigos escritos aqui, no imbw.
         %ul
           - @posts.each do |post|
             %li
               = link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)
-    .span-7
+    .span-8
       .index_box
         %h3
           = image_tag 'n_mini.png', :alt => 'Taking Notes', :title => 'Taking Notes'
           = link_to 'Taking Notes', notes_path
-    .span-14
+        %p
+          Pensamentos. Últimos pensamentos.
+        %ul
+          - @notes.each do |note|
+            %li
+              = link_to truncate(note.note, :length => 40, :omission => "..."), notes_path
+    .span-16
       .index_box
         %h3
           = image_tag 'r_mini.png', :alt => 'Reading', :title => 'Reading'
           = link_to 'Reading', links_path
-    .span-7
+        %p
+          Links de artigos interessantes na internet.
+        %ul
+          - @links.each do |link|
+            %li
+              = link_to link.description, link.link
+    .span-8
       .index_box
         %h3
           = image_tag 'o_mini.png', :alt => 'Observing', :title => 'Observing'
           = link_to 'Observing', galleries_path
-    .span-7
+        %p
+          Últimos comentários sobre as fotos.
+        %ul
+          - @comments.each do |comment|
+            %li
+              = "#{comment.name}:"
+              = comment.comment
+    .span-8
       .index_box
         %h3
           = image_tag 'g_mini.png', :alt => 'Grising', :title => 'Grising'
           = link_to 'Grising', beer_votes_path
-  .sidebar.span-8.last
+        %p
+          Cervejas. Aqui, só impressão sobre cervejas que bebi.
+        %ul
+          - @beer_votes.each do |beer_vote|
+            %li
+              = link_to beer_vote.title, beer_votes_path
+  .sidebar.span-6.last
     .more
       %h4 Achou pouco?
       %p
