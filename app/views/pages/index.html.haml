@@ -1,15 +1,34 @@
 .span-24
-  .span-16
-    .span-8
-      Writing
-    .span-8
-      Taking Notes
-    .span-16
-      Reading
-    .span-8
-      Observing
-    .span-8
-      Grising
+  .span-15
+    .span-7
+      .index_box
+        %h3
+          = image_tag 'w_mini.png', :alt => 'Writing', :title => 'Writing'
+          = link_to 'Writing', posts_path
+        %ul
+          - @posts.each do |post|
+            %li
+              = link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)
+    .span-7
+      .index_box
+        %h3
+          = image_tag 'n_mini.png', :alt => 'Taking Notes', :title => 'Taking Notes'
+          = link_to 'Taking Notes', notes_path
+    .span-14
+      .index_box
+        %h3
+          = image_tag 'r_mini.png', :alt => 'Reading', :title => 'Reading'
+          = link_to 'Reading', links_path
+    .span-7
+      .index_box
+        %h3
+          = image_tag 'o_mini.png', :alt => 'Observing', :title => 'Observing'
+          = link_to 'Observing', galleries_path
+    .span-7
+      .index_box
+        %h3
+          = image_tag 'g_mini.png', :alt => 'Grising', :title => 'Grising'
+          = link_to 'Grising', beer_votes_path
   .sidebar.span-8.last
     .more
       %h4 Achou pouco?
