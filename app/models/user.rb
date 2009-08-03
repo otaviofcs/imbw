@@ -49,10 +49,10 @@ class User < ActiveRecord::Base
     :case_sensitive => false
   validates_length_of :login,
     :within => 3..40,
-    :allow_blank => true
+    :allow_blank => false
   validates_format_of :login,
     :with => LOGIN_REGEX,
-    :allow_blank => true
+    :allow_blank => false
 
   validates_presence_of :email
   validates_length_of :email,
