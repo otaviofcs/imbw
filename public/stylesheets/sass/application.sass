@@ -304,10 +304,11 @@ textarea.my_text_area
 .index_box
   :padding 0.2em
   :margin 0.2em
-  :border 1px solid #D1D1DF
   h3
+    :padding 0.1em
     :margin-bottom 0.25em
     :vertical-align middle
+    :border-bottom 1px solid #D1D1DF
     a
       :text-decoration none
       &:hover
@@ -315,6 +316,10 @@ textarea.my_text_area
   ul
     li
       :list-style none
+      :padding 0.25em 0.1em
+      :border-bottom 1px dotted #D1D1DF
+  span.destaque
+    :font-weight bold
 
 .w
   :background-image url(../images/w.png)
@@ -379,6 +384,7 @@ textarea.my_text_area
   :height 25px
   :padding 0
   :margin 0
+  :float left
   :background-image url(../images/star.gif)
   :background-repeat repeat-x
   :background-position top left

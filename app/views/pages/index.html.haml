@@ -43,19 +43,23 @@
         %ul
           - @comments.each do |comment|
             %li
-              = "#{comment.name}:"
+              %span.destaque
+                = "#{comment.name}:"
               = comment.comment
     .span-8
       .index_box
         %h3
-          = image_tag 'g_mini.png', :alt => 'Grising', :title => 'Grising'
-          = link_to 'Grising', beer_votes_path
+          = image_tag 'g_mini.png', :alt => 'Gristing', :title => 'Gristing'
+          = link_to 'Gristing', beer_votes_path
         %p
           Cervejas. Aqui, só impressão sobre cervejas que bebi.
         %ul
           - @beer_votes.each do |beer_vote|
             %li
+              = star_rating beer_vote.vote if beer_vote.vote
+              para
               = link_to beer_vote.title, beer_votes_path
+              .clear
   .sidebar.span-6.last
     .more
       %h4 Achou pouco?
