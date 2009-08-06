@@ -36,6 +36,10 @@ class Link < ActiveRecord::Base
     Link.create_links_from_feed(feed_parsed[:items])
   end
 
+  def self.parse_google_reader_feed
+    google_reader_url = 'http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast'
+  end
+
   def self.create_links_from_feed(items)
     itens_created = []
     items.each do |item|
