@@ -59,7 +59,6 @@ module RssParser
           xml = REXML::Document.new(response.body)
       end
       xpath = REXML::XPath.first(xml,"//feed/")
-      puts xpath.inspect
       data = {
         :title    => '',
         :home_url => '',
@@ -74,11 +73,11 @@ module RssParser
         end
         new_items[:link] = item.elements['link'].attributes["href"]
         new_items[:title] = item.elements['title'].text
-        new_items[:description] = item.elements['content'].text[0..150] if item.elements['content'] && item.elements['content'].text.length > 150
-        new_items[:description] = item.elements['content'].text if item.elements['content'] && item.elements['content'].text.length <= 150
+#        new_items[:description] = item.elements['content'].text[0..150] if item.elements['content'] && item.elements['content'].text.length > 150
+#        new_items[:description] = item.elements['content'].text if item.elements['content'] && item.elements['content'].text.length <= 150
         new_items[:description] = item.elements['summary'].text[0..150] if item.elements['summary'] && item.elements['summary'].text.length > 150
         new_items[:description] = item.elements['summary'].text if item.elements['summary'] && item.elements['summary'].text.length <= 150
-        new_items[:linked_at] = item.elements['published'].text
+        new_items[:pubDate] = item.elements['published'].text
         new_items[:link_source] = "google_reader"
         data[:items] << new_items
       end
