@@ -31,6 +31,7 @@ module RssParser
           new_items[e.name.to_sym] = e.text unless e.name == "category"
           new_items[:categories] << e.text if e.name == "category"
         end
+        new_items[:link_source] = "rplinks"
         data[:items] << new_items
       end
       data

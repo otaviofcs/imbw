@@ -3,7 +3,7 @@ class AddLinkSourceToLinks < ActiveRecord::Migration
     add_column :links, :link_source, :string
     @links = Link.all
     @links.each do |link|
-      link.link_source = :rplinks
+      link.link_source = "rplinks"
       link.save
     end
   end
