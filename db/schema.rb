@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730172707) do
+ActiveRecord::Schema.define(:version => 20090809020944) do
 
   create_table "beer_votes", :force => true do |t|
     t.string   "title"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20090730172707) do
     t.datetime "linked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_source"
   end
 
   create_table "notes", :force => true do |t|

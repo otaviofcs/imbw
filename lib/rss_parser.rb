@@ -62,7 +62,6 @@ module RssParser
         :rss_url  => url,
         :items    => []
       }
-      puts xml == "<UNDEFINED> ... </>"
       return data if xml.root.elements['UNDEFINED']
       data[:title] = xml.root.elements['feed/title'].text
       data[:home_url] = xml.root.elements['feed/link'].text
