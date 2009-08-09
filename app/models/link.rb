@@ -32,7 +32,7 @@ class Link < ActiveRecord::Base
   validates_uniqueness_of :link
 
   def self.parse_rss_feed
-    feed_parsed = RssParser::WithReXML.run 'links.riopro.com.br',443,'https://links.riopro.com.br/rss.php/otavio', true
+    feed_parsed = RssParser::RPLinks.run 'links.riopro.com.br',443,'https://links.riopro.com.br/rss.php/otavio', true
     Link.create_links_from_feed(feed_parsed[:items])
   end
 
