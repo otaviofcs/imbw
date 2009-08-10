@@ -27,12 +27,10 @@
         %h3
           = image_tag 'r_mini.png', :alt => 'Reading', :title => 'Reading'
           = link_to 'Reading', links_path
-        %p
-          Links de artigos interessantes na internet.
+        %p Links de artigos interessantes na internet.
         %ul
-          - @links.each do |link|
-            %li
-              = link_to link.description, link.link
+          - @links.each do |one_link|
+            %li= link_for_links(one_link)
     .span-8
       .index_box
         %h3
