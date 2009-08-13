@@ -57,7 +57,7 @@ class Post < ActiveRecord::Base
     cut = self.body =~ /<span>more<\/span>/
     return self.body unless cut
     if type == :truncate
-      self.body[0...cut]
+      "#{self.body[0...cut]}<br/>(continua...)"
     else
       self.body.gsub("<span>more</span>", "")
     end
