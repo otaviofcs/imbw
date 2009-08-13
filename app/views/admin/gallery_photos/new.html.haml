@@ -3,6 +3,8 @@
     Nova foto para o álbum
     = @gallery.title
 
+  %p
+    = link_to "< ver todo o álbum #{@gallery.title}", admin_gallery_path(@gallery)
   - form_for @photo, :url => admin_gallery_photos_path, :html => { :multipart => true } do |f|
     = f.error_messages
     %p

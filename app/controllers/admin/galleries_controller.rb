@@ -50,7 +50,7 @@ class Admin::GalleriesController < AdminController
     @gallery = current_user.galleries.new(params[:gallery])
     if @gallery.save
       flash[:success] = "Álbum criado com sucesso."
-      redirect_to admin_galleries_path
+      redirect_to new_admin_gallery_photo_path(@gallery)
     else
       @page_title = "Novo Álbum"
       render :action => 'new'

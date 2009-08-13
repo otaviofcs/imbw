@@ -13,7 +13,7 @@ class Admin::GalleryPhotosController < AdminController
   end
 
   # GET /admin/gallery/1/photos/new
-  # Via: new_admin_gallery_photos_path
+  # Via: new_admin_gallery_photo_path
   # Disponível: [admin]
   #
   # nova foto para o álbum
