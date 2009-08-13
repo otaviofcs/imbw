@@ -52,6 +52,12 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :edited_at
 
+  def body_truncated
+    cut = self.body =~ /<em>more<\/em>/
+    self.body unless cut
+    self.body[0...cut] if cut
+  end
+
   protected
 
     def update_edited_at
