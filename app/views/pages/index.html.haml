@@ -44,7 +44,7 @@
           - @notes.each do |note|
             %li
               = link_to truncate(note.note, :length => 40, :omission => "..."), notes_path
-    .span-14.append-2.prepend-bottom
+    .span-14.append-2.append-bottom
       .index_box
         %h3
           = image_tag 'g_mini.png', :alt => 'Gristing', :title => 'Gristing'
