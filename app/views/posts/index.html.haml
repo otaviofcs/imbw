@@ -40,7 +40,7 @@
             - post.tag_list.each do |t|
               %span
                 = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
-        %p
+        .post-body
           = post.formatted_body
 
     %p.paginate
