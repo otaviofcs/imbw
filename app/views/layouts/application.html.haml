@@ -13,10 +13,10 @@
     = lightbox_init
   %body.main
     .container
-      = render :partial => 'shared/menu'
-      .span-24
+      .prepend-top.span-24
         .menu
           = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+          = render :partial => 'shared/menu'
       .clear
       .content-all
         = display_flashes()
