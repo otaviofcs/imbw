@@ -21,6 +21,6 @@ class PostsController < ApplicationController
   # um post
   def show
     @post = Post.find params[:id]
-    @page_title = "Post ##{@post.id}"
+    @page_title = "Post ##{@post.id}-#{@post.title}"
   end
 end
