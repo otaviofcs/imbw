@@ -52,10 +52,15 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :edited_at
 
-  def body_truncated
-    cut = self.body =~ /<em>more<\/em>/
-    self.body unless cut
-    self.body[0...cut] if cut
+  # type in [:truncate, :full]
+  def formatted_body(type=:truncate)
+    cut = self.body =~ /<span>more<\/span>/
+    return self.body unless cut
+    if type == :truncate
+      self.body[0...cut]
+    else
+      self.body.gsub("<span>more</span>", "")
+    end
   end
 
   protected

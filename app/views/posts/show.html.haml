@@ -21,7 +21,7 @@
             %span
               = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
       %p
-        = @post.body
+        = @post.formatted_body :full
 .span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
