@@ -1,6 +1,6 @@
 .span-24
   .span-17
-    .span-8
+    .span-14.append-2
       .index_box
         %h3
           = image_tag 'w_mini.png', :alt => 'Writing', :title => 'Writing'
@@ -11,18 +11,7 @@
           - @posts.each do |post|
             %li
               = link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)
-    .span-8
-      .index_box
-        %h3
-          = image_tag 'n_mini.png', :alt => 'Taking Notes', :title => 'Taking Notes'
-          = link_to 'Taking Notes', notes_path
-        %p
-          Pensamentos. Últimos pensamentos.
-        %ul
-          - @notes.each do |note|
-            %li
-              = link_to truncate(note.note, :length => 40, :omission => "..."), notes_path
-    .span-16
+    .span-14.prepend-2
       .index_box
         %h3
           = image_tag 'r_mini.png', :alt => 'Reading', :title => 'Reading'
@@ -31,7 +20,7 @@
         %ul
           - @links.each do |one_link|
             %li= link_for_links(one_link)
-    .span-8
+    .span-14.append-2
       .index_box
         %h3
           = image_tag 'o_mini.png', :alt => 'Observing', :title => 'Observing'
@@ -44,7 +33,18 @@
               %span.destaque
                 = "#{comment.name}:"
               = comment.comment
-    .span-8
+    .span-14.prepend-2
+      .index_box
+        %h3
+          = image_tag 'n_mini.png', :alt => 'Taking Notes', :title => 'Taking Notes'
+          = link_to 'Taking Notes', notes_path
+        %p
+          Pensamentos. Últimos pensamentos.
+        %ul
+          - @notes.each do |note|
+            %li
+              = link_to truncate(note.note, :length => 40, :omission => "..."), notes_path
+    .span-14.append-2
       .index_box
         %h3
           = image_tag 'g_mini.png', :alt => 'Gristing', :title => 'Gristing'
