@@ -23,7 +23,6 @@
       .post-card
         %h2
           = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
-        %hr
         .post-header
           %span
             = link_to post.user.login, user_path(post.user), :class => 'link-user'
@@ -43,7 +42,7 @@
                 = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
         .post-body
           = post.formatted_body
-
+        %hr
     %p.paginate
       = will_paginate @posts
 
