@@ -1,0 +1,22 @@
+.general
+  %h2
+    Novo attachment
+
+  %p
+    = link_to "< ver todos attachments", admin_attachments_path
+  - form_for @attachment, :url => admin_attachments_path, :method => :post, :html => { :multipart => true } do |f|
+    = f.error_messages
+    %p
+      = f.label_t :title
+      %br
+      = f.text_field :title
+    %p
+      = f.label_t :uploaded_data
+      %br
+      = f.file_field :uploaded_data
+      %br
+      %span.field_info Arquivos .png, .jpg. ou .gif, com até 3mb de tamanho
+    %p
+      = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+      ou
+      = link_to 'cancelar', admin_attachments_path

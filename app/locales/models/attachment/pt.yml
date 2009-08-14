@@ -1,0 +1,15 @@
+pt:
+  activerecord:
+    models:
+      attachment: "anexo"
+    attributes:
+      attachment:
+        user_id: "usuário"
+        title: "título"
+        attachment: "anexo"
+        created_at: "criado em"
+        updated_at: "atualizado em"
+        size: "tamanho"
+        content_type: "tipo de arquivo"
+        filename: "nome do arquivo"
+        uploaded_data: "arquivo"
