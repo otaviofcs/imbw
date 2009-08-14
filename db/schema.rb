@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090809020944) do
+ActiveRecord::Schema.define(:version => 20090814165644) do
 
   create_table "beer_votes", :force => true do |t|
     t.string   "title"
@@ -74,6 +74,21 @@ ActiveRecord::Schema.define(:version => 20090809020944) do
     t.integer  "parent_id"
     t.string   "thumbnail"
     t.string   "photo_hash"
+  end
+
+  create_table "post_attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "size"
+    t.string   "content_type"
+    t.string   "filename"
+    t.integer  "height"
+    t.integer  "width"
+    t.integer  "photos"
+    t.integer  "parent_id"
+    t.string   "thumbnail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
