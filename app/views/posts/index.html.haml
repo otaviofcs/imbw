@@ -42,6 +42,8 @@
                 = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
         .post-body
           = post.formatted_body
+        .post-footer
+          = link_to 'comentários', post_path(:id => "#{post.id}-#{h(post.title)}#disqus_thread" )
         %hr
     %p.paginate
       = will_paginate @posts
@@ -68,3 +70,5 @@
         - if @tags.size > 0
           - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
             = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
+
+= disqus_comments_tag(Settings::DISQUS_SITE_ID)
