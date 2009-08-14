@@ -71,4 +71,4 @@
           - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
             = link_to tag.name, posts_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class
 
-= disqus_comments_tag(Settings::DISQUS_SITE_ID)
+= disqus_comment_counter_tag(Settings::DISQUS_SITE_ID)
