@@ -68,7 +68,7 @@ class Admin::GalleryPhotosController < AdminController
   # Via: admin_gallery_photos_path(1)
   # Disponível: [admin]
   #
-  # apaga usuário
+  # apaga álbum inteiro e todas as fotos e comentários
   def destroy
     @photo = @gallery.photos.find params[:id]
     @photo.destroy

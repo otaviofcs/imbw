@@ -36,5 +36,16 @@ class Admin::AttachmentsController < ApplicationController
     end
   end
 
+  # DELETE /admin/attachments/1
+  # Via: admin_attachment_path(1)
+  # Disponível: [admin]
+  #
+  # apaga attachment
+  def destroy
+    @attachment = current_user.attachments.find params[:id]
+    @attachment.destroy
+    flash[:success] = "Anexo apagado com sucesso"
+    redirect_to admin_attachments_path
+  end
 
 end
