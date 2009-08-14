@@ -30,7 +30,7 @@ class Admin::GalleryPhotosController < AdminController
   def create
     @photo = @gallery.photos.new(params[:photo])
     if @photo.save
-      flash[:success] = "Foto do álbum criado com sucesso. Envie outra se quiser."
+      flash[:success] = "Foto #{@photo.filename} do álbum criada com sucesso. Envie outra se quiser."
       redirect_to new_admin_gallery_photo_path(@gallery)
     else
       @page_title = "Novo Foto do álbum"
