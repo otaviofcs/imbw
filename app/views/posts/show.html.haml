@@ -1,29 +1,7 @@
 .span-18
   #post
-    .post-card
-      %h2
-        = link_to @post.title, post_path(:id => "#{@post.id}-#{h(@post.title)}" ), :class => 'link-post'
-      .post-header
-        %span
-          = link_to @post.user.login, user_path(@post.user), :class => 'link-user'
-          ,
-        %span.date
-          criada em
-          = l(@post.created_at, :format => 'short')
-          ,
-        %span.date-edit
-          última edição em
-          = l(@post.edited_at, :format => 'short')
-        %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
-      .post-tags
-        %p
-          tags:
-          - @post.tag_list.each do |t|
-            %span
-              = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
-      .post-body
-        = @post.formatted_body :full
-      %hr
+    = render :partial => 'one_post', :locals => { :post => @post, :body => @post.formatted_body(:full) }
 .span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
+= disqus_comment_counter_tag(Settings::DISQUS_SITE_ID)

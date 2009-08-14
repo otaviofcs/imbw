@@ -1,0 +1,23 @@
+.post-card
+  %h2
+    = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
+  .post-header
+    %span
+      = link_to post.user.login, user_path(post.user), :class => 'link-user'
+      ,
+    %span.date
+      criada em
+      = l(post.created_at, :format => 'short')
+      ,
+    %span.date-edit
+      última edição em
+      = l(post.edited_at, :format => 'short')
+    %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
+  .post-body
+    = body
+  .post-footer
+    %a{ :href => "#{post_url(:id => "#{post.id}-#{h(post.title)}")}#disqus_thread" }comentários
+    , tags desse post:
+    - post.tag_list.each do |t|
+      %span
+        = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
