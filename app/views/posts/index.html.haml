@@ -43,7 +43,7 @@
         .post-body
           = post.formatted_body
         .post-footer
-          = link_to 'comentários', post_url(:id => "#{post.id}-#{h(post.title)}#disqus_thread" )
+          %a{ :href => "#{post_url(:id => "#{post.id}-#{h(post.title)}")}#disqus_thread" }comentários
         %hr
     %p.paginate
       = will_paginate @posts
