@@ -59,6 +59,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resource :session
     admin.resources :users
     admin.resources :posts
+    admin.resources :attachments
     admin.resources :galleries do |gallery|
       gallery.resources :photos, :controller => "gallery_photos"
     end

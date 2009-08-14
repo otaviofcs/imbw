@@ -6,7 +6,7 @@ class Admin::PostsController < AdminController
   #
   # lista de posts
   def index
-    @posts = Post.by_id
+    @posts = Post.by_id.paginate( :page => params[:page] )
     @page_title = "Lista de Posts"
   end
 

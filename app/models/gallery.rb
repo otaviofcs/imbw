@@ -2,6 +2,12 @@ require 'digest/sha1'
 
 class Gallery < ActiveRecord::Base
 
+  #
+  # Options
+  #
+  cattr_reader :per_page
+  @@per_page = 10
+  
   belongs_to :user
   has_many :photos, :dependent => :destroy
   has_many :comments, :dependent => :destroy

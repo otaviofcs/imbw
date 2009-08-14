@@ -6,7 +6,7 @@ class Admin::GalleriesController < AdminController
   #
   # lista de álbuns
   def index
-    @galleries = Gallery.recent
+    @galleries = Gallery.recent.paginate(:page => params[:page])
     @page_title = "Álbuns"
   end
 

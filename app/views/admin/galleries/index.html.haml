@@ -12,3 +12,6 @@
           %br
           = link_to "editar", edit_admin_gallery_path(gallery), :class => 'link-edit'
           = link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+
+  %p.paginate
+    = will_paginate @galleries

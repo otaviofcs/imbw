@@ -19,3 +19,6 @@
           = link_to "editar", edit_admin_post_path(post), :class => 'link-edit'
           ou
           = link_to "excluir", admin_post_path(post), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+
+  %p.paginate
+    = will_paginate @posts
