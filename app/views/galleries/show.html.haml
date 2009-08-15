@@ -13,4 +13,5 @@
   #comments.general
 
 - javascript_tag do
-  = "loadComments(#{@gallery.id});"
+  = "loadComments('#{@gallery.id}-#{@gallery.gallery_hash}');"
+

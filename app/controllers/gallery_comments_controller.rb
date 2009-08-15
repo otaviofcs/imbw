@@ -8,16 +8,20 @@ class GalleryCommentsController < ApplicationController
   #
   # Comentários de 1 álbum
   def index
-
     load_variables
+    @new_comment = @gallery.comments.new
+    is_valid
     respond_to do |format|
       format.js
     end
   end
 
   def create
-    @gallery = Gallery.find params[:gallery_id]
-    @new_comment = @gallery.comments.build(params[:comment])
+    load_variables
+    @new_comment = @gallery.comments.new
+    is_valid
+    @new_comment = @gallery.comments.build(params[:comment]) if @valid
+
     if @new_comment.save
       @success = true
     else
@@ -27,7 +31,6 @@ class GalleryCommentsController < ApplicationController
     respond_to do |format|
       format.js do
         if @success
-          load_variables
           render :action => 'index'
         end
       end
@@ -42,7 +45,11 @@ class GalleryCommentsController < ApplicationController
       @gallery = Gallery.find params[:gallery_id]
       @search = @gallery.comments.search(@search_params)
       @comments = @search.paginate(:page => params[:page])
-      @new_comment = @gallery.comments.new
     end
 
+    def is_valid
+      @valid = true
+      @valid = false unless ("#{@gallery.id}-#{@gallery.gallery_hash}" == params[:id] || "#{@gallery.id}-#{@gallery.public_code}" == params[:id] )
+      @valid = false if "#{@gallery.id}-" == params[:id]
+    end
 end

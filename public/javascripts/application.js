@@ -6,3 +6,9 @@ function loadComments(gallery_id)
   var url = '/galleries/' + gallery_id + '/comments';
   new Ajax.Request(url, { method: 'get', asynchronous:true, evalScripts:true } );
 }
+
+function loadAllComments()
+{
+  var url = '/comments';
+  new Ajax.Request(url, { method: 'get', asynchronous:true, evalScripts:true } );
+}
