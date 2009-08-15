@@ -1,0 +1,1 @@
+page.replace_html 'comments', :partial => 'gallery_comments/gallery_comments', :locals => { :comments => @comments }

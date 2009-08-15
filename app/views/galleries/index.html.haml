@@ -10,7 +10,7 @@
       %br
       %br
   .span-2
-.prepend-2.general.span-18.append2
+.prepend-1.general.span-18.append-3
   %p Digite o código do álbum que pretende acessar abaixo
   %p
     E se eu não possuo um código? Então manda um email pro Otávio.
@@ -24,15 +24,8 @@
     %p
       = submit_tag 'ir para o álbum', :disable_with => '...'
 
-.span-24
-  #comments.general
-
-
-.span-24
-  .span-18
-    - @comments.each do |comment|
-        #comments.general
-
+.prepend-1.span-22.append-1
+  #comments.span-16
   .sidebar.span-5      
     - form_for @search do |f|
       %p

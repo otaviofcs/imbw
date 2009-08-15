@@ -48,6 +48,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :galleries, :collection => { :search => :get } do |gallery|
     gallery.resources :comments, :controller => "gallery_comments"
   end
+  map.resources :comments
+
   map.resources :photos
   # Reading
   map.resources :links

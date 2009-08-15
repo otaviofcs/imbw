@@ -1,6 +1,6 @@
 %h3 Mural de Recados
 - if comments.size > 0
   - comments.each do |comment|
-    = render :partial => 'comment', :locals => { :comment => comment }
+    = render :partial => 'gallery_comments/comment', :locals => { :comment => comment }
 - else
   %p Seja o primeiro a comentar.
