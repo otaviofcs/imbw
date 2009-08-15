@@ -23,4 +23,26 @@
       = text_field_tag :id
     %p
       = submit_tag 'ir para o álbum', :disable_with => '...'
+.span-24
+  .span-18
+    - @comments.each do |comment|
+        #comments.general
 
+  .sidebar.span-5      
+    - form_for @search do |f|
+      %p
+        %label Nome contendo
+        %br/
+        = f.text_field :name_like, :size => 20
+      %p
+        %label Comentário contendo
+        %br/
+        = f.text_field :comment_like, :size => 20
+      %p
+        = submit_tag 'filtrar', :disable_with => '...'
+      %p
+        = link_to "limpar filtros", galleries_path
+
+
+- javascript_tag do
+  = "loadComments(#{@gallery.id});"

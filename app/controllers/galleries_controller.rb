@@ -7,7 +7,11 @@ class GalleriesController < ApplicationController
   #
   # permite buscar um álbum
   def index
+    params_search = { "order" => :descend_by_created_at }
+    params_search = params_search.merge(params[:search]) if params[:search]
     @page_title = "Digite o código do álbum que quer buscar"
+    @search = Comment.search(params_search)
+    @comments = @search.paginate(:page => params[:page])
   end
 
   def search
