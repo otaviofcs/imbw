@@ -1,10 +1,6 @@
-.span-15
-  %h3 Mural de Recados
-  - if comments.size > 0
-    - comments.each do |comment|
-      = render :partial => 'comment', :locals => { :comment => comment }
-  - else
-    %p Seja o primeiro a comentar.
-.sidebar.span-7.last
-  #new_comment
-    = render :partial => 'new_comment', :locals => { :new_comment => new_comment, :gallery => gallery }
+%h3 Mural de Recados
+- if comments.size > 0
+  - comments.each do |comment|
+    = render :partial => 'comment', :locals => { :comment => comment }
+- else
+  %p Seja o primeiro a comentar.
