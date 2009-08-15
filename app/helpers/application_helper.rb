@@ -67,4 +67,29 @@ module ApplicationHelper
       end
     end
   end
+
+  # peguei do patrono! will paginate via ajax
+  # so que com jquery
+  def ajax_will_paginate(collection)
+    pagination = will_paginate(collection)
+    return if pagination.nil?
+    html = pagination
+    html << "\n"
+    html << javascript_tag do
+      <<-eof
+        $(document).ready(function(){
+          $('div.pagination a').click(function() {
+            $.getScript(this.href);
+            return false;
+          })
+          $('div#facebox div.pagination a').click(function() {
+            $.facebox({ajax: this.href});
+            return false;
+          })
+        });
+      eof
+    end
+    html
+  end
+
 end
