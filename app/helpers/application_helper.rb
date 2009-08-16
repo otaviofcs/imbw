@@ -52,20 +52,6 @@ module ApplicationHelper
     html
   end
 
-  # Coloca um script para carregar o Facebox na view
-  def load_facebox
-    javascript_tag do
-      <<-eof
-        jQuery(document).ready(function() {
-          jQuery('a[rel*=facebox]').facebox({
-            loadingImage: '/images/facebox/loading.gif',
-            closeImage: '/images/facebox/closelabel.gif'
-          });
-        });
-      eof
-    end
-  end
-
   # modificado em relação ao original para evitar bug quando
   # a lista de itens da núvem está vazia.
   #
