@@ -4,11 +4,11 @@
 function loadComments(gallery_id)
 {
   var url = '/galleries/' + gallery_id + '/comments';
-  new Ajax.Request(url, { method: 'get', asynchronous:true, evalScripts:true } );
+  $.getScript(url);
 }
 
 function loadAllComments()
 {
   var url = '/comments';
-  new Ajax.Request(url, { method: 'get', asynchronous:true, evalScripts:true } );
+  $.getScript(url);
 }
