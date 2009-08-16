@@ -1,5 +1,5 @@
 %h4 Deixe seu recado também!
-- remote_form_for new_comment, :url => gallery_comments_path(:id => "#{gallery.id}-#{gallery.gallery_hash}"), :method => :post do |f|
+- remote_form_for new_comment, :url => gallery_comments_path("#{gallery.id}-#{gallery.gallery_hash}"), :method => :post do |f|
   = f.error_messages
   %p
     = f.label_t :name
