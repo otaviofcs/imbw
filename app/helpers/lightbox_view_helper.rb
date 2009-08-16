@@ -18,12 +18,7 @@ module LightboxViewHelper
     javascript_tag do
       html = ""
       html <<	"$(document).ready(function(){\n"
-      html <<	"$('a[rel*=lightbox]').lightbox({text: {"
-      html <<	"image:	'Imagem', of: 'de', close: 'Fechar X',"
-      html <<	"    closeInfo:	'Você também pode clicar fora da imagem para fechar.',"
-      html <<	"download:	'Download.', help: { close:		'Clique para fechar', interact:	'passe o mouse para interagir' },"
-      html <<	"about: { text: 	'Álbum usando lightbox',"
-      html <<	"title:	'', link:	'http://imbw.com.br'}}});\n"
+      html <<	"$('a[rel*=lightbox]').lightbox();\n"
       html <<	"});"
       html
     end

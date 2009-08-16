@@ -360,19 +360,19 @@
 		
 		text: {
 			// For translating
-			image:		'Image',
-			of:			'of',
-			close:		'Close X',
-			closeInfo:	'You can also click anywhere outside the image to close.',
+			image:		'Imagem',
+			of:			'de',
+			close:		'Fechar X',
+			closeInfo:	'Você também pode clicar fora da imagem para fechar.',
 			download:	'Download.',
 			help: {
-				close:		'Click to close',
+				close:		'Clique para fechar',
 				interact:	'Hover to interact'
 			},
 			about: {
-				text: 	'jQuery Lightbox Plugin (balupton edition)',
-				title:	'Licenced under the GNU Affero General Public License.',
-				link:	'http://jquery.com/plugins/project/jquerylightbox_bal'
+				text: 	'',
+				title:	'',
+				link:	''
 			}
 		},
 		
