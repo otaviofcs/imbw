@@ -4,7 +4,7 @@
     = @gallery.title
   %p
     = @gallery.description if @gallery.description
-  .photos
+  #photos.photos
     - @photos.each do |photo|
       .photo-box
         .photo

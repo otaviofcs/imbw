@@ -8,12 +8,13 @@
     = stylesheet_link_tag "blueprint/print.css", :media => "print"
     == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
     = stylesheet_link_tag "application.css"
-    = stylesheet_link_tag "facebox.css"
+    = stylesheet_link_tag "lightbox.css"
 
     = javascript_include_tag 'jquery'
     = javascript_include_tag 'jquery-ui'
     = javascript_include_tag 'jrails'
-    = javascript_include_tag 'facebox'
+    = javascript_include_tag 'jquery.color'
+    = javascript_include_tag 'jquery.lightbox'
     = javascript_include_tag 'application'
   %body.main
     .container

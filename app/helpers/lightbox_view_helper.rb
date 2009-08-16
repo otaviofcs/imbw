@@ -14,17 +14,14 @@ module LightboxViewHelper
   end
 
   # inicializa lightbox
-  def lightbox_init
-    html = ""
-    html << "<script type=\"text/javascript\">\n"
-    html << "//<![CDATA[\n"
-    html << "LightboxOptions.fileLoadingImage = '#{ image_path('lightbox/loading.gif') }';\n"
-    html << "LightboxOptions.fileBottomNavCloseImage = '#{ image_path('lightbox/closelabel.gif') }';\n"
-    html << "LightboxOptions.labelImage = 'Imagem';\n"
-    html << "LightboxOptions.labelOf = 'de';\n"
-    html << "//]]>\n"
-    html << "</script>\n"
-    html
+  def lightbox_init()
+    javascript_tag do
+      html = ""
+      html <<	"$(document).ready(function(){\n"
+      html <<	"$('a[rel*=lightbox]').lightbox();\n"
+      html <<	"});"
+      html
+    end
   end
 
 end
