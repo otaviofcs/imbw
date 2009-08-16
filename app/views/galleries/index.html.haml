@@ -27,7 +27,7 @@
 .prepend-1.span-22.append-1
   #comments.span-16
   .sidebar.span-5      
-    - form_for @search do |f|
+    - remote_form_for @search, :url => comments_path, :method => :get do |f|
       %p
         %label Nome contendo
         %br/
