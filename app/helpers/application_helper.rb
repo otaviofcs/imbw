@@ -18,7 +18,7 @@ module ApplicationHelper
       flash_message = content_tag(:p, message)
       close_link = content_tag(
         :span,
-        link_to_function('fechar', "$(this).up('#flash_#{key}').remove()"),
+        link_to_function('fechar', "$('#flash_#{key}').remove()"),
         :class => 'close'
       )
       html << content_tag(:div, close_link + flash_message, :class => 'flash', :id => "flash_#{key}")
