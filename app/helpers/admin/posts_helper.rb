@@ -4,7 +4,9 @@ module Admin::PostsHelper
     javascript_tag do
       <<-eof
         jQuery(document).ready(function() {
-          $.postScript('#{url}');
+          $("#preview_button").bind("click", function() {
+            $.post('#{url}', $('#post').find('form').serialize().replace('_method=put', '_method=post'), null, 'script');
+          });
         });
       eof
     end

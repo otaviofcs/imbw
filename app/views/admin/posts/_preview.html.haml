@@ -1,6 +1,9 @@
 #post_preview
-  %input{ :type => 'button', :id => 'preview', :value => 'Preview' }
+  %input{ :type => 'button', :id => 'preview_button', :value => 'Preview' }
   - if post
-    #text_preview
-      post.formatted_body(:full)
+    .prepend-top
+      %p
+        Veja abaixo o seu texto formatado:
+      #text_preview
+        = post.formatted_body(:full)
   = post_preview( preview_admin_posts_path(:format => :js) )
