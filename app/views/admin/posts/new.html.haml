@@ -2,5 +2,8 @@
   %h2
     Novo Post
 
-  - form_for @post, :url => admin_posts_path, :method => :post do |f|
-    = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
+  #post
+    - form_for @post, :url => admin_posts_path, :method => :post do |f|
+      = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
+
+= render :partial => 'admin/posts/preview', :locals => { :post => nil }

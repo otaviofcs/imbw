@@ -30,6 +30,18 @@ class Admin::PostsController < AdminController
     @page_title = "Editando Post ##{@post.id}"
   end
 
+  # POST /admin/posts/preview
+  # Via: preview_admin_posts_path
+  # Available: [administradores]
+  #
+  # Preview de um post
+  def preview
+    @post = current_user.posts.build(params[:post])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # POST /admin/posts
   # Via: admin_posts_path
   # Available: [administradores]

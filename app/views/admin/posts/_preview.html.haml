@@ -1,0 +1,6 @@
+#post_preview
+  %input{ :type => 'button', :id => 'preview', :value => 'Preview' }
+  - if post
+    #text_preview
+      post.formatted_body(:full)
+  = post_preview( preview_admin_posts_path(:format => :js) )

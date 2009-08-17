@@ -60,7 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
     admin.resource :session
     admin.resources :users
-    admin.resources :posts
+    admin.resources :posts, :collection => { :preview => :post }
     admin.resources :attachments
     admin.resources :galleries do |gallery|
       gallery.resources :photos, :controller => "gallery_photos"
