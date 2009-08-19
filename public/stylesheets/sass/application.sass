@@ -418,7 +418,25 @@ textarea.my_text_area
       :list-style none
 
 /* flashes
-div.flash
+div#flash_notice
+  :background-color #FFFAC3
+  :border 1px solid #DFCC00
+  p
+    :background-image url(../images/exclamation.png)
+
+div#flash_error
+  :background-color #FFE3E2
+  :border 1px solid #80150E
+  p
+    :background-image url(../images/exclamation_octagon.png)
+
+div#flash_success
+  :background-color #E4FAE0
+  :border 1px solid #116302
+  p
+    :background-image url(../images/tick.png)
+
+.flash
   :padding 0.3em
   p
     :background-repeat no-repeat
@@ -431,21 +449,5 @@ div.flash
       :text-decoration none
       &:hover
         :text-decoration underline
-  div#flash_notice
-    :background-color #FFFAC3
-    :border 1px solid #DFCC00
-    p
-      :background-image url(../images/exclamation.png)
 
-  div#flash_error
-    :background-color #FFE3E2
-    :border 1px solid #80150E
-    p
-      :background-image url(../images/exclamation_octagon.png)
-
-  div#flash_success
-    :background-color #E4FAE0
-    :border 1px solid #116302
-    p
-      :background-image url(../images/tick.png)
   /* /flashes
