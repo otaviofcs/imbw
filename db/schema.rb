@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090814170042) do
+ActiveRecord::Schema.define(:version => 20090819162749) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "user_id"
@@ -103,6 +103,13 @@ ActiveRecord::Schema.define(:version => 20090814170042) do
   end
 
   add_index "posts", ["published_at"], :name => "index_posts_on_published_at"
+
+  create_table "recent_activities", :force => true do |t|
+    t.string   "recentable_type"
+    t.integer  "recentable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

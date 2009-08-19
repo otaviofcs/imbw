@@ -1,0 +1,8 @@
+pt:
+  activerecord:
+    models:
+      recent_activity: "atividade recente"
+    attributes:
+      recent_activity:
+        recentable_type: "tipo de atividade recente"
+        recentable_id:   "id da atividade recente"
