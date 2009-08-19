@@ -9,3 +9,6 @@
     tags:
     - note.tags.each do |tag|
       = link_to tag.name, notes_path(:search => { :tagged_with_on_tags => tag.name })
+  - if current_user
+    %p
+      = link_to 'excluir', note_path(note), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'

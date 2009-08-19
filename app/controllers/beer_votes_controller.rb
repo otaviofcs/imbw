@@ -1,6 +1,5 @@
 class BeerVotesController < ApplicationController
 
-
   # Requer um +current_user+ setado.
   before_filter :user_required, :only => [:destroy]
 
@@ -21,6 +20,9 @@ class BeerVotesController < ApplicationController
   end
 
   # DELETE /beer_votes/1
+  # Via: beer_vote_path(1)
+  # Disponível: [logados]
+  #
   # Apaga um voto sobre cerveja
   def destroy
     @beer_vote = BeerVote.find params[:id]
