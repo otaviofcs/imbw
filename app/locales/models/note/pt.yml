@@ -4,7 +4,7 @@ pt:
       note: "anotação"
     attributes:
       note:
-        note: "nota"
+        note: "anotação"
         note_taked_at: "anotação criada em"
         twit_id: "id no Twitter"
         tag_list: "rótulos"
