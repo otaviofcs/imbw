@@ -4,13 +4,12 @@
   .post-header
     %span
       = link_to post.user.login, user_path(post.user), :class => 'link-user'
+    %span.date{ :title => "#{l(post.published_at)}" }
+      publicou em
+      = l(post.published_at, :format => 'short')
       ,
-    %span.date
-      criada em
-      = l(post.created_at, :format => 'short')
-      ,
-    %span.date-edit
-      última edição em
+    %span.date-edit{ :title => "#{l(post.edited_at)}" }
+      e editou pela última vez em
       = l(post.edited_at, :format => 'short')
     %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
   .post-body
