@@ -15,3 +15,6 @@
     %span.info
       coment&aacute;rio criado em
       = l(beer_vote.commented_at, :format => :long)
+  - if current_user
+    %p
+      = link_to 'excluir', beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
