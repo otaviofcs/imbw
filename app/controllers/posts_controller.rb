@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   #
   # lista de posts
   def index
-    params_search = { "order" => 'descend_by_id'}
+    params_search = { "order" => 'descend_by_published_at'}
     params_search = params_search.merge(params[:search]) if params[:search]
     @search = Post.available.search params_search
     @posts = @search.paginate(:page => params[:page])
