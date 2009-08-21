@@ -44,9 +44,12 @@ module PagesHelper
         html2 << link_to('Gristing', beer_votes_path)
         html2
       end
-      html << star_rating(beer_vote.vote) if beer_vote.vote
-      html << " foi a nota para #{link_to beer_vote.title, beer_votes_path}"
-      html << content_tag(:div, "&nbsp;", :class => "clear")
+      html << content_tag(:div, :class => 'text_box') do
+        html2 = star_rating(beer_vote.vote) if beer_vote.vote
+        html2 << "&nbsp;foi a nota para #{link_to beer_vote.title, beer_votes_path}"
+        html2 << content_tag(:div, "&nbsp;", :class => "clear")
+        html2
+      end
       html
     end
   end
