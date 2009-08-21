@@ -1,6 +1,7 @@
 .span-24
   .prepend-1.span-16.prepend-top.append-bottom
-    %h1=link_to "I might be...", pages_path
+    %h1.title_pages
+      =link_to "I might be...", pages_path, :title => 'am I wrong?'
     - @recent_activities.each do |recent_activity|
       = recent_box recent_activity
     %p.paginate

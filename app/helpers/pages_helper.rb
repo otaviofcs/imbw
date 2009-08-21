@@ -10,7 +10,7 @@ module PagesHelper
       html << content_tag(:h3) do
         html = ""
         html << link_to(image_tag('w_mini.png', :alt => 'Writing', :title => 'Artigos escritos aqui, no imbw.'), posts_path)
-        html << link_to('Writing', posts_path)
+        html << link_to('Writing', posts_path, :title => 'Artigos escritos aqui, no imbw.')
         html
       end
       html << content_tag(:p, "#{link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)}")
@@ -23,7 +23,7 @@ module PagesHelper
       html = ""
       html << content_tag(:h3) do
         html2 = image_tag('o_mini.png', :alt => 'Observing', :title => 'Últimos comentários sobre as fotos.')
-        html2 << link_to('Observing', galleries_path)
+        html2 << link_to('Observing', galleries_path, :title => 'Últimos comentários sobre as fotos.')
         html2
       end
       html << content_tag(:p) do
@@ -41,7 +41,7 @@ module PagesHelper
       html = ""
       html << content_tag(:h3) do
         html2 = image_tag('g_mini.png', :alt => 'Gristing', :title => 'Cervejas. Aqui, só impressão sobre cervejas que bebi.')
-        html2 << link_to('Gristing', beer_votes_path)
+        html2 << link_to('Gristing', beer_votes_path, :title => 'Cervejas. Aqui, só impressão sobre cervejas que bebi.')
         html2
       end
       html << content_tag(:div, :class => 'text_box') do
@@ -59,7 +59,7 @@ module PagesHelper
       html = ""
       html << content_tag(:h3) do
         html2 = image_tag('r_mini.png', :alt => 'Reading', :title => 'Links de artigos interessantes na internet.')
-        html2 << link_to('Reading', links_path)
+        html2 << link_to('Reading', links_path, :title => 'Links de artigos interessantes na internet.')
         html2
       end
       html << content_tag(:p) do
@@ -74,7 +74,7 @@ module PagesHelper
       html = ""
       html << content_tag(:h3) do
         html2 = image_tag('n_mini.png', :alt => 'Taking Notes', :title => 'Pensamentos. Últimos pensamentos.')
-        html2 << link_to('Taking Notes', notes_path)
+        html2 << link_to('Taking Notes', notes_path, :title => 'Pensamentos. Últimos pensamentos.')
         html2
       end
       html << content_tag(:p) do
