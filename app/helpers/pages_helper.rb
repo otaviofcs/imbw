@@ -27,7 +27,8 @@ module PagesHelper
         html2
       end
       html << content_tag(:p) do
-        html2 = content_tag(:span, "#{comment.name}:", :class => 'destaque')
+        html2 = content_tag(:span, "#{comment.name}", :class => 'destaque')
+        html2 << " comentou em um álbum de fotos: "
         html2 << comment.comment
         html2
       end
