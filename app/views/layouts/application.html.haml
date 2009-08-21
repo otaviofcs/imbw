@@ -4,6 +4,7 @@
     %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
     %link{ :href => "/posts.rss", :rel => "alternate", :title => "feed do imbw", :type => "application/rss+xml" }
+    %link{ :href => "/pages.rss", :rel => "alternate", :title => "feed do imbw", :type => "application/rss+xml" }
     %title= h(@page_title) if @page_title
     = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
     = stylesheet_link_tag "blueprint/print.css", :media => "print"
@@ -22,7 +23,7 @@
       .prepend-top.span-24
         .menu
           .feed_rss
-            = link_to image_tag('rss.png', :alt => 'feed rss', :title => 'assine aqui o feed do imbw'), posts_url(:rss)
+            = link_to image_tag('rss.png', :alt => 'feed rss', :title => 'assine aqui o feed do imbw'), pages_url(:rss)
           .clear
           = render :partial => 'shared/menu'
       .clear

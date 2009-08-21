@@ -1,6 +1,12 @@
 class RecentActivity < ActiveRecord::Base
 
   #
+  # Options
+  #
+  cattr_reader :per_page
+  @@per_page = 10
+
+  #
   # Associations
   #
 

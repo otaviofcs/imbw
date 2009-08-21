@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   # página index do site
   def index
     @page_title = "página inicial - home"
-    @recent_activities = RecentActivity.find(:all, :order => 'id desc').paginate(:page => params[:page])
+    @filter = { :order => 'descend_by_id' }
+    @filter = @filter.merge(params[:search]) if params[:search]
+    @search = RecentActivity.search(@filter)
+    @recent_activities = @search.paginate(:page => params[:page])
   end
 end
