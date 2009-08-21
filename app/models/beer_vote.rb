@@ -31,6 +31,10 @@ class BeerVote < ActiveRecord::Base
 
   validates_presence_of :commented_at
 
+  def text
+    self.comment
+  end
+
   def self.last_updated_at
     vote = BeerVote.find(:first, :order => 'beer_votes.commented_at desc')
     if vote

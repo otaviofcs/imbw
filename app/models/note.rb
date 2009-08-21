@@ -34,6 +34,14 @@ class Note < ActiveRecord::Base
     find_options_for_find_tagged_with(tag, options)
   }
 
+  def title
+    "Twit http://twitter.com/otaviofcs/status/#{self.twit_id}"
+  end
+
+  def text
+    self.note
+  end
+
   def self.create_notes_from_twitter
     @notes = []
     @twitter_updates = Twitter::Search.new.from("otaviofcs")

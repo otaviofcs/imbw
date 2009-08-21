@@ -8,11 +8,11 @@ xml.rss :version => "2.0" do
 
     for activity in @recent_activities
       xml.item do
-        xml.title activity.title
-        xml.description activity.formatted_body(:full)
+        xml.title activity.recentable.title
+        xml.description activity.recentable.text
         xml.pubDate activity.created_at.to_s(:rfc822)
-        xml.link post_url(:id => "#{post.id}-#{h(post.title)}")
-        xml.guid post_url(:id => "#{post.id}-#{h(post.title)}")
+        xml.link pages_url(:search => { :id_equals => activity.id })
+        xml.guid pages_url(:search => { :id_equals => activity.id })
       end
     end
   end

@@ -32,4 +32,13 @@ class Comment < ActiveRecord::Base
     :with => WEB_SITE_REGEX,
     :allow_blank => true
 
+
+  def title
+    "comentário feito por #{self.name}"
+  end
+
+  def text
+    self.comment
+  end
+
 end

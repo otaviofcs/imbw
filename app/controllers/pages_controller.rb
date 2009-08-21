@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   # GET /pages
+  # GET /pages.rss
   # GET /
   # Via: pages_path
   # Disponível: [todos]

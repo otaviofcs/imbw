@@ -63,6 +63,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def text
+    self.formatted_body(:full)
+  end
+
   protected
 
     def update_edited_at
