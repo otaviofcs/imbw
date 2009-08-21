@@ -1,2 +1,82 @@
 module PagesHelper
+
+  def recent_box(recent_activity)
+    self.send("#{recent_activity.recentable.class.name.underscore}_box".to_sym, recent_activity.recentable)
+  end
+
+  def post_box(post)
+    content_tag(:div, :class => 'index_box') do
+      html = ""
+      html << content_tag(:h3) do
+        html = ""
+        html << link_to(image_tag('w_mini.png', :alt => 'Writing', :title => 'Artigos escritos aqui, no imbw.'), posts_path)
+        html << link_to('Writing', posts_path)
+        html
+      end
+      html << content_tag(:p, "#{link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)}")
+      html
+    end
+  end
+
+  def comment_box(comment)
+    content_tag(:div, :class => 'index_box') do
+      html = ""
+      html << content_tag(:h3) do
+        html2 = image_tag('o_mini.png', :alt => 'Observing', :title => 'Últimos comentários sobre as fotos.')
+        html2 << link_to('Observing', galleries_path)
+        html2
+      end
+      html << content_tag(:p) do
+        html2 = content_tag(:span, "#{comment.name}:", :class => 'destaque')
+        html2 << comment.comment
+        html2
+      end
+      html
+    end
+  end
+
+  def beer_vote_box(beer_vote)
+    content_tag(:div, :class => 'index_box') do
+      html = ""
+      html << content_tag(:h3) do
+        html2 = image_tag('g_mini.png', :alt => 'Gristing', :title => 'Cervejas. Aqui, só impressão sobre cervejas que bebi.')
+        html2 << link_to('Gristing', beer_votes_path)
+        html2
+      end
+      html << star_rating(beer_vote.vote) if beer_vote.vote
+      html << " foi a nota para #{link_to beer_vote.title, beer_votes_path}"
+      html << content_tag(:div, "&nbsp;", :class => "clear")
+      html
+    end
+  end
+
+  def link_box(link)
+    content_tag(:div, :class => 'index_box') do
+      html = ""
+      html << content_tag(:h3) do
+        html2 = image_tag('r_mini.png', :alt => 'Reading', :title => 'Links de artigos interessantes na internet.')
+        html2 << link_to('Reading', links_path)
+        html2
+      end
+      html << content_tag(:p) do
+        link_for_links(link)
+      end
+      html
+    end
+  end
+
+  def note_box(note)
+    content_tag(:div, :class => 'index_box') do
+      html = ""
+      html << content_tag(:h3) do
+        html2 = image_tag('n_mini.png', :alt => 'Taking Notes', :title => 'Pensamentos. Últimos pensamentos.')
+        html2 << link_to('Taking Notes', notes_path)
+        html2
+      end
+      html << content_tag(:p) do
+        link_to truncate(note.note, :length => 80, :omission => "..."), notes_path
+      end
+      html
+    end
+  end
 end

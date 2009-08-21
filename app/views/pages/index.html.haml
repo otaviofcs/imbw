@@ -1,63 +1,9 @@
 .span-24
-  .span-17
-    .span-14.append-2
-      .index_box
-        %h3
-          = image_tag 'w_mini.png', :alt => 'Writing', :title => 'Writing'
-          = link_to 'Writing', posts_path
-        %p
-          Artigos escritos aqui, no imbw.
-        %ul
-          - @posts.each do |post|
-            %li
-              = link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)
-    .span-14.prepend-2
-      .index_box
-        %h3
-          = image_tag 'r_mini.png', :alt => 'Reading', :title => 'Reading'
-          = link_to 'Reading', links_path
-        %p Links de artigos interessantes na internet.
-        %ul
-          - @links.each do |one_link|
-            %li= link_for_links(one_link)
-    .span-14.append-2
-      .index_box
-        %h3
-          = image_tag 'o_mini.png', :alt => 'Observing', :title => 'Observing'
-          = link_to 'Observing', galleries_path
-        %p
-          Últimos comentários sobre as fotos.
-        %ul
-          - @comments.each do |comment|
-            %li
-              %span.destaque
-                = "#{comment.name}:"
-              = comment.comment
-    .span-14.prepend-2
-      .index_box
-        %h3
-          = image_tag 'n_mini.png', :alt => 'Taking Notes', :title => 'Taking Notes'
-          = link_to 'Taking Notes', notes_path
-        %p
-          Pensamentos. Últimos pensamentos.
-        %ul
-          - @notes.each do |note|
-            %li
-              = link_to truncate(note.note, :length => 40, :omission => "..."), notes_path
-    .span-14.append-2.append-bottom
-      .index_box
-        %h3
-          = image_tag 'g_mini.png', :alt => 'Gristing', :title => 'Gristing'
-          = link_to 'Gristing', beer_votes_path
-        %p
-          Cervejas. Aqui, só impressão sobre cervejas que bebi.
-        %ul
-          - @beer_votes.each do |beer_vote|
-            %li
-              = star_rating beer_vote.vote if beer_vote.vote
-              para
-              = link_to beer_vote.title, beer_votes_path
-              .clear
+  .prepend-1.span-16.prepend-top
+    %h1 I might be...
+    - @recent_activities.each do |recent_activity|
+      = recent_box recent_activity
+
   .sidebar.prepend-top.span-6.last
     .more
       %h4 Achou pouco?
