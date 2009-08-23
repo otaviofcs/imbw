@@ -8,12 +8,13 @@ module PagesHelper
     content_tag(:div, :class => 'index_box') do
       html = ""
       html << content_tag(:h3) do
-        html = ""
-        html << link_to(image_tag('w_mini.png', :alt => 'Writing', :title => 'Artigos escritos aqui, no imbw.'), posts_path)
-        html << link_to('Writing', posts_path, :title => 'Artigos escritos aqui, no imbw.')
-        html
+        html2 = link_to(image_tag('w_mini.png', :alt => 'Writing', :title => 'Artigos escritos aqui, no imbw.'), posts_path)
+        html2 << link_to('Writing', posts_path, :title => 'Artigos escritos aqui, no imbw.')
+        html2
       end
-      html << content_tag(:p, "#{link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)}")
+      html << content_tag(:p) do
+        "#{link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)}"
+      end
       html
     end
   end
