@@ -10,6 +10,11 @@ class Note < ActiveRecord::Base
 
   attr_accessible :note, :note_taked_at, :twit_id
 
+  #
+  # Association
+  #
+  has_one :recent_activity, :as => :recentable, :dependent => :destroy
+
 
   #
   # Validations

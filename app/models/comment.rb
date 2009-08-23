@@ -9,8 +9,16 @@ class Comment < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
+  #
+  # Association
+  #
+  has_one :recent_activity, :as => :recentable, :dependent => :destroy
 
   belongs_to :gallery
+
+  #
+  # Option
+  #
 
   attr_accessible :name, :comment, :website, :email
 

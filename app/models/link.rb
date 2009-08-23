@@ -2,18 +2,25 @@ class Link < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  #
+  # Options
+  #
+
   LINK_SOURCE_TYPES = {
     "rplinks" => 'https://links.riopro.com.br/bookmarks/otavio',
     "google_reader" => 'http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast'
   }
 
-  #
-  # Options
-  #
   cattr_reader :per_page
   @@per_page = 10
 
   attr_accessible :title, :link, :description, :tag_list, :linked_at, :link_source
+
+  #
+  # Association
+  #
+  has_one :recent_activity, :as => :recentable, :dependent => :destroy
+
 
   #
   # Named Scopes

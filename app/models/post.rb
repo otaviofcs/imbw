@@ -16,11 +16,13 @@ class Post < ActiveRecord::Base
   @@per_page = 10
 
 
+
   #
   # Association
   #
-
   belongs_to :user
+
+  has_one :recent_activity, :as => :recentable, :dependent => :destroy
 
   #
   # Named Scopes

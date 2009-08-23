@@ -6,6 +6,15 @@ class BeerVote < ActiveRecord::Base
 
   named_scope :by_id, :order => "id desc"
 
+  #
+  # Association
+  #
+  has_one :recent_activity, :as => :recentable, :dependent => :destroy
+
+  #
+  # Option
+  #
+
   cattr_reader :per_page
   @@per_page = 10
 
