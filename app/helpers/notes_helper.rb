@@ -2,18 +2,18 @@ module NotesHelper
 
   # baseado na versão para javascript existente em:
   # http://www.simonwhatley.co.uk/examples/twitter/prototype/
-  def formatting_twits(twit)
+  def parse_twit(twit)
     new_twit = twit
-    new_twit = twitter_urls(new_twit)
-    new_twit = twitter_usernames(new_twit)
-    new_twit = twitter_hashtags(new_twit)
+    new_twit = self.twitter_urls(new_twit)
+    new_twit = self.twitter_usernames(new_twit)
+    new_twit = self.twitter_hashtags(new_twit)
     new_twit
   end
 
   def twitter_urls(twit)
-    all_urls = twit.scan(/[A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&\?\/.=]+/)
-    all_urls.each do |one_url|
-      twit = twit.gsub(/#{one_url}/, link_to( one_url, one_url ) )
+    twit_urls = twit.scan(/[A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&\?\/.=]+/)
+    twit_urls.each do |twit_url|
+      twit = twit.gsub(/#{twit_url}/, link_to( twit_url, twit_url ) )
     end
     twit
   end
