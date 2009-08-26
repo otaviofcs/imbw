@@ -16,7 +16,10 @@ module NotesHelper
   end
 
   def twitter_usernames(twit)
-    /@([A-Za-z0-9\-_]+)/
+    users = twit.scan(/@([A-Za-z0-9\-_]+)/)
+    users.each do |user|
+      twit = twit.gsub(/@#{user}/, link_to("@#{user}", "http://twitter.com/#{user}" ) )
+    end
     twit
   end
 
