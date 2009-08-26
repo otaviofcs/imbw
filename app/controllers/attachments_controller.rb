@@ -12,5 +12,4 @@ class AttachmentsController < ApplicationController
     @attachments = @search.paginate(:page => params[:page])
   end
 
-
 end

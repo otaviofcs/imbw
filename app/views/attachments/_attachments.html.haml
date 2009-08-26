@@ -1,3 +1,8 @@
+%h4 Fotos dessa cerveja:
+
 - if attachments.size > 0
   - attachments.each do |attachment|
     = render :partial => 'attachments/attachment', :locals => { :attachment => attachment }
+- else
+  %p
+    Sem fotos disponíveis para essa cerveja.
