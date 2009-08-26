@@ -55,7 +55,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :links
   # Taking Notes
   map.resources :notes
-  
+
+  map.resources :attachments
+
   map.admin_root '/admin',  :controller => 'admin/posts', :action => 'index'
   map.namespace(:admin) do |admin|
     admin.resource :session
