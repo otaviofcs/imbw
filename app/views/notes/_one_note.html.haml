@@ -1,7 +1,7 @@
 .twit
   %p
     %span
-      = note.note
+      = parse_twit(note.note)
     %br/
     Em
     = l(note.note_taked_at, :format => :long)
