@@ -2,7 +2,11 @@
   Álbum
   = @gallery.title
 %p
+  = @gallery.description if @gallery.description
+%p
   = link_to "Link público", gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}")
+  ou
+  = link_to "editar álbum", edit_admin_gallery_path(@gallery), :class => 'link-edit'
 %p
   Código público:
   - unless @gallery.public_code.blank?
