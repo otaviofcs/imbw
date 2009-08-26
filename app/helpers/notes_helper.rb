@@ -11,7 +11,10 @@ module NotesHelper
   end
 
   def twitter_urls(twit)
-    /[A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&\?\/.=]+/
+    all_urls = twit.scan(/[A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&\?\/.=]+/)
+    all_urls.each do |one_url|
+      twit = twit.gsub(/#{one_url}/, link_to( one_url, one_url ) )
+    end
     twit
   end
 

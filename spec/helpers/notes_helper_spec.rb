@@ -8,6 +8,10 @@ describe NotesHelper do
     included_modules.should include(NotesHelper)
   end
 
+  describe ".twitter_urls(twit)" do
+    helper.twitter_urls("link http://bit.ly/roeorer").should == "link <a href=\"http://bit.ly/roeorer\">http://bit.ly/roeorer</a>"
+  end
+
   describe ".twitter_usernames(twit)" do
     it "should render twitter user correctly" do
       helper.twitter_usernames("nada demais, aqui mesmo.").should == "nada demais, aqui mesmo."
