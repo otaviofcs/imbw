@@ -21,4 +21,4 @@
       = link_to 'excluir', beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
 
 - javascript_tag do
-  = "$.getScript('/attachments?html_id=beer#{beer_vote.id}&search[title_equals][]=#{beer_vote.title}');"
+  = "$.getScript('/attachments?html_id=beer#{beer_vote.id}&search[title_equals][]=#{u(beer_vote.title)}');"
