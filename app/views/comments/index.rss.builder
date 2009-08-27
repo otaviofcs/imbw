@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
 
     for comment in @comments
       xml.item do
-        xml.title "feito por #{comment.name}"
+        xml.title "#{comment.name} comentou"
         xml.description comment.comment
         xml.pubDate comment.created_at.to_s(:rfc822)
         xml.link comment_url(comment)
