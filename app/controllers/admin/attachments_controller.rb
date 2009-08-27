@@ -7,7 +7,10 @@ class Admin::AttachmentsController < ApplicationController
   #
   # lista de attachments
   def index
-    @attachments = current_user.attachments.paginate( :page => params[:page] )
+    search_params = { :order => 'descend_by_id' }
+    search_params = search_params.merge(params[:search]) if params[:search]
+    @search = current_user.attachments.search(search_params)
+    @attachments = @search.paginate( :page => params[:page] )
     @page_title = "Lista de Attachments"
   end
 
