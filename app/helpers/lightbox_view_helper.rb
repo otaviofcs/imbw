@@ -13,12 +13,19 @@ module LightboxViewHelper
     link_to(name, options, html_options, *parameters_for_method_reference)
   end
 
-  # inicializa lightbox
-  def lightbox_init()
+  # inicializa lightbox. Por padrão inicia o lightbox para todas as imagens
+  # que contenham em parte da tag rel o nome lightbox. Se você quiser fazer
+  # uma galeria específica, passe o nome da mesma. Assim o lightbox vai agrupar
+  # todos os links cujo rel seja exatamente lightboxNOME_GALERIA
+  def lightbox_init(gallery_name = nil)
     javascript_tag do
       html = ""
       html <<	"$(document).ready(function(){\n"
-      html <<	"$('a[rel*=lightbox]').lightbox();\n"
+      unless gallery_name
+        html <<	"$('a[rel*=lightbox]').lightbox();\n"
+      else
+        html <<	"$('a[rel=lightbox#{gallery_name}]').lightbox();\n"
+      end
       html <<	"});"
       html
     end

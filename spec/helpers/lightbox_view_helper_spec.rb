@@ -8,9 +8,15 @@ describe LightboxViewHelper do
     included_modules.should include(LightboxViewHelper)
   end
 
-  describe ".lightbox_init()" do
-    it "should return nil if there are no flashes to show" do
-      helper.lightbox_init.should == "<script type=\"text/javascript\">\n//<![CDATA[\nLightboxOptions.fileLoadingImage = '#{ image_path('lightbox/loading.gif') }';\nLightboxOptions.fileBottomNavCloseImage = '#{ image_path('lightbox/closelabel.gif') }';\nLightboxOptions.labelImage = 'Imagem';\nLightboxOptions.labelOf = 'de';\n//]]>\n</script>\n"
+  describe ".lightbox_init(nil)" do
+    it "should return a script enabling a lightbox with all links with rel like lightbox" do
+      helper.lightbox_init.should == "<script type=\"text/javascript\">\n//<![CDATA[\n$(document).ready(function(){\n$('a[rel*=lightbox]').lightbox();\n});\n//]]>\n</script>"
+    end
+  end
+
+  describe ".lightbox_init(MY_GALLERY)" do
+    it "should return a script enabling a lightbox with all links with rel = lightboxGALLERY_NAME" do
+      helper.lightbox_init("GALLERY_NAME").should == "<script type=\"text/javascript\">\n//<![CDATA[\n$(document).ready(function(){\n$('a[rel=lightboxGALLERY_NAME]').lightbox();\n});\n//]]>\n</script>"
     end
   end
 
