@@ -10,9 +10,6 @@ class CommentsController < ApplicationController
     params_search = params_search.merge(params[:searchlogic_search]) if params[:searchlogic_search]
     @search = Comment.search params_search
     @comments = @search.paginate(:page => params[:page])
-    respond_to do |format|
-      format.js
-    end
   end
 
 end
