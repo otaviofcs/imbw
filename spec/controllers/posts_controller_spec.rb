@@ -32,7 +32,7 @@ describe PostsController do
 
   describe "GET show/1" do
     before(:each) do
-      @post = mock_model(Post)
+      @post = mock_model(Post, { :title => 'my title' })
       Post.stub!(:find).and_return(@post)
     end
     def call_action(params={})

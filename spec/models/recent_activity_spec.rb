@@ -1,9 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RecentActivity do
+  fixtures :notes
+
   before(:each) do
     @valid_attributes = {
-      
+      :recentable => notes(:twit_one)
     }
   end
 

@@ -17,7 +17,7 @@ describe ApplicationHelper do
       helper.display_flashes.should have_tag("div[id='flash_notice'][class='flash']") do
         with_tag "p", "Notice message"
         with_tag "span[class='close']" do
-          with_tag "a[onclick='$(this).up(\'#flash_notice\').remove(); return false;']", "fechar"
+          with_tag "a[onclick='$('#flash_notice').remove(); return false;']", "fechar"
         end
       end
     end
