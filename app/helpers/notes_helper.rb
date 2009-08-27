@@ -19,18 +19,14 @@ module NotesHelper
   end
 
   def twitter_usernames(twit)
-    users = twit.scan(/@([A-Za-z0-9\-_]+)/)
-    users.each do |user|
-      twit = twit.gsub(/@#{user}/, link_to("@#{user}", "http://twitter.com/#{user}" ) )
+    twit.gsub(/@([\w\-_]+)/) do
+      link_to("@#{$1}", "http://twitter.com/#{$1}" )
     end
-    twit
   end
 
   def twitter_hashtags(twit)
-    hashtags = twit.scan(/#([A-Za-z0-9\-_]+)/i)
-    hashtags.each do |tag|
-      twit = twit.gsub(/##{tag}/, link_to("##{tag}", notes_path(:search => { :tagged_with_on_tags => tag }) ) )
+    twit.gsub(/#([\w\-_]+)/i) do
+      link_to("##{$1}", notes_path(:search => { :tagged_with_on_tags => $1 }) )
     end
-    twit
   end
 end

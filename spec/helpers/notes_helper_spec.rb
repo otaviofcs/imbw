@@ -11,8 +11,8 @@ describe NotesHelper do
   describe ".formatting_twits(twit)" do
     it "should replace correctly" do
       helper.parse_twit("com um link http://riopro.com.br, de @otaviofcs.").should == "com um link <a href=\"http://riopro.com.br\">http://riopro.com.br</a>, de <a href=\"http://twitter.com/otaviofcs\">@otaviofcs</a>."
-      helper.parse_twit("com um #link http://riopro.com.br, de @otaviofcs.").should == "com um <a href=\"/notes?search%5Btagged_with_on_tags%5D%5B%5D=link\">#link</a> <a href=\"http://riopro.com.br\">http://riopro.com.br</a>, de <a href=\"http://twitter.com/otaviofcs\">@otaviofcs</a>."
-      helper.parse_twit("com um link http://riopro.com.br, de @otaviofcs. #teste").should == "com um link <a href=\"http://riopro.com.br\">http://riopro.com.br</a>, de <a href=\"http://twitter.com/otaviofcs\">@otaviofcs</a>. <a href=\"/notes?search%5Btagged_with_on_tags%5D%5B%5D=teste\">#teste</a>"
+      helper.parse_twit("com um #link http://riopro.com.br, de @otaviofcs.").should == "com um <a href=\"/notes?search%5Btagged_with_on_tags%5D=link\">#link</a> <a href=\"http://riopro.com.br\">http://riopro.com.br</a>, de <a href=\"http://twitter.com/otaviofcs\">@otaviofcs</a>."
+      helper.parse_twit("com um link http://riopro.com.br, de @otaviofcs. #teste").should == "com um link <a href=\"http://riopro.com.br\">http://riopro.com.br</a>, de <a href=\"http://twitter.com/otaviofcs\">@otaviofcs</a>. <a href=\"/notes?search%5Btagged_with_on_tags%5D=teste\">#teste</a>"
     end
   end
 
@@ -32,9 +32,9 @@ describe NotesHelper do
 
   describe ".twitter_hashtags(twit)" do
     it "should render hashtags correctly" do
-      helper.twitter_hashtags("oi, eu sou o #otavio e sou #bacana.").should == "oi, eu sou o <a href=\"/notes?search%5Btagged_with_on_tags%5D%5B%5D=otavio\">#otavio</a> e sou <a href=\"/notes?search%5Btagged_with_on_tags%5D%5B%5D=bacana\">#bacana</a>."
+      helper.twitter_hashtags("oi, eu sou o #otavio e sou #bacana.").should == "oi, eu sou o <a href=\"/notes?search%5Btagged_with_on_tags%5D=otavio\">#otavio</a> e sou <a href=\"/notes?search%5Btagged_with_on_tags%5D=bacana\">#bacana</a>."
       helper.twitter_hashtags("oi, eu sou o otavio e sou bacana.").should == "oi, eu sou o otavio e sou bacana."
-      helper.twitter_hashtags("com um link http://riopro.com.br, de @otaviofcs. #teste").should == "com um link http://riopro.com.br, de @otaviofcs. <a href=\"/notes?search%5Btagged_with_on_tags%5D%5B%5D=teste\">#teste</a>"
+      helper.twitter_hashtags("com um link http://riopro.com.br, de @otaviofcs. #teste").should == "com um link http://riopro.com.br, de @otaviofcs. <a href=\"/notes?search%5Btagged_with_on_tags%5D=teste\">#teste</a>"
     end
   end
 

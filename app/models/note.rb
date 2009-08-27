@@ -60,7 +60,7 @@ class Note < ActiveRecord::Base
 
   def self.create_one_note(twit)
     note = Note.new :note => twit.text, :note_taked_at => twit.created_at.to_time, :twit_id => twit.id
-    hashtags = twit.text.scan(/#([a-z0-9_]+)/i)
+    hashtags = twit.text.scan(/#([\w\-_]+)/i)
     note.tag_list = hashtags.each{ |tag| tag }.join(", ")
     note
   end
