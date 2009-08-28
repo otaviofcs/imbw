@@ -25,6 +25,7 @@ class Note < ActiveRecord::Base
 
   validates_presence_of :note_taked_at
   validates_presence_of :note
+  validate :block_beer_votes
 
 
   #
@@ -63,6 +64,10 @@ class Note < ActiveRecord::Base
     hashtags = twit.text.scan(/#([\w\-_]+)/i)
     note.tag_list = hashtags.each{ |tag| tag }.join(", ")
     note
+  end
+
+  def block_beer_votes
+    self.errors.add(:note, 'não cadastrar votos de cerveja!') if self.note =~ /%bt/ || self.note =~ /%bv/ || self.note =~ /%title/
   end
 
 end

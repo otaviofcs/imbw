@@ -21,5 +21,13 @@ describe Note do
     it{ should validate_uniqueness_of(:twit_id) }
     it{ should validate_presence_of(:note_taked_at) }
     it{ should validate_presence_of(:note) }
+    it "should not allow beer votes as note" do
+      @note.note = "#beer %bv 3 %bd ótima"
+      doing { @note.save! }.should raise_error
+      @note.note = "#beer %title Erdinger %bd ótima"
+      doing { @note.save! }.should raise_error
+      @note.note = "#beer essa %aqui passa, %sem problema"
+      doing { @note.save! }.should_not raise_error
+    end
   end
 end
