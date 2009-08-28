@@ -69,12 +69,18 @@ class Admin::PostsController < AdminController
     @post = current_user.posts.find params[:id]
     @post.edited_at = Time.current
     @post.published_at = Time.current if params[:publish]
-    if @post.update_attributes(params[:post])
-      flash[:success] = "Post alterado com sucesso"
-      redirect_to admin_posts_path
-    else
-      @page_title = "Editando Post ##{@post.id}"
-      render :action => 'edit'
+    valid = @post.update_attributes(params[:post])
+    respond_to do |format|
+      format.html do
+        if valid
+          flash[:success] = "Post alterado com sucesso"
+          redirect_to admin_posts_path
+        else
+          @page_title = "Editando Post ##{@post.id}"
+          render :action => 'edit'
+        end
+      end
+      format.js
     end
   end
 

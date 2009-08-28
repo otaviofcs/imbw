@@ -8,7 +8,6 @@
       #post
         - form_for @post, :url => admin_post_path, :method => :put do |f|
           = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
-
       = render :partial => 'admin/posts/preview', :locals => { :post => nil }
   .sidebar.span-6.last.prepend-top
     = render :partial => 'admin/posts/sidebar'

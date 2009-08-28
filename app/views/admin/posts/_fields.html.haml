@@ -22,3 +22,8 @@
   = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
   ou
   = link_to 'cancelar', admin_posts_path
+  - unless post.new_record?
+    ou
+    %input{ :type => 'button', :id => 'save_and_continue', :value => 'Salvar e continuar' }
+    #save_and_continue_answer
+    = save_and_continue admin_post_path(post, :format => :js)
