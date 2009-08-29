@@ -14,7 +14,7 @@ class LinksController < ApplicationController
     @search = Link.search params_search
     @links = @search.paginate(:page => params[:page])
     @page_title = "O que estou lendo"
-    @tags = Link.tag_counts :limit => 10
+    @tags = Link.tag_counts :limit => 50, :order => 'tags.name'
   end
 
   # DELETE /links/1

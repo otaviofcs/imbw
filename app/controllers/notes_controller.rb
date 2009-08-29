@@ -15,7 +15,7 @@ class NotesController < ApplicationController
     @search = Note.search params_search
     @notes = @search.paginate(:page => params[:page])
     @page_title = "Anotações feitas no Twitter"
-    @tags = Note.tag_counts :limit => 10
+    @tags = Note.tag_counts :limit => 50, :order => 'tags.name'
   end
 
   # DELETE /notes/1
