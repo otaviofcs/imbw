@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
 
+  has_mobile_fu
+
   layout 'application'
 
   helper :all # include all helpers, all the time

@@ -14,4 +14,14 @@ class PagesController < ApplicationController
     @search = RecentActivity.search(@filter)
     @recent_activities = @search.paginate(:page => params[:page])
   end
+
+  # GET /pages/mobile
+  # GET /pages/mobile/true
+  # GET /pages/mobile/false
+  # GET /pages/mobile?id=true
+  def mobile
+    session[:mobile_view] = false unless params[:id]
+    session[:mobile_view] = params[:id] if params[:id]
+    redirect_to pages_path
+  end
 end

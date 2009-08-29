@@ -1,0 +1,7 @@
+.span-24
+  %h1.title_pages
+    =link_to "Mobile I might be...", pages_path, :title => 'am I wrong?'
+  - @recent_activities.each do |recent_activity|
+    = recent_box recent_activity
+  %p.paginate
+    = will_paginate @recent_activities

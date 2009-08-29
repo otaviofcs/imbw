@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     ## admin - administração da conta
 
   # Home
-  map.resources :pages
+  map.resources :pages, :collection => { :mobile => :get }
   # Writing
   map.resources :posts
   # Gristing

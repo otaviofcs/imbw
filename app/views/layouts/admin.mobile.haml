@@ -1,0 +1,30 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", 'xml:lang' => "en", :lang => "en"}
+  %head
+    %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
+    %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
+    %title= h(@page_title) if @page_title
+    = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
+    = stylesheet_link_tag "blueprint/print.css", :media => "print"
+    == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
+    = stylesheet_link_tag "application.css"
+    = stylesheet_link_tag "jquery.lightbox.css"
+
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery-ui'
+    = javascript_include_tag 'jrails'
+    = javascript_include_tag 'jquery.lightbox'
+    = javascript_include_tag 'application'
+  %body.main
+    .container
+      .prepend-top.span-24
+        .menu
+          = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+          = render :partial => 'shared/menu'
+      .clear
+      .content-all
+        = render :partial => 'shared/submenu_admin'
+        = display_flashes()
+        = yield
+        .clear
+        = render :partial => 'shared/footer'

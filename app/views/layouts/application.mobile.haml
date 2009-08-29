@@ -1,0 +1,35 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", 'xml:lang' => "en", :lang => "en"}
+  %head
+    %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
+    %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
+    %link{ :href => "/pages.rss", :rel => "alternate", :title => "imbw completo", :type => "application/rss+xml" }
+    %link{ :href => "/posts.rss", :rel => "alternate", :title => "posts", :type => "application/rss+xml" }
+    %link{ :href => "/comments.rss", :rel => "alternate", :title => "comments", :type => "application/rss+xml" }
+    %title= h(@page_title) if @page_title
+    = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
+    = stylesheet_link_tag "blueprint/print.css", :media => "print"
+    == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
+    = stylesheet_link_tag "application.css"
+    = stylesheet_link_tag "jquery.lightbox.css"
+
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery-ui'
+    = javascript_include_tag 'jrails'
+    = javascript_include_tag 'jquery.color'
+    = javascript_include_tag 'jquery.lightbox'
+    = javascript_include_tag 'application'
+  %body.main
+    .container
+      .prepend-top.span-24
+        .menu
+          .feed_rss
+            = link_to image_tag('rss.png', :alt => 'feed rss', :title => 'assine aqui o feed do imbw'), pages_url(:rss)
+          .clear
+          = render :partial => 'shared/menu'
+      .clear
+      .content-all
+        = display_flashes()
+        = yield
+        .clear
+        = render :partial => 'shared/footer'
