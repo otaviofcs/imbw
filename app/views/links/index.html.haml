@@ -23,13 +23,14 @@
   %p.paginate
     = will_paginate @links
 .sidebar.span-5
+  %h4 Buscar:
   - form_for @search do |f|
     %p
-      %label Título contendo
+      %label título contendo
       %br/
       = f.text_field :title_like, :size => 20
     %p
-      %label Descrição Contendo
+      %label descrição Contendo
       %br/
       = f.text_field :description_like, :size => 20
     %p
@@ -38,7 +39,7 @@
       = link_to "limpar filtros", links_path
   .tag_cloud
     %p
-      Núvem de tags
+      núvem de tags
       %br/
       - if @tags.size > 0
         - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
