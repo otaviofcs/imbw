@@ -182,7 +182,7 @@ module ActiveRecord
           conditions = [
             taggable_type,
             taggable_id,
-            options[:conditions],
+            sanitize_sql(options[:conditions]),
             start_at,
             end_at
           ]
@@ -204,7 +204,9 @@ module ActiveRecord
           { :select     => "#{Tag.table_name}.id, #{Tag.table_name}.name, COUNT(*) AS count", 
             :joins      => joins.join(" "),
             :conditions => conditions,
-            :group      => group_by
+            :group      => group_by,
+            :limit      => options[:limit],
+            :order      => options[:order]
           }
         end    
         
