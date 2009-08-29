@@ -1,0 +1,7 @@
+.general
+  %h2
+    Editando álbum
+    = @gallery.title
+
+  - form_for @gallery, :url => admin_gallery_path(@gallery), :method => :put do |f|
+    = render :partial => 'admin/galleries/fields', :locals => { :f => f, :gallery => @gallery }

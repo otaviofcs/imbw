@@ -1,0 +1,9 @@
+.comment
+  %p
+    %i
+      = comment.name if comment.website.blank?
+      = link_to comment.name, comment.website unless comment.website.blank?
+      comentou, há
+      = time_ago_in_words(comment.created_at) if comment.created_at
+    %br
+    = comment.comment

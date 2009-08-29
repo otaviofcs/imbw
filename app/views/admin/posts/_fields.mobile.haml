@@ -1,0 +1,29 @@
+= f.error_messages
+%p
+  = f.label_t :title
+  %br/
+  = f.text_field :title, :size => 50
+%p
+  = f.label_t :tag_list
+  %br/
+  = f.text_field :tag_list
+%p
+  = f.label_t :body
+  %br/
+  = f.text_area :body
+%p
+  = f.label_t :active
+  = f.check_box :active
+%p
+  = f.label_t :publish
+  = check_box_tag :publish unless post.published_at
+  = "já publicado" if post.published_at
+%p
+  = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+  ou
+  = link_to 'cancelar', admin_posts_path
+  - unless post.new_record?
+    ou
+    %input{ :type => 'button', :id => 'save_and_continue', :value => 'Salvar e continuar' }
+    #save_and_continue_answer
+    = save_and_continue admin_post_path(post, :format => :js)

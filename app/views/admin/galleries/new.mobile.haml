@@ -1,0 +1,6 @@
+.general
+  %h2
+    Novo álbum
+
+  - form_for @gallery, :url => admin_galleries_path, :method => :post do |f|
+    = render :partial => 'admin/galleries/fields', :locals => { :f => f, :gallery => @gallery }

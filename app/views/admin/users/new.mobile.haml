@@ -1,0 +1,9 @@
+%h4
+  Novo Usuário
+.data_edit
+  - form_for @user, :url => admin_users_path, :method => :post do |f|
+    = render :partial => 'admin/users/fields', :locals => { :f => f }
+    %p
+      = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+      ou
+      = link_to 'cancelar', admin_users_path

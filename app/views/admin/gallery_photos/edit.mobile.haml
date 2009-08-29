@@ -1,0 +1,21 @@
+.general
+  %h2
+    Editando foto do álbum
+    = @gallery.title
+
+  - form_for @photo, :url => admin_gallery_photo_path(@gallery), :method => :put do |f|
+    = f.error_messages
+    %p
+      = f.label_t :title
+      %br
+      = f.text_field :title
+    %p
+      Imagem:
+      %br
+      = lightbox_image_tag(@photo.public_filename(:small), @photo.public_filename(:medium), {:class=>"images"}, :title => "#{ ((@photo.title) ? @photo.title : "sem título" ) }", :rel => "lightbox")
+      %br
+      %span.field_info Não é possível alterar a imagem atual.
+    %p
+      = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+      ou
+      = link_to 'cancelar', admin_gallery_path(@gallery)

@@ -1,0 +1,50 @@
+.span-2
+.span-20
+  .explain.r
+    %span.featured
+      Reading
+    Aqui você vai encontrar links sobre coisas que ando lendo.
+    Portanto, divirta-se.
+    %br
+    %br
+    %br
+.span-2
+
+.prepend-1.span-17
+  %p
+    .order_by
+      Ordene por
+      = order @search, :by => :linked_at, :as => t("activerecord.attributes.link.linked_at").humanize
+      ou
+      = order @search, :by => :title, :as => t("activerecord.attributes.link.title").humanize
+  - @links.each do |link|
+    = render :partial => 'one_link', :locals => { :link => link }
+
+  %p.paginate
+    = will_paginate @links
+.sidebar.span-5
+  %h4 Buscar:
+  - form_for @search do |f|
+    %p
+      %label título contendo
+      %br/
+      = f.text_field :title_like, :size => 20
+    %p
+      %label descrição Contendo
+      %br/
+      = f.text_field :description_like, :size => 20
+    %p
+      %label Rótulo igual a
+      %br/
+      = f.text_field :tagged_with_on_tags, :size => 20
+    %p
+      = submit_tag 'filtrar', :disable_with => '...'
+    %p
+      = link_to "limpar filtros", links_path
+  .tag_cloud
+    %p
+      núvem de tags
+      %br/
+      - if @tags.size > 0
+        - tag_cloud @tags, %w(level1 level2 level3 level4) do |tag, css_class|
+          = link_to tag.name, links_path(:search => { :tagged_with_on_tags => tag.name }), :class => css_class

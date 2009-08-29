@@ -1,0 +1,17 @@
+.general
+  %h2 Attachments (anexos)
+  %p
+    = link_to "novo attachment", new_admin_attachment_path, :class => 'link-new'
+  .photos
+    - @attachments.each do |attachment|
+      .photo-box
+        .photo
+          %p
+            = lightbox_image_tag(attachment.public_filename(:small), attachment.public_filename(:medium), {:class=>"images"}, :title => "#{ ((attachment.title) ? attachment.title : "sem título" ) }", :rel => "lightbox[roadtrip]")
+          %p
+            = link_to "link público", attachment.public_filename(:medium)
+            %br/
+            = link_to "excluir", admin_attachment_path(attachment), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+
+  %p.paginate
+    = will_paginate @attachments

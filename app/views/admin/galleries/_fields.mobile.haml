@@ -1,0 +1,17 @@
+= f.error_messages
+%p
+  = f.label_t :title
+  %br/
+  = f.text_field :title
+%p
+  = f.label_t :description
+  %br/
+  = f.text_field :description
+%p
+  = f.label_t :public_code
+  %br/
+  = f.text_field :public_code
+%p
+  = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+  ou
+  = link_to 'cancelar', admin_galleries_path

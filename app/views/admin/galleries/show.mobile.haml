@@ -1,0 +1,28 @@
+%h2 
+  Álbum
+  = @gallery.title
+%p
+  = @gallery.description if @gallery.description
+%p
+  = link_to "Link público", gallery_path(:id => "#{@gallery.id}-#{@gallery.gallery_hash}")
+  ou
+  = link_to "editar álbum", edit_admin_gallery_path(@gallery), :class => 'link-edit'
+%p
+  Código público:
+  - unless @gallery.public_code.blank?
+    = "#{@gallery.id}-#{@gallery.public_code}"
+  -else
+    %span.info Sem código público
+%p
+  = link_to "adicionar foto", new_admin_gallery_photo_path(@gallery), :class => 'link-new'
+#photos.photos
+  - @photos.each do |photo|
+    .photo-box
+      .photo
+        = lightbox_image_tag(photo.public_filename(:small), photo.public_filename(:medium), {:class=>"images"}, :title => "#{ ((photo.title) ? photo.title : "sem título" ) }", :rel => "lightbox[roadtrip]")
+        %p
+          = link_to "editar", edit_admin_gallery_photo_path(@gallery, photo), :class => 'link-edit'
+          %br
+          = link_to "excluir", admin_gallery_photo_path(@gallery, photo), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+          %br
+          = link_to "link público", photo_path(:id => "#{photo.id}-#{photo.photo_hash}") if photo.photo_hash

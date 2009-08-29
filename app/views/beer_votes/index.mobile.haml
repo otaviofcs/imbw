@@ -1,0 +1,51 @@
+.span-2
+.span-20
+  #what_is_grist.explain.g
+    %span.featured
+      What is grist?
+    No
+    %a{ :href => 'http://www.beertown.org/education/dictionary.html' }Beer Dictionary
+    %span.english
+      , Grist: The mixture of milled grains to be used in a specific brew.
+    Em bom português quer dizer: a mistura de grãos moído para ser utilizado
+    numa determinada bebida. Nesse caso, cerveja. E é essa mistura que faz,
+    ao menos para mim, a cerveja ser tão especial.
+.span-2
+
+.span-18
+  .profile
+    = image_tag @user.twitter_profile_image
+    %h1
+      = link_to "@#{@user.twitter_profile}", "http://twitter.com/#{@user.twitter_profile}"
+      , talking about #beer
+    .clear
+
+#beer_votes.span-18
+  %p
+    .order_by
+      Ordene por
+      = order @search, :by => :commented_at, :as => t("activerecord.attributes.beer_vote.commented_at").humanize
+      ou
+      = order @search, :by => :title, :as => t("activerecord.attributes.beer_vote.title").humanize
+      ou
+      = order @search, :by => :vote, :as => t("activerecord.attributes.beer_vote.vote").humanize
+  - @beer_votes.each do |beer_vote|
+    = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => beer_vote }
+
+  %p.paginate
+    = will_paginate @beer_votes
+.sidebar.span-5
+  %h4 Buscar:
+  - form_for @search do |f|
+    %p
+      %label Título contendo
+      %br/
+      = f.text_field :title_like, :size => 20
+    %p
+      %label Comentário Contendo
+      %br/
+      = f.text_field :comment_like, :size => 20
+    %p
+      = submit_tag 'filtrar', :disable_with => '...'
+    %p
+      = link_to "limpar filtros", beer_votes_path

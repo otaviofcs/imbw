@@ -1,0 +1,21 @@
+.link
+  %h3
+    = link.title
+  %p
+    %span
+      = link.description
+    %br/
+    link:
+    = link_to truncate(link.link, 60), link.link
+  %p
+    feito há
+    = time_ago_in_words(link.linked_at) if link.linked_at
+    atrás, no
+    = link_to link.link_source, Link::LINK_SOURCE_TYPES[link.link_source], :title => 'link via #{link.link_source}' if link.link_source
+    - if current_user
+      ,
+      = link_to 'excluir', link_path(link), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
+  %p.tags
+    tags:
+    - link.tags.each do |tag|
+      = link_to tag.name, links_path(:search => { :tagged_with_on_tags => tag.name })

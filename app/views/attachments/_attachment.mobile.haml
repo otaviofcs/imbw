@@ -1,0 +1,5 @@
+.photo-box
+  .photo
+    = lightbox_image_tag(attachment.public_filename(:thumb), attachment.public_filename(:medium), {:class=>"images"}, :title => "#{ ((attachment.title) ? attachment.title : "sem título" ) }", :rel => "lightbox#{html_id}")
+
+= lightbox_init html_id
