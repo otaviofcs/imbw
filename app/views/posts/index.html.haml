@@ -30,6 +30,9 @@
     %h4 Buscar:
     - form_for @search do |f|
       %p
+        no título
+        %br/
+        = f.text_field :title_like, :size => 20
         no texto
         %br/
         = f.text_field :body_like, :size => 20
