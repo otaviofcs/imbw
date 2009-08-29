@@ -27,9 +27,10 @@
 
 .span-8.last
   .sidebar
+    %h2 Buscar:
     - form_for @search do |f|
       %p
-        Busca no texto
+        no texto
         %br/
         = f.text_field :body_like, :size => 20
         %br/
