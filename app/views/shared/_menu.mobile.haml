@@ -9,31 +9,13 @@
       %li
         = link_to "sair", logout_path, :class => 'link-logout'
     %li
-      = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();"
+      = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();", :title => 'o blog, aqui fica o blog.'
     %li
-      = link_to "<span class='wrong_high'>R</span>eading", links_path, :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"
+      = link_to "<span class='wrong_high'>R</span>eading", links_path, :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();", :title => 'links interessantes de coisas que ando lendo.'
     %li
-      = link_to "<span class='wrong_high'>O</span>bserving", galleries_path, :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"
+      = link_to "<span class='wrong_high'>O</span>bserving", galleries_path, :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();", :title => 'a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas'
     %li
-      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"
+      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();", :title => 'comentários rápidos. coisas simples.'
     %li
-      = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path, :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"
-.span-24
-  .prepend-6
-    #menuhome.description{ :style => 'display:none;' }
-      a página inicial do imbw.
-  .prepend-9
-    #menuwriting.description{ :style => 'display:none;' }
-      o blog, aqui fica o blog.
-  .prepend-12
-    #menureading.description{ :style => 'display:none;' }
-      links interessantes de coisas que ando lendo.
-  .prepend-6
-    #menuobserving.description{ :style => 'display:none;' }
-      a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas
-  .prepend-15
-    #menutaking_notes.description{ :style => 'display:none;' }
-      comentários rápidos. coisas simples.
-  .prepend-18
-    #menugristing.description{ :style => 'display:none;' }
-      cerveja! aqui só entra cerveja!
+      = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path, :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();", :title => 'cerveja! aqui só entra cerveja!'
+
