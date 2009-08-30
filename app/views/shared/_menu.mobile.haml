@@ -9,8 +9,6 @@
       %li
         = link_to "sair", logout_path, :class => 'link-logout'
     %li
-      = link_to image_tag('home.gif', :alt=> 'home', :title => 'página inicial', :class => 'home_image'), pages_path, :class => "#{"active" if controller.controller_name == 'pages' }", :onmouseout =>  "$('menuhome').hide();", :onmouseover => "$('menuhome').show();"
-    %li
       = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();"
     %li
       = link_to "<span class='wrong_high'>R</span>eading", links_path, :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"

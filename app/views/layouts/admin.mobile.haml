@@ -14,14 +14,11 @@
     = javascript_include_tag 'application'
   %body.main
     .container
-      .prepend-top.span-24
-        .menu
-          = image_tag("imightbewrong_mobile.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
-          = render :partial => 'shared/menu'
+      = link_to image_tag("imightbewrong_mobile.png", :alt => "I might be W.R.O.N.G."), pages_path
+      = render :partial => 'shared/menu'
+    .content-all
+      = render :partial => 'shared/submenu_admin'
+      = display_flashes()
+      = yield
       .clear
-      .content-all
-        = render :partial => 'shared/submenu_admin'
-        = display_flashes()
-        = yield
-        .clear
-        = render :partial => 'shared/footer'
+      = render :partial => 'shared/footer'
