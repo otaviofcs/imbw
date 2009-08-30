@@ -3,13 +3,7 @@
   %head
     %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
-    %link{ :href => "/pages.rss", :rel => "alternate", :title => "imbw completo", :type => "application/rss+xml" }
-    %link{ :href => "/posts.rss", :rel => "alternate", :title => "posts", :type => "application/rss+xml" }
-    %link{ :href => "/comments.rss", :rel => "alternate", :title => "comments", :type => "application/rss+xml" }
-    %title= h(@page_title) if @page_title
-    = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
-    = stylesheet_link_tag "blueprint/print.css", :media => "print"
-    == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
+    %title= "#{h(@page_title)} - mobile version" if @page_title
     = stylesheet_link_tag "application.css"
     = stylesheet_link_tag "jquery.lightbox.css"
 
@@ -23,8 +17,6 @@
     .container
       .prepend-top.span-24
         .menu
-          .feed_rss
-            = link_to image_tag('rss.png', :alt => 'feed rss', :title => 'assine aqui o feed do imbw'), pages_url(:rss)
           .clear
           = render :partial => 'shared/menu'
       .clear

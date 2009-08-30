@@ -3,11 +3,8 @@
   %head
     %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
-    %title= h(@page_title) if @page_title
-    = stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection"
-    = stylesheet_link_tag "blueprint/print.css", :media => "print"
-    == <!--[if lt IE 8]>#{stylesheet_link_tag "blueprint/ie.css", :media => "screen, projection"}<![endif]-->
-    = stylesheet_link_tag "application.css"
+    %title= "#{h(@page_title)} - admin mobile version" if @page_title
+    = stylesheet_link_tag "application_mobile.css"
     = stylesheet_link_tag "jquery.lightbox.css"
 
     = javascript_include_tag 'jquery'
@@ -19,7 +16,7 @@
     .container
       .prepend-top.span-24
         .menu
-          = image_tag("imightbewrong.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
+          = image_tag("imightbewrong_mobile.png", :alt => "I might be W.R.O.N.G.", :title => "I might be W.R.O.N.G.")
           = render :partial => 'shared/menu'
       .clear
       .content-all
