@@ -1,33 +1,25 @@
-.span-24.main_menu.header
-  - unless current_user
-    .prepend-4.span-2
-      %p{ :class => "#{"active" if controller.controller_name == 'session' }" }
-        = link_to "login", login_path
-  - else
-    .prepend-2.span-2
-      %p
+.main_menu.header
+  %ul
+    - unless current_user
+      %li
+        = link_to "login", login_path, :class => "#{"active" if controller.controller_name == 'session' }"
+    - else
+      %li
         = link_to "admin", admin_root_path, :class => 'link-admin'
-    .span-2
-      %p
+      %li
         = link_to "sair", logout_path, :class => 'link-logout'
-  .span-2.append-1
-    %p{ :class => "#{"active" if controller.controller_name == 'pages' }", :onmouseout =>  "$('menuhome').hide();", :onmouseover => "$('menuhome').show();" }
-      = link_to image_tag('home.gif', :alt=> 'home', :title => 'página inicial', :class => 'home_image'), pages_path
-  .span-2
-    %p{ :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();" }
-      = link_to "<span class='wrong_high'>W</span>riting", posts_path
-  .prepend-1.span-2
-    %p{ :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"}
-      = link_to "<span class='wrong_high'>R</span>eading", links_path
-  .prepend-1.span-2
-    %p{ :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"}
-      = link_to "<span class='wrong_high'>O</span>bserving", galleries_path
-  .prepend-1.span-3
-    %p{ :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"}
-      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path
-  .span-2.append-1.last
-    %p{ :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"}
-      = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path
+    %li
+      = link_to image_tag('home.gif', :alt=> 'home', :title => 'página inicial', :class => 'home_image'), pages_path, :class => "#{"active" if controller.controller_name == 'pages' }", :onmouseout =>  "$('menuhome').hide();", :onmouseover => "$('menuhome').show();"
+    %li
+      = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();"
+    %li
+      = link_to "<span class='wrong_high'>R</span>eading", links_path, :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"
+    %li
+      = link_to "<span class='wrong_high'>O</span>bserving", galleries_path, :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"
+    %li
+      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"
+    %li
+      = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path, :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();"
 .span-24
   .prepend-6
     #menuhome.description{ :style => 'display:none;' }

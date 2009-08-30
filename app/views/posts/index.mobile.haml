@@ -1,1 +1,9 @@
-%h1 Versão Mobile
+%h1 Posts - Versão Mobile
+
+#posts
+  - @posts.each do |post|
+    = render :partial => 'one_post', :locals => { :post => post, :body => post.formatted_body }
+  %p.paginate
+    = will_paginate @posts
+
+= disqus_comment_counter_tag(Settings::DISQUS_SITE_ID)
