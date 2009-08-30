@@ -3,18 +3,18 @@
   = f.label_t :login
   %span.info obrigatório
   %br
-  = f.text_field :login
+  = f.text_field :login, :class => 'full'
 %p
   = f.label_t :email
   %span.info obrigatório
   %br
-  = f.text_field :email
+  = f.text_field :email, :class => 'full'
 %p
   = f.label_t :password
   %span.info só preencher se quiser alterar a senha
   %br
-  = f.password_field :password
+  = f.password_field :password, :class => 'full'
 %p
   = f.label_t :password_confirmation
   %br
-  = f.password_field :password_confirmation
+  = f.password_field :password_confirmation, :class => 'full'

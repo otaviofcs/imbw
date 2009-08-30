@@ -1,13 +1,11 @@
-.span-24
-  .span-17
-    .general
-      %h2
-        Novo Post
+.general
+  %h2
+    Novo Post
 
-      #post
-        - form_for @post, :url => admin_posts_path, :method => :post do |f|
-          = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
+  #post
+    - form_for @post, :url => admin_posts_path, :method => :post do |f|
+      = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
 
-    = render :partial => 'admin/posts/preview', :locals => { :post => nil }
-  .sidebar.span-6.last.prepend-top
+  = render :partial => 'admin/posts/preview', :locals => { :post => nil }
+  .sidebar
     = render :partial => 'admin/posts/sidebar'

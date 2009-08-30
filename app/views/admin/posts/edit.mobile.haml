@@ -1,13 +1,11 @@
-.span-24
-  .span-17
-    .general
-      %h2
-        Editando Post
-        = "##{@post.id}"
+.general
+  %h2
+    Editando Post
+    = "##{@post.id}"
 
-      #post
-        - form_for @post, :url => admin_post_path, :method => :put do |f|
-          = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
-      = render :partial => 'admin/posts/preview', :locals => { :post => nil }
-  .sidebar.span-6.last.prepend-top
+  #post
+    - form_for @post, :url => admin_post_path, :method => :put do |f|
+      = render :partial => 'admin/posts/fields', :locals => { :f => f, :post => @post }
+  = render :partial => 'admin/posts/preview', :locals => { :post => nil }
+  .sidebar
     = render :partial => 'admin/posts/sidebar'
