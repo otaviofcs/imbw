@@ -78,16 +78,6 @@ a.link-user {
   background-repeat: no-repeat;
   padding-left: 1.5em; }
 
-a.link-login {
-  background-image: url(../images/login.png);
-  background-repeat: no-repeat;
-  padding-left: 1.5em; }
-
-a.link-logout {
-  background-image: url(../images/logout.png);
-  background-repeat: no-repeat;
-  padding-left: 1.5em; }
-
 a.link-new {
   background-image: url(../images/add.png);
   background-repeat: no-repeat;
@@ -150,7 +140,7 @@ textarea.my_text_area {
   .main_menu ul li {
     list-style: none;
     display: inline;
-    font-size: 0.9em;
+    font-size: 1.8em;
     padding: 4px 6px;
     margin: 0 0 0 1px;
     text-align: center; }

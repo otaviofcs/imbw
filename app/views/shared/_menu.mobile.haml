@@ -7,7 +7,7 @@
       %li
         = link_to "admin", admin_root_path, :class => 'link-admin'
       %li
-        = link_to "sair", logout_path, :class => 'link-logout'
+        = link_to "sair", logout_path
     %li
       = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();", :title => 'o blog, aqui fica o blog.'
     %li
