@@ -300,8 +300,8 @@ textarea.my_text_area {
 
 .explain {
   background-color: #D1D1DF;
-  padding: 0.5em 0.5em 0.5em 68px;
-  margin: 2em; }
+  padding: 0.2em 0.1em 0.6em 40px;
+  margin: 0.1em; }
   .explain .featured {
     font-size: 1.3em;
     font-color: #66666F;
@@ -340,33 +340,33 @@ h1.title_pages a {
     font-size: 1.2em; }
 
 .w {
-  background-image: url(../images/w.png);
+  background-image: url(../images/w_mini.png);
   background-repeat: no-repeat;
   background-position: 4px 4px; }
 
 .r {
-  background-image: url(../images/r.png);
+  background-image: url(../images/r_mini.png);
   background-repeat: no-repeat;
   background-position: 4px 4px; }
 
 .o {
-  background-image: url(../images/o.png);
+  background-image: url(../images/o_mini.png);
   background-repeat: no-repeat;
   background-position: 4px 4px; }
 
 .n {
-  background-image: url(../images/n.png);
+  background-image: url(../images/n_mini.png);
   background-repeat: no-repeat;
   background-position: 4px 4px; }
 
 .g {
-  background-image: url(../images/g.png);
+  background-image: url(../images/g_mini.png);
   background-repeat: no-repeat;
   background-position: 4px 4px; }
 
 .beer_vote {
-  padding: 0.5em;
-  margin: 0 0.5em 0.5em 0.5em;
+  padding: 0.2em;
+  margin: 0 0.2em 0.2em 0.2em;
   border: 1px dotted #D1D1DF; }
   .beer_vote h3 {
     background-color: #DFDFDF;
@@ -377,27 +377,25 @@ h1.title_pages a {
 
 .profile {
   border: solid 1px #DFDFDF;
-  margin: 1em;
-  padding: 1em; }
-  .profile h1 {
+  margin: 0.2em;
+  padding: 0.2em; }
+  .profile h4 {
     float: left;
-    margin: 0.5em; }
-    .profile h1 a {
+    margin: 0.2em 0.1em 0.2em 36px; }
+    .profile h4 a {
       text-decoration: none; }
-      .profile h1 a:hover {
+      .profile h4 a:hover {
         text-decoration: underline; }
   .profile img {
     float: left;
     border: none; }
 
 .general {
-  margin: 1em;
-  padding: 1em; }
-  .general #nurse {
-    text-align: center; }
+  margin: 0.1em;
+  padding: 0.1em; }
 
 .order_by {
-  padding: 1em; }
+  padding: 0.2em; }
 
 /* estrelas - rating */
 .star-rating {

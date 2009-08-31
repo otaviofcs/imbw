@@ -1,8 +1,7 @@
-.span-2
-.span-20
-  #what_is_grist.explain.g
-    %span.featured
-      What is grist?
+#what_is_grist.explain.g
+  %span.featured
+    = link_to 'What is grist?', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
     No
     %a{ :href => 'http://www.beertown.org/education/dictionary.html' }Beer Dictionary
     %span.english
@@ -10,15 +9,12 @@
     Em bom português quer dizer: a mistura de grãos moído para ser utilizado
     numa determinada bebida. Nesse caso, cerveja. E é essa mistura que faz,
     ao menos para mim, a cerveja ser tão especial.
-.span-2
-
-.span-18
-  .profile
-    = image_tag @user.twitter_profile_image
-    %h1
-      = link_to "@#{@user.twitter_profile}", "http://twitter.com/#{@user.twitter_profile}"
-      , talking about #beer
-    .clear
+.profile
+  = image_tag @user.twitter_profile_image, :height => '32', :width => '32'
+  %h4
+    = link_to "@#{@user.twitter_profile}", "http://twitter.com/#{@user.twitter_profile}"
+    , talking about #beer
+  .clear
 
 #beer_votes.span-18
   %p
