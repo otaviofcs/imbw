@@ -2,14 +2,6 @@
   = link_to '(+) Abrir Menu', '#', :id => 'show_menu', :onclick => "$('#show_menu').hide();$('#hide_menu').show();$('#mobile_menu').show();return false;"
   = link_to '(-) Fechar Menu', '#', :id => 'hide_menu', :style => 'display:none;', :onclick => "$('#show_menu').show();$('#hide_menu').hide();$('#mobile_menu').hide();return false;"
   %ul#mobile_menu{ :style => 'display: none;' }
-    - unless current_user
-      %li
-        = link_to "login", login_path, :class => "#{"active" if controller.controller_name == 'session' }"
-    - else
-      %li
-        = link_to "admin", admin_root_path, :class => 'link-admin'
-      %li
-        = link_to "sair", logout_path
     %li
       = link_to "<span class='wrong_high'>W</span>riting", posts_path, :class => "#{"active" if controller.controller_name == 'posts' }", :onmouseout =>  "$('menuwriting').hide();", :onmouseover => "$('menuwriting').show();", :title => 'o blog, aqui fica o blog.'
     %li
@@ -20,4 +12,11 @@
       = link_to "<span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();", :title => 'comentários rápidos. coisas simples.'
     %li
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path, :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();", :title => 'cerveja! aqui só entra cerveja!'
-
+    - unless current_user
+      %li
+        = link_to "login", login_path, :class => "#{"active" if controller.controller_name == 'session' }"
+    - else
+      %li
+        = link_to "admin", admin_root_path, :class => 'link-admin'
+      %li
+        = link_to "sair", logout_path
