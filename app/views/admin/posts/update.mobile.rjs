@@ -1,0 +1,2 @@
+page.replace_html "save_and_continue_answer", "post salvo #{ l(Time.now) }!" if @post.valid?
+page.replace_html "save_and_continue_answer", "Não foi salvo. Erro(s):<br/>#{@post.errors.full_messages.join("<br/>")}" unless @post.valid?

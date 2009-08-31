@@ -1,0 +1,2 @@
+page.replace_html 'new_comment', :partial => 'new_comment', :locals => { :new_comment => @new_comment, :gallery => @gallery } if @valid
+page.replace_html 'new_comment', "Acesso negado!" unless @valid

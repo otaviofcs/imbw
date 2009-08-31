@@ -1,0 +1,1 @@
+page.replace_html 'post_preview', :partial => 'admin/posts/preview', :locals => { :post => @post }

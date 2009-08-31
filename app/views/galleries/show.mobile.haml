@@ -11,12 +11,9 @@
           = image_tag photo.public_filename(:medium)
           %br/
           = ((photo.title) ? photo.title : "sem título" )
-.span-24
-  .general
-    .span-15
-      #comments
-    .sidebar.span-7.last
-      #new_comment
+
+  #comments
+  #new_comment
 - javascript_tag do
   $(document).ready(function(){
   = "load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');"
