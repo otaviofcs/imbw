@@ -18,4 +18,6 @@
     .sidebar.span-7.last
       #new_comment
 - javascript_tag do
-  = "loadComments('#{@gallery.id}-#{@gallery.gallery_hash}');"
+  $(document).ready(function(){
+  = "load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');"
+  });

@@ -1,46 +1,45 @@
-.prepend-top
-  .span-2
-  .span-20
-    .explain.o
-      %span.featured
-        Observing
-      Fotos tiradas por mim, da minha esposa, do meu filho,
-      da minha família e dos meus amigos.
-      %br
-      %br
-      %br
-  .span-2
-.prepend-1.general.span-18.append-3
+.explain.o
+  %span.featured
+    = link_to 'Observing', '#', :onclick => "$('#explain').toggle(); return false;"
+#explain{ :style => 'display: none;' }
+  Fotos tiradas por mim, da minha esposa, do meu filho,
+  da minha família e dos meus amigos.
+  %br
+  %br
+  %br
+.galleries
   %p Digite o código do álbum que pretende acessar abaixo
   %p
-    E se eu não possuo um código? Então manda um email pro Otávio.
-    E se eu não conhecer o Otávio? Bom, nesse caso esquece, porque
-    muito provávelmente ele não vai querer te dar um código de acesso mesmo.
+    %span.info
+      E se eu não possuo um código? Então manda um email pro Otávio.
+      E se eu não conhecer o Otávio? Bom, nesse caso esquece, porque
+      muito provávelmente ele não vai querer te dar um código de acesso mesmo.
   - form_tag search_galleries_path, :method => :get do
     %p
-      %label Digite abaixo o código do álbum
-      %br/
       = text_field_tag :id
-    %p
+      %br/
       = submit_tag 'ir para o álbum', :disable_with => '...'
 
-.prepend-1.span-22.append-1.append-bottom
-  #comments.span-16
-  .sidebar.span-5      
-    - remote_form_for @search, :url => comments_path, :method => :get do |f|
-      %p
-        %label Nome contendo
-        %br/
-        = f.text_field :name_like, :size => 20
-      %p
-        %label Comentário contendo
-        %br/
-        = f.text_field :comment_like, :size => 20
-      %p
-        = submit_tag 'filtrar', :disable_with => '...'
-      %p
-        = link_to "limpar filtros", galleries_path
+#comments
+.sidebar
+  %h4 Buscar nos comentários
+  - remote_form_for @search, :url => comments_path, :method => :get do |f|
+    %p
+      %label Nome contendo
+      %br/
+      = f.text_field :name_like, :size => 20
+    %p
+      %label Comentário contendo
+      %br/
+      = f.text_field :comment_like, :size => 20
+    %p
+      = submit_tag 'filtrar', :disable_with => '...'
+    %p
+      = link_to "limpar filtros", galleries_path
 
 
 - javascript_tag do
-  = "loadAllComments();"
+  $(document).ready(function(){
+  load_all_comments();
+  });
+
