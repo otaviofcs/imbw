@@ -141,21 +141,21 @@ textarea.my_text_area {
   position: absolute; }
 
 .main_menu {
-  background-image: url(../images/menu_back.png);
-  background-repeat: repeat-x; }
+  padding-left: 0.2em;
+  background-color: #BDC3C9;
+  font-size: 1.6em;
+  text-align: left; }
   .main_menu ul li {
     list-style: none;
-    display: inline;
-    font-size: 1.8em;
-    padding: 4px 6px;
-    margin: 0 0 0 1px;
-    text-align: center; }
+    border-bottom: 1px dotted gray;
+    padding: 0.1em;
+    margin: 0 0 0 1px; }
     .main_menu ul li:hover {
       background-image: url(../images/menu_button_back.png);
       background-repeat: repeat-x; }
-    .main_menu ul li a {
-      color: white;
-      text-decoration: none; }
+  .main_menu a {
+    color: white;
+    text-decoration: none; }
   .main_menu p.active {
     background-color: #E1E5E5;
     background-image: none; }

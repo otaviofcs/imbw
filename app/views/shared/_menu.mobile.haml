@@ -1,5 +1,7 @@
 .main_menu.header
-  %ul
+  = link_to '(+) Abrir Menu', '#', :id => 'show_menu', :onclick => "$('#show_menu').hide();$('#hide_menu').show();$('#mobile_menu').show();return false;"
+  = link_to '(-) Fechar Menu', '#', :id => 'hide_menu', :style => 'display:none;', :onclick => "$('#show_menu').show();$('#hide_menu').hide();$('#mobile_menu').hide();return false;"
+  %ul#mobile_menu{ :style => 'display: none;' }
     - unless current_user
       %li
         = link_to "login", login_path, :class => "#{"active" if controller.controller_name == 'session' }"
@@ -15,7 +17,7 @@
     %li
       = link_to "<span class='wrong_high'>O</span>bserving", galleries_path, :class => "#{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();", :title => 'a área de fotos. mas aqui só entra quem é chamado. nada de fotos públicas'
     %li
-      = link_to "Taking <span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();", :title => 'comentários rápidos. coisas simples.'
+      = link_to "<span class='wrong_high'>N</span>otes", notes_path, :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();", :title => 'comentários rápidos. coisas simples.'
     %li
       = link_to "<span class='wrong_high'>G</span>risting", beer_votes_path, :class => "#{"active" if controller.controller_name == 'beer_votes' }", :onmouseout =>  "$('menugristing').hide();", :onmouseover => "$('menugristing').show();", :title => 'cerveja! aqui só entra cerveja!'
 
