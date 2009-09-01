@@ -12,9 +12,6 @@ class GalleryCommentsController < ApplicationController
     load_variables
     @new_comment = @gallery.comments.new
     valid_gallery
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
@@ -31,12 +28,8 @@ class GalleryCommentsController < ApplicationController
       @success = false
     end
 
-    respond_to do |format|
-      format.js do
-        if @success
-          render :action => 'index'
-        end
-      end
+    if @success
+      render :action => 'index'
     end
   end
 

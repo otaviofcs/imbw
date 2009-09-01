@@ -3,6 +3,7 @@
     Foto
     = @photo.title
   .photos
-    = image_tag @photo.public_filename(:medium)
+    = image_tag @photo.public_filename(:medium), :width => 300 unless @photo.thumbnails.map(&:thumbnail).include?("mobile")
+    = image_tag @photo.public_filename(:mobile) if @photo.thumbnails.map(&:thumbnail).include?("mobile")
     %p
       = @photo.title if @photo.title

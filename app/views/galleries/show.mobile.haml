@@ -13,8 +13,13 @@
           %br/
           = ((photo.title) ? photo.title : "sem título" )
 
+
+%p
+  Mural de Recados abaixo. Clique
+  = link_to 'aqui', '#comment'
+  para deixar o seu recado
 #comments
-#new_comment
+#new_comment{ :anchor => 'comment' }
 - javascript_tag do
   $(document).ready(function(){
   = "load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');"
