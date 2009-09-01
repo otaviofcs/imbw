@@ -9,8 +9,8 @@
       = l(post.published_at, :format => 'short')
       ,
     %span.date-edit{ :title => "#{l(post.edited_at)}" }
-      e editou pela última vez em
-      = l(post.edited_at, :format => 'short')
+      e editou pela última vez há
+      = time_ago_in_words(post.edited_at)
     %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
   .post-body
     = body

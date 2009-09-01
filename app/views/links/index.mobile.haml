@@ -1,29 +1,21 @@
-.span-2
-.span-20
-  .explain.r
-    %span.featured
-      Reading
+.explain.r
+  %span.featured
+    = link_to 'Reading', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
     Aqui você vai encontrar links sobre coisas que ando lendo.
-    Portanto, divirta-se.
-    %br
-    %br
-    %br
-.span-2
+%p
+  .order_by
+    Ordene por
+    = order @search, :by => :linked_at, :as => t("activerecord.attributes.link.linked_at").humanize
+    ou
+    = order @search, :by => :title, :as => t("activerecord.attributes.link.title").humanize
+- @links.each do |link|
+  = render :partial => 'one_link', :locals => { :link => link }
 
-.prepend-1.span-17
-  %p
-    .order_by
-      Ordene por
-      = order @search, :by => :linked_at, :as => t("activerecord.attributes.link.linked_at").humanize
-      ou
-      = order @search, :by => :title, :as => t("activerecord.attributes.link.title").humanize
-  - @links.each do |link|
-    = render :partial => 'one_link', :locals => { :link => link }
-
-  %p.paginate
-    = will_paginate @links
-.sidebar.span-5
-  %h4 Buscar:
+%p.paginate
+  = will_paginate @links
+.sidebar
+  %h4 Buscar por:
   - form_for @search do |f|
     %p
       %label título contendo
