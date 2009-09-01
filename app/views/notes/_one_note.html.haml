@@ -1,10 +1,11 @@
 .twit
   %p
+    = parse_twit(note.note)
+  %p
     %span
-      = parse_twit(note.note)
-    %br/
-    Há
+    Anotação feita há
     = time_ago_in_words(note.note_taked_at)
+    atrás.
   %p.tags
     tags:
     - note.tags.each do |tag|
