@@ -1,6 +1,7 @@
 .photo-box
   .photo
-    = image_tag(attachment.public_filename(:small), :class=>"images", :alt => "beer")
+    = image_tag(attachment.public_filename(:small), :class=>"images", :alt => "beer") unless attachment.thumbnails.map(&:thumbnail).include?("mobile")
+    = image_tag(attachment.public_filename(:mobile), :class=>"images", :alt => "beer") if attachment.thumbnails.map(&:thumbnail).include?("mobile")
     %br/
     = (attachment.title) ? attachment.title : "sem título"
 
