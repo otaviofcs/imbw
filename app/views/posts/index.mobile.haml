@@ -1,4 +1,8 @@
-%h1 Posts - Versão Mobile
+.explain.w
+  %span.featured
+    = link_to 'Writing', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
+    Um blog. Viagem, diversão, cultura, curiosidades, dia-a-dia. Papo à toa.
 
 #posts
   - @posts.each do |post|

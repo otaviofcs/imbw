@@ -1,28 +1,23 @@
-.span-2
-.span-20
-  .explain.n
-    %span.featured
-      Taking Notes
+.explain.n
+  %span.featured
+    = link_to 'Taking Notes', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
     Anotações, coisas do dia-a-dia.
-    %br
-    %br
-    %br
-.span-2
 
-.prepend-1.span-17
-  %p
-    .order_by
-      Ordene por
-      = order @search, :by => :note_taked_at, :as => t("activerecord.attributes.note.note_taked_at").humanize
-      ou
-      = order @search, :by => :note, :as => t("activerecord.attributes.note.note").humanize
-  - @notes.each do |note|
-    = render :partial => 'one_note', :locals => { :note => note }
+%p
+  .order_by
+    Ordene por
+    = order @search, :by => :note_taked_at, :as => t("activerecord.attributes.note.note_taked_at").humanize
+    ou
+    = order @search, :by => :note, :as => t("activerecord.attributes.note.note").humanize
+- @notes.each do |note|
+  = render :partial => 'one_note', :locals => { :note => note }
 
-  %p.paginate
-    = will_paginate @notes
-.sidebar.span-5
-  %h4 Buscar:
+%p.paginate
+  = will_paginate @notes
+
+.sidebar
+  %h4 Buscar por:
   - form_for @search do |f|
     %p
       %label Anotação contendo
