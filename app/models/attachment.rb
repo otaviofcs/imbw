@@ -16,6 +16,7 @@ class Attachment < ActiveRecord::Base
     :thumbnails => {
       :thumb => "x50",
       :small => "x200",
+      :mobile => "x300",
       :medium => "x400"
   }
 
