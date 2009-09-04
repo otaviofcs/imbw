@@ -26,9 +26,3 @@ godfather:
 orphaned:
   id: 5
   tag_id: 1
-
-viagem_image:
-  id: 6
-  tag_id: 3
-  taggable_id: 106
-  taggable_type: Image
