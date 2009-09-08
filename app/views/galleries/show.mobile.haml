@@ -8,7 +8,7 @@
     - @photos.each do |photo|
       .photo-box
         .photo
-          = image_tag photo.public_filename(:medium), :width => 300 unless photo.thumbnails.map(&:thumbnail).include?("mobile")
+          = image_tag photo.public_filename(:medium), :class => 'mobphoto' unless photo.thumbnails.map(&:thumbnail).include?("mobile")
           = image_tag photo.public_filename(:mobile) if photo.thumbnails.map(&:thumbnail).include?("mobile")
           %br/
           = ((photo.title) ? photo.title : "sem título" )
