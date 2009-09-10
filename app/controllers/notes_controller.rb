@@ -18,6 +18,16 @@ class NotesController < ApplicationController
     @tags = Note.tag_counts :limit => 50, :order => 'tags.name'
   end
 
+  # GET /notes/1
+  # Via: note_path(1)
+  # Disponivel: [todos]
+  #
+  # uma anotação
+  def show
+    @note = Note.find(params[:id])
+    @page_title = "Anotação feita no Twitter em #{l(@note.note_taked_at)}"
+  end
+
   # DELETE /notes/1
   # Via: note_path(1)
   # Disponível: [logados]

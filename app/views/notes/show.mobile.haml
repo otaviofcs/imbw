@@ -1,0 +1,12 @@
+.explain.n
+  %span.featured
+    = link_to 'Taking Notes', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
+    Anotações, coisas do dia-a-dia.
+
+= render :partial => 'one_note', :locals => { :note => @note }
+
+%p
+  Ver a
+  = link_to 'lista de anotações', notes_path
+  completa.
