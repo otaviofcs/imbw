@@ -1,0 +1,30 @@
+.span-2
+.span-20
+  #what_is_grist.explain.g
+    %span.featured
+      What is grist?
+    No
+    %a{ :href => 'http://www.beertown.org/education/dictionary.html' }Beer Dictionary
+    %span.english
+      , Grist: The mixture of milled grains to be used in a specific brew.
+    Em bom português quer dizer: a mistura de grãos moído para ser utilizado
+    numa determinada bebida. Nesse caso, cerveja. E é essa mistura que faz,
+    ao menos para mim, a cerveja ser tão especial.
+.span-2
+
+.span-18
+  .profile
+    = image_tag @user.twitter_profile_image
+    %h1
+      = link_to "@#{@user.twitter_profile}", "http://twitter.com/#{@user.twitter_profile}"
+      , talking about #beer
+    .clear
+
+#beer_votes.span-18
+  = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => @beer_vote }
+
+.sidebar.span-5
+  %p
+    Ver a
+    = link_to 'lista completa', beer_votes_path
+    de cervejas votadas.

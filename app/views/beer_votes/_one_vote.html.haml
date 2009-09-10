@@ -1,7 +1,7 @@
 .beer_vote{ :id => "vote#{beer_vote.id}" }
   %h3
     Cerveja
-    = beer_vote.title
+    = link_to beer_vote.title, beer_vote_path( :id => "#{beer_vote.id}-#{beer_vote.title}")
   = star_rating beer_vote.vote if beer_vote.vote
   .clear
   %p
