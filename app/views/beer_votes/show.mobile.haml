@@ -19,7 +19,7 @@
 #beer_votes
   %p
     .order_by
-       Ver a
+      Ver a
       = link_to 'lista completa', beer_votes_path
       de cervejas votadas.
   = render :partial => 'beer_votes/one_vote', :locals => { :beer_vote => @beer_vote }
