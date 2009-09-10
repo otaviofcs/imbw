@@ -4,7 +4,8 @@
   %p
     %span
     Anotação feita há
-    = time_ago_in_words(note.note_taked_at)
+    %abbr{ :title => "#{l(note.note_taked_at)}" }
+      = time_ago_in_words(note.note_taked_at)
     atrás.
   %p.tags
     tags:

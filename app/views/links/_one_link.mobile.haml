@@ -9,7 +9,9 @@
     = link_to truncate(link.link, 40), link.link
   %p
     feito há
-    = time_ago_in_words(link.linked_at) if link.linked_at
+    - if link.linked_at
+      %abbr{ :title => "#{l(link.linked_at)}" }
+        = time_ago_in_words(link.linked_at)
     atrás, no
     = link_to link.link_source, Link::LINK_SOURCE_TYPES[link.link_source], :title => 'link via #{link.link_source}' if link.link_source
     - if current_user

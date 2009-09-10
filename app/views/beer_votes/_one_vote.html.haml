@@ -9,8 +9,9 @@
       Pa&iacute;s
       = beer_vote.country
     %span.info
-      coment&aacute;rio criado em
-      = l(beer_vote.commented_at, :format => :long)
+      coment&aacute;rio criado há
+      %abbr{ :title => "#{l(beer_vote.commented_at)}" }
+        = time_ago_in_words(beer_vote.commented_at)
   %p
     Coment&aacute;rio
     = beer_vote.comment if beer_vote.comment
