@@ -1,6 +1,6 @@
 .link
   %h4
-    = link.title
+    = link_to link.title, link_path( :id => "#{link.id}-#{h(link.title)}")
   %p
     %span
       = link.description

@@ -1,0 +1,20 @@
+.span-2
+.span-20
+  .explain.r
+    %span.featured
+      Reading
+    Aqui você vai encontrar links sobre coisas que ando lendo.
+    Portanto, divirta-se.
+    %br
+    %br
+    %br
+.span-2
+
+.prepend-1.span-17
+  = render :partial => 'one_link', :locals => { :link => @link }
+
+.sidebar.span-5
+  %p
+    Ver a
+    = link_to 'lista de links', links_path
+    completa.

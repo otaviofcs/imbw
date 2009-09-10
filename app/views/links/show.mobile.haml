@@ -1,0 +1,11 @@
+.explain.r
+  %span.featured
+    = link_to 'Reading', '#', :onclick => "$('#explain').toggle(); return false;"
+  #explain{ :style => 'display: none;' }
+    Aqui você vai encontrar links sobre coisas que ando lendo.
+= render :partial => 'one_link', :locals => { :link => @link }
+
+%p
+  Ver a
+  = link_to 'lista de links', links_path
+  completa.

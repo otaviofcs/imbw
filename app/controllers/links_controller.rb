@@ -17,6 +17,16 @@ class LinksController < ApplicationController
     @tags = Link.tag_counts :limit => 50, :order => 'tags.name'
   end
 
+  # GET /links/1
+  # Via: link_path(1)
+  # Disponivel: [todos]
+  #
+  # um link
+  def show
+    @link = Link.find params[:id]
+    @page_title = "Link ##{@link.id}"
+  end
+
   # DELETE /links/1
   # Via: link_path(1)
   # Disponível: [logados]
