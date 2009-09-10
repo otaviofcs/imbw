@@ -16,7 +16,7 @@
     , talking about #beer
   .clear
 
-#beer_votes.span-18
+#beer_votes
   %p
     .order_by
       Ordene por
@@ -30,7 +30,7 @@
 
   %p.paginate
     = will_paginate @beer_votes
-.sidebar.span-5
+.sidebar
   %h4 Buscar:
   - form_for @search do |f|
     %p
