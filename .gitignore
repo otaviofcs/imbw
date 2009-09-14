@@ -15,3 +15,4 @@ public/stylesheets/default.css
 public/stylesheets/application.css
 public/stylesheets/application_mobile.css
 public/photos/*
+*.war
