@@ -15,15 +15,15 @@ class PagesController < ApplicationController
     @recent_activities = @search.paginate(:page => params[:page])
   end
 
-  # GET /pages/mobile/true
-  # GET /pages/mobile/false
-  # GET /pages/mobile?id=true
-  # GET mobile_pages_path
+  # GET /pages/mobile/1 # true
+  # GET /pages/mobile/0 # false
+  # GET /pages/mobile?id=1
+  # GET mobile_pages_path(:id => 1)
   #
   # alterna entre versão mobile e versão não mobile
   def mobile
     if params[:id]
-      if params[:id] == "true"
+      if params[:id] == "1"
         session[:mobile_view] = true
       else
         session[:mobile_view] = false
