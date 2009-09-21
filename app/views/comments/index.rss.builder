@@ -11,8 +11,8 @@ xml.rss :version => "2.0" do
         xml.title "#{comment.name} comentou"
         xml.description comment.comment
         xml.pubDate comment.created_at.to_s(:rfc822)
-        xml.link comment_url(comment)
-        xml.guid comment_url(comment)
+        xml.link comments_url
+        xml.guid comment.id
       end
     end
   end
