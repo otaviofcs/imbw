@@ -11,8 +11,8 @@ xml.rss :version => "2.0" do
         xml.title post.title
         xml.description post.formatted_body(:full)
         xml.pubDate post.created_at.to_s(:rfc822)
-        xml.link post_url(:id => "#{post.id}-#{h(post.title)}")
-        xml.guid post_url(:id => "#{post.id}-#{h(post.title)}")
+        xml.link post_link(post)
+        xml.guid post_link(post)
       end
     end
   end

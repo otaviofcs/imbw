@@ -1,6 +1,6 @@
 .post-card
   %h2
-    = link_to post.title, post_path(:id => "#{post.id}-#{h(post.title)}" ), :class => 'link-post'
+    = post_link(post)
   .post-header
     %span
       = link_to post.user.login, user_path(post.user), :class => 'link-user'
@@ -17,7 +17,7 @@
   .post-body
     = body
   .post-footer
-    %a{ :href => "#{post_url(:id => "#{post.id}-#{h(post.title)}")}#disqus_thread" }comentários
+    %a{ :href => "#{post_link(post)}#disqus_thread" }comentários
     , tags desse post:
     - post.tag_list.each do |t|
       %span

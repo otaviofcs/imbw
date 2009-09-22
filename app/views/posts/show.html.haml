@@ -6,7 +6,7 @@
     %h4 Posts Relacionados:
     - if @related_posts.size > 0
       - @related_posts.each do |post|
-        %p= link_to truncate(post.title, 40), post_path(post)
+        %p= post_link(post, 40)
     - else
       %p
         Nenhum post relacionado a esse.

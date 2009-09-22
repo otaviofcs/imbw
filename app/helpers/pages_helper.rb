@@ -13,7 +13,7 @@ module PagesHelper
         html2
       end
       html << content_tag(:p) do
-        "#{link_to truncate(post.title, :length => 80, :omission => "..."), post_path(post)}"
+        "#{post_link(post, 80)}"
       end
       html
     end
