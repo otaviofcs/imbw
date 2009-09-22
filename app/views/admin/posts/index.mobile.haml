@@ -11,7 +11,7 @@
         %th #
       - @posts.each do |post|
         %tr
-          %td= link_to post.title, edit_admin_post_path(post)
+          %td= link_to truncate(post.title, 20), edit_admin_post_path(post)
           %td= link_to l(post.edited_at, :format => :short), edit_admin_post_path(post)
           %td= link_to l(post.published_at, :format => :short), edit_admin_post_path(post) if post.published_at
           %td
