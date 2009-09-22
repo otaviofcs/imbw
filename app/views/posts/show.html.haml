@@ -5,13 +5,13 @@
 .span-8.last
   .sidebar
     %h4 Posts Relacionados:
-      - if @related_posts.size > 0
-        %ul
-          - @related_posts.each do |post|
-            %li= link_to truncate(post.title, 40), post_path(post)
-      - else
-        %p
-          Nenhum post relacionado a esse.
+    - if @related_posts.size > 0
+      %ul
+        - @related_posts.each do |post|
+          %li= link_to truncate(post.title, 40), post_path(post)
+    - else
+      %p
+        Nenhum post relacionado a esse.
     %p
       Clique
       = link_to 'aqui', posts_path
