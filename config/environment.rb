@@ -43,6 +43,10 @@ Rails::Initializer.run do |config|
 
   config.gem "crack", :lib => "crack", :version => ">= 0.1.4"
 
+  # usando o mini_magick como processador de imagens do ImageMagick
+  # ele é que vai criar os thumbnails ao usar o attachment_fu
+  config.gem 'mini_magick', :lib => 'mini_magick', :version => '1.2.5'
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
