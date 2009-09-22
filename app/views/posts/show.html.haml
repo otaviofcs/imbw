@@ -1,20 +1,19 @@
-.prepend-top
-  .prepend-1.span-15
+.prepend-top.prepend-1.span-15
     #post
       = render :partial => 'one_post', :locals => { :post => @post, :body => @post.formatted_body(:full) }
-  .span-8.last
-    .sidebar
-      %h4 Posts Relacionados:
-      - if @related_posts.size > 0
-        - @related_posts.each do |post|
-          %p= link_to truncate(post.title, 40), post_path(post)
-      - else
-        %p
-          Nenhum post relacionado a esse.
+.prepend-top.span-8.last
+  .sidebar
+    %h4 Posts Relacionados:
+    - if @related_posts.size > 0
+      - @related_posts.each do |post|
+        %p= link_to truncate(post.title, 40), post_path(post)
+    - else
       %p
-        Clique
-        = link_to 'aqui', posts_path
-        para ver todos os posts.
+        Nenhum post relacionado a esse.
+    %p
+      Clique
+      = link_to 'aqui', posts_path
+      para ver todos os posts.
 .prepend-1.span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
