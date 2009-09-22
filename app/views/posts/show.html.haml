@@ -12,10 +12,10 @@
       - else
         %p
           Nenhum post relacionado a esse.
-      %p
-        Clique
-        = link_to 'aqui', posts_path
-        para ver todos os posts.
+    %p
+      Clique
+      = link_to 'aqui', posts_path
+      para ver todos os posts.
 .span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
