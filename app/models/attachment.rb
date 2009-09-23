@@ -9,7 +9,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :user
 
   has_attachment :content_type => :image,
-    :processor => 'MiniMagick',
+    :processor => 'ImageScience',
     :storage => :s3,
     :s3_access => 'public-read',
     :size => 0.megabyte..2.megabytes,

@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   belongs_to :gallery
 
   has_attachment :content_type => :image,
-    :processor => 'MiniMagick',
+    :processor => 'ImageScience',
     :storage => :s3,
     :s3_access => :private,
     :size => 0.megabyte..3.megabytes,
