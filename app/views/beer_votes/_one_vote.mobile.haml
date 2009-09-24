@@ -1,25 +1,26 @@
-.beer_vote{ :id => "vote#{beer_vote.id}" }
-  %h3
-    Cerveja
-    = link_to beer_vote.title, beer_vote_path( :id => "#{beer_vote.id}-#{beer_vote.title}")
-  = star_rating beer_vote.vote if beer_vote.vote
-  .clear
-  %p
-    - if beer_vote.country
-      Pa&iacute;s
-      = beer_vote.country
-    %span.info
-      coment&aacute;rio criado há
-      %abbr{ :title => "#{l(beer_vote.commented_at)}" }
-        = time_ago_in_words(beer_vote.commented_at)
-  %p
-    Coment&aacute;rio
-    = beer_vote.comment if beer_vote.comment
-  .photos{ :id => "beer#{beer_vote.id}" }
-  .clear
-  - if current_user
+- cache beer_vote do
+  .beer_vote{ :id => "vote#{beer_vote.id}" }
+    %h3
+      Cerveja
+      = link_to beer_vote.title, beer_vote_path( :id => "#{beer_vote.id}-#{beer_vote.title}")
+    = star_rating beer_vote.vote if beer_vote.vote
+    .clear
     %p
-      = link_to 'excluir', beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
+      - if beer_vote.country
+        Pa&iacute;s
+        = beer_vote.country
+      %span.info
+        coment&aacute;rio criado há
+        %abbr{ :title => "#{l(beer_vote.commented_at)}" }
+          = time_ago_in_words(beer_vote.commented_at)
+    %p
+      Coment&aacute;rio
+      = beer_vote.comment if beer_vote.comment
+    .photos{ :id => "beer#{beer_vote.id}" }
+    .clear
+    - if current_user
+      %p
+        = link_to 'excluir', beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
 
-- javascript_tag do
-  = "$.getScript('/attachments?html_id=beer#{beer_vote.id}&search[title_like][]=#{u(beer_vote.title)}');"
+  - javascript_tag do
+    = "$.getScript('/attachments?html_id=beer#{beer_vote.id}&search[title_like][]=#{u(beer_vote.title)}');"

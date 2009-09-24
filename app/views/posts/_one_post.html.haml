@@ -1,24 +1,25 @@
-.post-card
-  %h2
-    = post_link(post)
-  .post-header
-    %span
-      = link_to post.user.login, user_path(post.user), :class => 'link-user'
-    %span.date{ :title => "#{l(post.published_at)}" }
-      publicou em
-      = l(post.published_at, :format => 'short')
-      ,
-    %span.date-edit{ :title => "#{l(post.edited_at)}" }
-      e editou pela última vez há
-      %abbr{ :title => "#{l(post.edited_at)}" }
-        = time_ago_in_words(post.edited_at)
-      atrás.
-    %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
-  .post-body
-    = body
-  .post-footer
-    %a{ :href => "#{post_link(post)}#disqus_thread" }comentários
-    , tags desse post:
-    - post.tag_list.each do |t|
+- cache "#{body.size}-#{post.cache_key}" do
+  .post-card
+    %h2
+      = post_link(post)
+    .post-header
       %span
-        = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
+        = link_to post.user.login, user_path(post.user), :class => 'link-user'
+      %span.date{ :title => "#{l(post.published_at)}" }
+        publicou em
+        = l(post.published_at, :format => 'short')
+        ,
+      %span.date-edit{ :title => "#{l(post.edited_at)}" }
+        e editou pela última vez há
+        %abbr{ :title => "#{l(post.edited_at)}" }
+          = time_ago_in_words(post.edited_at)
+        atrás.
+      %script{ :type => "text/javascript", :src => "http://w.sharethis.com/button/sharethis.js#publisher=9d1a9256-94c8-4222-9d7d-d2b2bfa2fc5a&amp;type=website&amp;buttonText=compartilhe&amp;style=rotate" }
+    .post-body
+      = body
+    .post-footer
+      %a{ :href => "#{post_link(post)}#disqus_thread" }comentários
+      , tags desse post:
+      - post.tag_list.each do |t|
+        %span
+          = link_to t, posts_path( :search => { :tagged_with_on_tags => t })
