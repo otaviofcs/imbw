@@ -14,7 +14,7 @@ describe Photo do
 
   describe "associations" do
     it { should belong_to(:user) }
-    it { should belong_to(:gallery) }
+    it { should belong_to(:gallery, :touch => true) }
   end
 
   describe "named_scopes" do
