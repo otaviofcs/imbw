@@ -2,7 +2,7 @@ module PostsHelper
 
   def post_link(post, truncate_size=0)
     if truncate_size > 0
-      title = truncate(post.title, truncate_size)
+      title = truncate(post.title, :length => truncate_size, :omission => "...")
     else
       title = post.title
     end
