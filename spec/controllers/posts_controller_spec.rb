@@ -32,8 +32,9 @@ describe PostsController do
 
   describe "GET show/1" do
     before(:each) do
-      @post = mock_model(Post, { :title => 'my title' })
+      @post = mock_model(Post, { :title => 'my title', :tag_list => "one tag, other tag" })
       Post.stub!(:find).and_return(@post)
+      Post.stub(:all).and_return([])
     end
     def call_action(params={})
       default_params = { :id => "1" }
@@ -45,6 +46,11 @@ describe PostsController do
     it "should retrieve posts" do
       Post.should_receive(:find).with("1").and_return(@post)
       call_action
+    end
+    it "should find with tags and store a variable" do
+      Post.should_receive(:all).and_return([])
+      call_action
+      assigns[:related_posts].should == []
     end
   end
 
