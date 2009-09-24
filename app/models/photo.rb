@@ -3,7 +3,7 @@ require 'digest/sha1'
 class Photo < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :gallery
+  belongs_to :gallery, :touch => true
 
   has_attachment :content_type => :image,
     :processor => 'MiniMagick',
