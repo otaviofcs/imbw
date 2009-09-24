@@ -22,6 +22,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find params[:id]
     @page_title = "Post ##{@post.id}-#{@post.title}"
-    @related_posts = Post.search(:id_not_equal_to => @post.id, :order => 'descend_by_published_at').tagged_with_on_tags(@post.tag_list).all
+    @related_posts = []
+    @post.tag_list.each do |one_tag|
+      @related_posts.concat Post.search(:id_not_equal_to => @post.id, :order => 'descend_by_published_at').tagged_with_on_tags(one_tag).all
+    end
+    @related_posts.uniq!
   end
 end

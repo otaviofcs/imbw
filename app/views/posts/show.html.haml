@@ -4,12 +4,13 @@
 .prepend-top.span-8.last
   .sidebar
     %h4 Posts Relacionados:
-    - if @related_posts.size > 0
-      - @related_posts.each do |post|
-        %p= post_link(post, 40)
-    - else
-      %p
-        Nenhum post relacionado a esse.
+    %ul
+      - if @related_posts.size > 0
+        - @related_posts.each do |post|
+          %li= post_link(post, 40)
+      - else
+        %p
+          Nenhum post relacionado a esse.
     %p
       Clique
       = link_to 'aqui', posts_path
