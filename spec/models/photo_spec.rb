@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Photo do
   before(:each) do
     @valid_attributes = {
+      :relevance => 50
     }
     @photo = Photo.new(@valid_attributes)
   end
@@ -19,6 +20,11 @@ describe Photo do
 
   describe "named_scopes" do
     it { should have_scope(:ordered).order("relevance DESC, id ASC") }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:relevance) }
+    it { should validate_numericality_of(:relevance, :greater_than_or_equal_to => 0) }
   end
 
 end

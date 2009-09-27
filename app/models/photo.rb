@@ -35,6 +35,8 @@ class Photo < ActiveRecord::Base
   validates_as_attachment
 
   validates_presence_of :photo_hash
+  validates_presence_of :relevance
+  validates_numericality_of :relevance, :greater_than_or_equal_to => 0
 
   #
   # Instance Methods
