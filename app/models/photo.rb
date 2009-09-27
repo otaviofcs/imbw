@@ -16,7 +16,9 @@ class Photo < ActiveRecord::Base
       :medium => "x500"
     }
 
-  named_scope :by_id, :order => 'id ASC'
+  # relevance tem um valor atribuído por default, mas pode ser alterado para
+  # ajudar a ordenar as fotos
+  named_scope :ordered, :order => 'relevance DESC, id ASC'
 
   #
   # Callbacks

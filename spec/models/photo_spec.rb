@@ -18,7 +18,7 @@ describe Photo do
   end
 
   describe "named_scopes" do
-    it { should have_scope(:by_id).order("id ASC") }
+    it { should have_scope(:ordered).order("relevance DESC, id ASC") }
   end
 
 end

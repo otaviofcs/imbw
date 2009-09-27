@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090819162749) do
+ActiveRecord::Schema.define(:version => 20090927224649) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "user_id"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20090819162749) do
     t.integer  "parent_id"
     t.string   "thumbnail"
     t.string   "photo_hash"
+    t.integer  "relevance",    :default => 50
   end
 
   create_table "posts", :force => true do |t|
