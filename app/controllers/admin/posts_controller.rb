@@ -71,7 +71,8 @@ class Admin::PostsController < AdminController
     @post.published_at = Time.current if params[:publish]
     valid = @post.update_attributes(params[:post])
     respond_to do |format|
-      format.html do
+      format.js
+      format.any do
         if valid
           flash[:success] = "Post alterado com sucesso"
           redirect_to admin_posts_path
@@ -79,8 +80,7 @@ class Admin::PostsController < AdminController
           @page_title = "Editando Post ##{@post.id}"
           render :action => 'edit'
         end
-      end
-      format.js
+      end      
     end
   end
 
