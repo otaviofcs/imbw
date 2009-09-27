@@ -6,6 +6,7 @@ pt:
       photo:
         user_id: "usuário"
         title: "título"
+        relevance: "importância"
         photo: "foto"
         created_at: "criado em"
         updated_at: "atualizado em"
