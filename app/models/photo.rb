@@ -21,6 +21,14 @@ class Photo < ActiveRecord::Base
   named_scope :ordered, :order => 'relevance DESC, id ASC'
 
   #
+  # Initialization
+  #
+
+  def after_initialize
+    self.relevance = 50 unless self.relevance
+  end
+
+  #
   # Callbacks
   #
 
