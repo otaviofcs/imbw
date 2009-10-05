@@ -1,27 +1,26 @@
-- cache @gallery do
-  .general
-    %h2
-      Álbum
-      = @gallery.title
-    %p
-      = @gallery.description if @gallery.description
-    #photos.photos
-      - @photos.each do |photo|
-        .photo-box
-          .photo
-            = image_tag photo.public_filename(:medium), :class => 'mobphoto' unless photo.thumbnails.map(&:thumbnail).include?("mobile")
-            = image_tag photo.public_filename(:mobile) if photo.thumbnails.map(&:thumbnail).include?("mobile")
-            %br/
-            = ((photo.title) ? photo.title : "sem título" )
-
-
+.general
+  %h2
+    Álbum
+    = @gallery.title
   %p
-    Mural de Recados abaixo. Clique
-    = link_to 'aqui', '#comment'
-    para deixar o seu recado
-  #comments
-  #new_comment{ :anchor => 'comment' }
-  - javascript_tag do
-    $(document).ready(function(){
-    = "load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');"
-    });
+    = @gallery.description if @gallery.description
+  #photos.photos
+    - @photos.each do |photo|
+      .photo-box
+        .photo
+          = image_tag photo.public_filename(:medium), :class => 'mobphoto' unless photo.thumbnails.map(&:thumbnail).include?("mobile")
+          = image_tag photo.public_filename(:mobile) if photo.thumbnails.map(&:thumbnail).include?("mobile")
+          %br/
+          = ((photo.title) ? photo.title : "sem título" )
+
+
+%p
+  Mural de Recados abaixo. Clique
+  = link_to 'aqui', '#comment'
+  para deixar o seu recado
+#comments
+#new_comment{ :anchor => 'comment' }
+- javascript_tag do
+  $(document).ready(function(){
+  = "load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');"
+  });
