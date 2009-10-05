@@ -2,7 +2,7 @@ module BeerVotesHelper
 
   def beer_vote_link(beer_vote)
     title = beer_vote.title
-    link_to title, beer_vote_url(:id => "#{beer_vote.id}-#{h( beer_vote.title.gsub(' ','-') )}" ), :class => 'link-beer-vote'
+    link_to title, beer_vote_url(:id => "#{beer_vote.id}-#{h( beer_vote.title.gsub('.','').gsub(' ','-') )}" ), :class => 'link-beer-vote'
   end
 
   def star_rating(value)
