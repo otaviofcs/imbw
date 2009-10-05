@@ -47,7 +47,7 @@ module PagesHelper
       end
       html << content_tag(:div, :class => 'text_box') do
         html2 = star_rating(beer_vote.vote) if beer_vote.vote
-        html2 << "&nbsp;foi a nota para #{link_to beer_vote.title, beer_votes_path}"
+        html2 << "&nbsp;foi a nota para #{beer_vote_link beer_vote}"
         html2 << content_tag(:div, "&nbsp;", :class => "clear")
         html2
       end
@@ -79,7 +79,7 @@ module PagesHelper
         html2
       end
       html << content_tag(:p) do
-        link_to truncate(note.note, :length => 80, :omission => "..."), notes_path
+        link_to truncate(note.note, :length => 80, :omission => "..."), note_path(note)
       end
       html
     end
