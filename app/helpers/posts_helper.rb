@@ -6,7 +6,11 @@ module PostsHelper
     else
       title = post.title
     end
-    link_to title, post_url(:id => "#{post.id}-#{h( post.title.gsub('.','').gsub(' ','-') )}" ), :class => 'link-post'
+    link_to title, striped_post_url(post), :class => 'link-post'
+  end
+
+  def striped_post_url(post)
+    post_url(:id => "#{post.id}-#{h( post.title.gsub('.','').gsub(' ','-') )}" )
   end
 
 end

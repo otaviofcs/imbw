@@ -18,7 +18,7 @@
     .post-body
       = body
     .post-footer
-      %a{ :href => "#{post_link(post)}#disqus_thread" }comentários
+      %a{ :href => "#{striped_post_url(post)}#disqus_thread" }comentários
       , tags desse post:
       - post.tag_list.each do |t|
         %span
