@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
 
-  has_mobile_fu true
+  has_mobile_fu
 
   layout 'application'
 
