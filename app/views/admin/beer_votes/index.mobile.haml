@@ -1,0 +1,20 @@
+.general
+  %h2 Ceeeeeerveja
+  %p
+    = link_to "novo voto", new_admin_beer_vote_path, :class => 'link-new'
+  - @beer_votes.each do |beer_vote|
+    .beer_vote
+      cerveja
+      = link_to beer_vote.title, edit_admin_beer_vote_path(beer_vote)
+      %br/
+      em
+      = link_to l(beer_vote.commented_at, :format => :short), edit_admin_beer_vote_path(beer_vote) if beer_vote.commented_at
+      %br/
+      = link_to "ver", beer_vote_path(beer_vote), :class => 'link-show'
+      ou
+      = link_to "editar", edit_admin_beer_vote_path(beer_vote), :class => 'link-edit'
+      ou
+      = link_to "excluir", admin_beer_vote_path(beer_vote), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+
+  %p.paginate
+    = will_paginate @beer_votes
