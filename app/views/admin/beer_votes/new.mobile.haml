@@ -1,0 +1,7 @@
+.general
+  %h2
+    Nova Ceeerveja
+  %p
+    = link_to "< ver todas cervejas", admin_beer_votes_path
+  - form_for @beer_vote, :url => admin_beer_votes_path, :method => :post, :html => { :multipart => true } do |f|
+    = render :partial => 'fields', :locals => { :f => f }

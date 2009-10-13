@@ -20,7 +20,7 @@ class Admin::BeerVotesController < AdminController
   #
   # novo voto em cervejas
   def new
-    @beer_vote = BeerVote.new
+    @beer_vote = BeerVote.new(:twitter_profile => 'otaviofcs', :commented_at => Time.current)
     @page_title = "Nova Cerveja"
   end
 
@@ -30,7 +30,7 @@ class Admin::BeerVotesController < AdminController
   #
   # editando voto em cervejas
   def edit
-    @beer_vote = BeerVote.new
+    @beer_vote = BeerVote.find params[:id]
     @page_title = "Editando Cerveja"
   end
 
@@ -40,11 +40,14 @@ class Admin::BeerVotesController < AdminController
   #
   # criando voto em cerveja
   def create
-    @beer_vote = BeerVote.build(params[:beer_vote])
+    @beer_vote = BeerVote.new(params[:beer_vote])
     if @beer_vote.save
       flash[:success] = "sucesso"
+      redirect_to admin_beer_votes_path
+    else
+      render :action => 'new'
     end
-    redirect_to beer_votes_path
+    
   end
   
   # PUT /beer_votes/1
@@ -56,8 +59,10 @@ class Admin::BeerVotesController < AdminController
     @beer_vote = BeerVote.find params[:id]
     if @beer_vote.update_attributes(params[:beer_vote])
       flash[:success] = "salvo com sucesso!"
+      redirect_to admin_beer_votes_path
+    else
+      render :action => 'edit'
     end
-    redirect_to beer_votes_path
   end
 
   # DELETE /beer_votes/1
@@ -70,7 +75,7 @@ class Admin::BeerVotesController < AdminController
     if @beer_vote.destroy
       flash[:success] = "Voto em #{@beer_vote.title} destruido com sucesso!"
     end
-    redirect_to beer_votes_path
+    redirect_to admin_beer_votes_path
   end
 
 end

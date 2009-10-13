@@ -10,3 +10,6 @@ pt:
         title: "título"
         comment: "comentário"
         commented_at: "comentado em"
+        country: "país"
+        twitter_profile: "perfil twitter"
+        commented_at: "comentado em"
