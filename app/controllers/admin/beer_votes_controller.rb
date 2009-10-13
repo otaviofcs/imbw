@@ -1,4 +1,4 @@
-class BeerVotesController < ApplicationController
+class Admin::BeerVotesController < AdminController
 
   # GET /beer_votes
   # Via: beer_votes_path
@@ -13,16 +13,18 @@ class BeerVotesController < ApplicationController
     @page_title = "Cervejas que eu bebi, hoje e ontem - I Might be W.R.O.N.G."
     @user = User.first
   end
-
-  # GET /beer_votes/1
+  
+  # DELETE /beer_votes/1
   # Via: beer_vote_path(1)
-  # Disponível: [todos]
+  # Disponível: [logados]
   #
-  # um voto
-  def show
-    @beer_vote = BeerVote.find(params[:id])
-    @page_title = "Cervejas #{@beer_vote.title} - I Might be W.R.O.N.G."
-    @user = User.first
+  # Apaga um voto sobre cerveja
+  def destroy
+    @beer_vote = BeerVote.find params[:id]
+    if @beer_vote.destroy
+      flash[:success] = "Voto em #{@beer_vote.title} destruido com sucesso!"
+    end
+    redirect_to beer_votes_path
   end
 
 end

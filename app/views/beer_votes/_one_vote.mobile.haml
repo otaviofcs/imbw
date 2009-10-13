@@ -20,7 +20,7 @@
     .clear
     - if current_user
       %p
-        = link_to 'excluir', beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
+        = link_to 'excluir', admin_beer_vote_path(beer_vote), :method => :delete, :confirm => "Você tem certeza?", :title => 'apagar', :class => 'link-delete'
 
   - javascript_tag do
     = "$.getScript('/attachments?html_id=beer#{beer_vote.id}&search[title_like][]=#{u(beer_vote.title)}');"
