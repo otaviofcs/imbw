@@ -13,7 +13,7 @@ module PagesHelper
         html2
       end
       html << content_tag(:p) do
-        "#{post_link(post, 80)}"
+        "#{post_link(post, 80, 'normal')}"
       end
       html
     end
