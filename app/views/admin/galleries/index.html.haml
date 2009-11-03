@@ -9,9 +9,10 @@
         %p= link_to image_tag(gallery.photos.first.public_filename(:small)), admin_gallery_path(gallery), :class => 'link-show' if gallery.photos.size > 0
         %p
           = link_to gallery.title, admin_gallery_path(gallery), :class => 'link-show'
-          %br
+          %br/
           = link_to "editar", edit_admin_gallery_path(gallery), :class => 'link-edit'
           = link_to "excluir", admin_gallery_path(gallery), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
-
+          %br/
+          = link_to "link público", gallery_path(:id => "#{gallery.id}-#{gallery.gallery_hash}")
   %p.paginate
     = will_paginate @galleries
