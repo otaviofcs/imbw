@@ -21,7 +21,7 @@ class Photo < ActiveRecord::Base
   named_scope :ordered, :order => 'relevance DESC, id ASC'
 
   # seleciona apenas as fotos que não foram inabilitadas
-  named_scope :enable, :conditions => [:disable, 0]
+  named_scope :enable, :conditions => { :disable => 0 }
 
   #
   # Initialization
