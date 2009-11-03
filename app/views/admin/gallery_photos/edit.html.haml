@@ -14,6 +14,9 @@
       %br
       = f.text_field :relevance
     %p
+      = f.label_t :disable
+      = f.check_box :disable
+    %p
       Imagem:
       %br
       = lightbox_image_tag(@photo.public_filename(:small), @photo.public_filename(:medium), {:class=>"images"}, :title => "#{ ((@photo.title) ? @photo.title : "sem título" ) }", :rel => "lightbox")

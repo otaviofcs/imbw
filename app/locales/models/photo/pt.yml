@@ -14,3 +14,4 @@ pt:
         content_type: "tipo de arquivo"
         filename: "nome do arquivo"
         uploaded_data: "arquivo"
+        disable: "desabilitar?"
