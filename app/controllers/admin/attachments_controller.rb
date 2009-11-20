@@ -1,4 +1,4 @@
-class Admin::AttachmentsController < ApplicationController
+class Admin::AttachmentsController < AdminController
 
 
   # GET /admin/attachments
