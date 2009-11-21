@@ -43,6 +43,10 @@ Rails::Initializer.run do |config|
 
   config.gem "crack", :lib => "crack", :version => ">= 0.1.4"
 
+  # Gems do brazilian-rails usadas
+  config.gem 'brnumeros', :version => '2.1.8'
+  config.gem 'brdinheiro', :version => '2.1.8'
+
   # usando o mini_magick como processador de imagens do ImageMagick
   # ele é que vai criar os thumbnails ao usar o attachment_fu
   config.gem 'mini_magick', :lib => 'mini_magick', :version => '1.2.5'

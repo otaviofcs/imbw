@@ -1,0 +1,103 @@
+--- !ruby/object:Gem::Specification 
+name: brdinheiro
+version: !ruby/object:Gem::Version 
+  version: 2.1.8
+platform: ruby
+authors: 
+- "Marcos Tapaj\xC3\xB3s"
+- Celestino Gomes
+- Andre Kupkosvki
+- "Vin\xC3\xADcius Teles"
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-04-16 00:00:00 -03:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: actionpack
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 1.4.2
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: activerecord
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 1.15.3
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: brnumeros
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.0.1
+    version: 
+description: "brdinheiro \xC3\xA9 uma das gems que compoem o Brazilian Rails"
+email: tapajos@gmail.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- Rakefile
+- README
+- CHANGELOG
+- MIT-LICENSE
+- lib/brdinheiro
+- lib/brdinheiro/dinheiro.rb
+- lib/brdinheiro/dinheiro_active_record.rb
+- lib/brdinheiro/dinheiro_util.rb
+- lib/brdinheiro/excecoes.rb
+- lib/brdinheiro/nil_class.rb
+- lib/brdinheiro/version.rb
+- lib/brdinheiro.rb
+- test/active_record
+- test/active_record/base_without_table.rb
+- test/br_dinheiro_test.rb
+- test/dinheiro_active_record_test.rb
+- test/dinheiro_test.rb
+- test/nil_class_test.rb
+- test/test_helper.rb
+has_rdoc: true
+homepage: http://www.improveit.com.br/software_livre/brazilian_rails
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: 
+- brnumeros
+rubyforge_project: brdinheiro
+rubygems_version: 1.3.1
+signing_key: 
+specification_version: 2
+summary: "brdinheiro \xC3\xA9 uma das gems que compoem o Brazilian Rails"
+test_files: []
+
