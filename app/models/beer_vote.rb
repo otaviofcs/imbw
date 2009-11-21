@@ -12,6 +12,12 @@ class BeerVote < ActiveRecord::Base
   has_one :recent_activity, :as => :recentable, :dependent => :destroy
 
   #
+  # Constants
+  #
+
+  POSSIBLE_VOLUME_TYPES = %w( 275ml 300ml 500ml 600ml 1lt )
+
+  #
   # Option
   #
 
