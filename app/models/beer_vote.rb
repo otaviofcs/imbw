@@ -2,7 +2,7 @@ class BeerVote < ActiveRecord::Base
 
   usar_como_dinheiro :price
 
-  attr_accessible :title, :vote, :comment, :country, :twitter_profile, :commented_at
+  attr_accessible :title, :vote, :comment, :country, :twitter_profile, :commented_at, :price, :volume_type
 
   named_scope :last_commented_at, :order => "commented_at desc"
 
