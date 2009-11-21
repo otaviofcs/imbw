@@ -18,7 +18,7 @@
 %p
   = f.label_t :volume_type
   %br/
-  = f.select :volume_type, BeerVote::POSSIBLE_VOLUME_TYPES
+  = f.select :volume_type, BeerVote::POSSIBLE_VOLUME_TYPES, :include_blank => true
 %p
   = f.label_t :comment
   %br/
