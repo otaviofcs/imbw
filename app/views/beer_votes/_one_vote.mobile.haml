@@ -15,9 +15,11 @@
           = time_ago_in_words(beer_vote.commented_at)
     %p
       Preço
-      = beer_vote.price
+      = beer_vote.price if beer_vote.price
+      = '-' unless beer_vote.price
       por
-      = beer_vote.volume_type
+      = beer_vote.volume_type if beer_vote.volume_type
+      = '-' unless beer_vote.volume_type
     %p
       Coment&aacute;rio
       = beer_vote.comment if beer_vote.comment
