@@ -24,6 +24,8 @@ describe BeerVote do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:twitter_profile) }
     it { should validate_presence_of(:commented_at) }
+    it { should validate_numericality_of(:price, :greater_than => 0, :allow_nil => true) }
+    it { should allow_values_for(:volume_type, :in => BeerVote::POSSIBLE_VOLUME_TYPES) }
   end
 
   describe"object methods"do

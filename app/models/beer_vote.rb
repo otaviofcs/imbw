@@ -15,7 +15,7 @@ class BeerVote < ActiveRecord::Base
   # Constants
   #
 
-  POSSIBLE_VOLUME_TYPES = %w( 275ml 300ml 500ml 600ml 1lt )
+  POSSIBLE_VOLUME_TYPES = %w( 275ml 300ml 500ml 600ml 1lt 5lt)
 
   #
   # Option
@@ -41,10 +41,14 @@ class BeerVote < ActiveRecord::Base
   #
 
   validates_presence_of :title
-
   validates_presence_of :twitter_profile
-
   validates_presence_of :commented_at
+  validates_inclusion_of :volume_type,
+    :in => POSSIBLE_VOLUME_TYPES,
+    :allow_blank => true
+  validates_numericality_of :price,
+    :greater_than => 0.0,
+    :allow_nil => true
 
   def text
     self.comment
