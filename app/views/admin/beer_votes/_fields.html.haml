@@ -12,6 +12,13 @@
   %br/
   = f.text_field :vote
 %p
+  = f.label_t :price
+  /
+  = f.label_t :volume_type
+  %br/
+  = f.text_field :price
+  = f.select :volume_type, BeerVote::POSSIBLE_VOLUME_TYPES
+%p
   = f.label_t :comment
   %br/
   = f.text_area :comment

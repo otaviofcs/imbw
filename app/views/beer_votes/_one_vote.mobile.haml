@@ -14,6 +14,11 @@
         %abbr{ :title => "#{l(beer_vote.commented_at)}" }
           = time_ago_in_words(beer_vote.commented_at)
     %p
+      Preço
+      = beer_vote.price
+      por
+      = beer_vote.volume_type
+    %p
       Coment&aacute;rio
       = beer_vote.comment if beer_vote.comment
     .photos{ :id => "beer#{beer_vote.id}" }

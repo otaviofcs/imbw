@@ -13,3 +13,5 @@ pt:
         country: "país"
         twitter_profile: "perfil twitter"
         commented_at: "comentado em"
+        price: "preço"
+        volume_type: "volume"
