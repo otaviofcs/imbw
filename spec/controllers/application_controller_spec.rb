@@ -36,7 +36,7 @@ describe ApplicationTestController do
       get :test_without_user
     end
     describe "on success" do
-      it "should succed" do
+      it "should succeed" do
         do_get
         response.should be_success
       end
@@ -52,7 +52,7 @@ describe ApplicationTestController do
       get :test_with_user
     end
     describe "on success" do
-      it "should succed" do
+      it "should succeed" do
         do_get
         response.should be_success
       end
