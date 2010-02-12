@@ -4,7 +4,9 @@
     %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" }
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico', :type => 'image/x-icon' }
-    %title= "#{h(@page_title)} - mobile version" if @page_title
+    %title
+      IMbW - I Might be Wrong (mobile)
+      = "#{h(@page_title)}" if @page_title
     = stylesheet_link_tag "application_mobile.css"
     = stylesheet_link_tag "jquery.lightbox.css"
 
