@@ -30,12 +30,10 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /\A#{EMAIL_NAME_REGEX}@#{DOMAIN_HEAD_REGEX}#{DOMAIN_TLD_REGEX}\z/i
 
   #
-  # Initialization
+  # Before validation
   #
 
-  def after_initialize
-    set_default_time_zone
-  end
+  before_validation_on_create :set_default_time_zone
 
   #
   # Options
