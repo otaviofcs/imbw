@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec_helper'
 
 describe Admin::PostsController do
   fixtures :users, :posts
@@ -144,8 +144,8 @@ describe Admin::PostsController do
     before(:each) do
       Post.stub!(:find).and_return(@post)
     end
-    def call_action(params={})
-      default_params = { :id => 10, :post => {}}
+    def call_action(params={}, format='html')
+      default_params = { :id => 10, :post => {}}.merge(:format => format)
       params = default_params.merge!(params)
       post :update, params
     end
