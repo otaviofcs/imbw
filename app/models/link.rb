@@ -6,9 +6,11 @@ class Link < ActiveRecord::Base
   # Options
   #
 
+  # link para o email otaviofcs http://www.google.com/reader/shared/16195098290729456512
+  # link para o email osampaio  http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast
   LINK_SOURCE_TYPES = {
-    "rplinks" => 'https://links.riopro.com.br/bookmarks/otavio',
-    "google_reader" => 'http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast'
+    "rplinks" => 'https://links.riopro.com.br/rss.php/otavio',
+    "google_reader" => 'http://www.google.com/reader/public/atom/user/16195098290729456512/state/com.google/broadcast'
   }
 
   cattr_reader :per_page
@@ -50,12 +52,12 @@ class Link < ActiveRecord::Base
 
 
   def self.parse_rss_feed
-    feed_parsed = RssParser::RPLinks.run 'links.riopro.com.br',443,'https://links.riopro.com.br/rss.php/otavio', true
+    feed_parsed = RssParser::RPLinks.run 'links.riopro.com.br',443, LINK_SOURCE_TYPES["rplinks"], true
     Link.create_links_from_feed(feed_parsed[:items])
   end
 
   def self.parse_google_reader_feed
-    google_reader_url = 'http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast'
+    google_reader_url = LINK_SOURCE_TYPES["google_reader"]
     feed_parsed = RssParser::GoogleReader.run 'www.google.com', 80, google_reader_url
     Link.create_links_from_feed(feed_parsed[:items])
   end
