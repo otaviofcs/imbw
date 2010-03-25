@@ -46,6 +46,7 @@ Rails::Initializer.run do |config|
   config.gem "hashie", :lib => "hashie", :version => "0.2.0"
   config.gem "httparty", :lib => "httparty", :version => "0.5.2"
   config.gem "json", :lib => "json", :version => "1.2.3"
+  config.gem "oauth", :lib => "oauth", :version => "0.3.6"
 
   # Gems do brazilian-rails usadas
   config.gem 'brnumeros', :version => '2.1.8'
