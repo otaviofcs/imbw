@@ -20,6 +20,7 @@ describe Note do
     it{ should validate_presence_of(:twit_id) }
     it{ should validate_uniqueness_of(:twit_id) }
     it{ should validate_presence_of(:note_taked_at) }
+    it{ should validate_uniqueness_of(:note_taked_at) }
     it{ should validate_presence_of(:note) }
     it "should not allow beer votes as note" do
       @note.note = "#beer %bv 3 %bd ótima"

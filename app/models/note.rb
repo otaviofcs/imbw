@@ -24,6 +24,8 @@ class Note < ActiveRecord::Base
   validates_uniqueness_of :twit_id
 
   validates_presence_of :note_taked_at
+  validates_uniqueness_of :note_taked_at
+
   validates_presence_of :note
   validate :block_beer_votes
 
