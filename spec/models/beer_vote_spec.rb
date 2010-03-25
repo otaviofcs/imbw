@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 
 describe BeerVote do
   before(:each) do
@@ -24,8 +24,8 @@ describe BeerVote do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:twitter_profile) }
     it { should validate_presence_of(:commented_at) }
-    it { should validate_numericality_of(:price, :greater_than => 0, :allow_nil => true) }
-    it { should allow_values_for(:volume_type, :in => BeerVote::POSSIBLE_VOLUME_TYPES) }
+    it { should validate_numericality_of(:price, :greater_than => 0.0, :allow_blank => true) }
+    it { should allow_values_for(:volume_type, :in => BeerVote::POSSIBLE_VOLUME_TYPES, :allow_blank => true) }
   end
 
   describe"object methods"do
@@ -50,7 +50,7 @@ describe BeerVote do
     end
     describe"self.create_one_vote(twitter_update)"do
       it"should create a BeerVote correctly"do
-        @twitter_update = mock_model(Mash, {
+        @twitter_update = mock_model(Hashie::Mash, {
           :created_at => "Sat, 20 Jun 2009 17:02:15 +0000",
           :from_user => "otaviofcs",
           :from_user_id => 19454543,

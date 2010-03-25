@@ -50,7 +50,7 @@ class BeerVote < ActiveRecord::Base
     :allow_blank => true
   validates_numericality_of :price,
     :greater_than => 0.0,
-    :allow_nil => true
+    :allow_blank => true
 
   def text
     self.comment
