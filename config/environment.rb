@@ -39,9 +39,13 @@ Rails::Initializer.run do |config|
 
   config.gem "aws-s3", :lib => "aws/s3", :version => ">= 0.6.2"
 
-  config.gem "twitter", :lib => "twitter", :version => ">= 0.6.15"
-
-  config.gem "crack", :lib => "crack", :version => ">= 0.1.4"
+  # Twitter
+  config.gem "twitter", :lib => "twitter", :version => "0.9.2"
+  # dependencias twitter
+  config.gem "crack", :lib => "crack", :version => "0.1.6"
+  config.gem "hashie", :lib => "hashie", :version => "0.2.0"
+  config.gem "httparty", :lib => "httparty", :version => "0.5.2"
+  config.gem "json", :lib => "json", :version => "1.2.3"
 
   # Gems do brazilian-rails usadas
   config.gem 'brnumeros', :version => '2.1.8'
