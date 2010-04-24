@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091120231957) do
+ActiveRecord::Schema.define(:version => 20100424023839) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "user_id"
@@ -172,5 +172,16 @@ ActiveRecord::Schema.define(:version => 20091120231957) do
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+
+  create_table "videos", :force => true do |t|
+    t.string   "content_type"
+    t.integer  "size"
+    t.string   "filename"
+    t.string   "title"
+    t.string   "description"
+    t.string   "video_hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

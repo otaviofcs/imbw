@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   config.gem "aws-s3", :lib => "aws/s3", :version => ">= 0.6.2"
 
   # Twitter
-  config.gem "twitter", :lib => "twitter", :version => "0.9.5"
+  config.gem "twitter", :lib => "twitter", :version => "0.9.2"
   # dependencias twitter
   config.gem "crack", :lib => "crack", :version => "0.1.6"
   config.gem "hashie", :lib => "hashie", :version => "0.2.0"

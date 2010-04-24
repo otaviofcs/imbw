@@ -48,6 +48,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :galleries, :collection => { :search => :get } do |gallery|
     gallery.resources :comments, :controller => "gallery_comments"
   end
+  map.resources :videos
+
   map.resources :comments
 
   map.resources :photos
@@ -65,6 +67,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts, :collection => { :preview => :post }
     admin.resources :attachments
     admin.resources :beer_votes
+    admin.resources :videos
     admin.resources :galleries do |gallery|
       gallery.resources :photos, :controller => "gallery_photos"
     end
