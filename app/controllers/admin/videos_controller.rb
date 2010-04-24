@@ -19,7 +19,7 @@ class Admin::VideosController < AdminController
     end
   end
 
-  def destroys
+  def destroy
     @video = Video.find(params[:id])
     @video.destroy
     redirect_to :action => 'index'

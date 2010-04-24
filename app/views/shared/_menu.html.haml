@@ -20,7 +20,7 @@
     %p{ :class => "#{"active" if controller.controller_name == 'links' }", :onmouseout =>  "$('menureading').hide();", :onmouseover => "$('menureading').show();"}
       = link_to "<span class='wrong_high'>R</span>eading", links_path
   .span-3
-    %p{ :class => "observing #{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"}
+    %p{ :class => "observing #{"active" if ( controller.controller_name == 'galleries' || controller.controller_name == 'photos' || controller.controller_name == 'videos' ) }", :onmouseout =>  "$('menuobserving').hide();", :onmouseover => "$('menuobserving').show();"}
       = link_to "<span class='wrong_high'>O</span>bserving", galleries_path
   .prepend-1.span-3
     %p{ :class => "#{"active" if ( controller.controller_name == 'notes' ) }", :onmouseout =>  "$('menutaking_notes').hide();", :onmouseover => "$('menutaking_notes').show();"}
