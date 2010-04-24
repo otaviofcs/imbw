@@ -5,6 +5,7 @@ pt:
     attributes:
       video:
         title: "título"
+        description: "descrição"
         created_at: "criado em"
         updated_at: "atualizado em"
         size: "tamanho"

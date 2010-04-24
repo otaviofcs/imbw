@@ -8,15 +8,20 @@
       %br
       = f.text_field :title
     %p
+      = f.label_t :description
+      %br
+      = f.text_field :description
+    %p
       = f.label_t :uploaded_data
       %br
       = f.file_field :uploaded_data
       %br
       %span.field_info Arquivos .flv
     %p.info
-      Para converter um arquivo em flv usando o ffmpeg faça:
+      Para converter um arquivo em flv usando o ffmpeg use o comando
+      abaixo (ou uma variante do mesmo):
     %pre
-      ffmpeg -i ARQUIVO_ORIGINAL -ar 22050 -s 480x320 -f flv -y NOVO_ARQUIVO.flv
+      ffmpeg -i ARQUIVO_ORIGINAL -ar 22050 -s 640x480 -f flv -y NOVO_ARQUIVO.flv
     %p
       = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
       ou

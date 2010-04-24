@@ -16,6 +16,12 @@ class Video < ActiveRecord::Base
   end
 
   #
+  # Validations
+  #
+
+  validates_as_attachment
+  validates_presence_of :title
+  #
   # Options
   #
 
@@ -23,6 +29,14 @@ class Video < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :title, :description
 
+  #
+  # Instance Methods
+  #
+
+  def public_filename(thumbnail = nil, expires_in=1.hour)
+    thumb = thumbnail.to_s if thumbnail
+    self.authenticated_s3_url(thumb, :expires_in => expires_in)
+  end
 
   protected
 
