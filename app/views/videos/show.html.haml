@@ -4,7 +4,7 @@
     = @video.title
   %p
     = @video.description
-  .photos
-    = link_to '', @video.public_filename, :style => "display:block;width:640px;height:480px;", :id => "player"
+  .photos{ :style => "width:640px;height:480px;", :id => "player" }
   %script
     flowplayer("player", "/flowplayer/flowplayer-3.1.5.swf");
+    == $f().play('#{@video.public_filename}');
