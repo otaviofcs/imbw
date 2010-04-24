@@ -2,7 +2,13 @@ require 'digest/sha1'
 
 class Video < ActiveRecord::Base
 
+  #
+  # Options
+  #
+  cattr_reader :per_page
+  @@per_page = 10
 
+  # attachment_fu salvando no AWS/S3
   has_attachment :content_type => :video,
     :storage => :s3,
     :s3_access => :private

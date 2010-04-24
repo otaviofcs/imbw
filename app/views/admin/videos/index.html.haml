@@ -12,5 +12,7 @@
           = l(video.created_at)
           %br/
           = link_to "excluir", admin_video_path(video), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
+          %br/
+          = link_to "editar", edit_admin_video_path(video), :class => 'link-edit'
   %p.paginate
     = will_paginate @videos

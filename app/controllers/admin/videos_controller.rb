@@ -1,11 +1,16 @@
 class Admin::VideosController < AdminController
 
   def index
-    @videos = Video.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
+    @videos = current_user.videos.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
   end
 
   def new
     @video = Video.new
+  end
+
+
+  def edit
+    @video = current_user.videos.find(params[:id])
   end
 
   def create
@@ -18,8 +23,19 @@ class Admin::VideosController < AdminController
     end
   end
 
+
+  def update
+    @video = current_user.videos.find(params[:id])
+    if @video.update_attributes(params[:video])
+      flash[:notice] = 'Video atualizado com sucesso'
+      redirect_to :action => 'index'
+    else
+      render :action => 'edit'
+    end
+  end
+
   def destroy
-    @video = Video.find(params[:id])
+    @video = current_user.videos.find(params[:id])
     @video.destroy
     redirect_to :action => 'index'
   end
