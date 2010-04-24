@@ -1,0 +1,13 @@
+pt:
+  activerecord:
+    models:
+      video: "vídeo"
+    attributes:
+      video:
+        title: "título"
+        created_at: "criado em"
+        updated_at: "atualizado em"
+        size: "tamanho"
+        content_type: "tipo de arquivo"
+        filename: "nome do arquivo"
+        uploaded_data: "arquivo"

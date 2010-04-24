@@ -1,0 +1,23 @@
+.general
+  %h2
+    Novo vídeo
+  - form_for @video, :url => admin_videos_path, :html => { :multipart => true } do |f|
+    = f.error_messages
+    %p
+      = f.label_t :title
+      %br
+      = f.text_field :title
+    %p
+      = f.label_t :uploaded_data
+      %br
+      = f.file_field :uploaded_data
+      %br
+      %span.field_info Arquivos .flv
+    %p.info
+      Para converter um arquivo em flv usando o ffmpeg faça:
+    %pre
+      ffmpeg -i ARQUIVO_ORIGINAL -ar 22050 -s 480x320 -f flv -y NOVO_ARQUIVO.flv
+    %p
+      = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
+      ou
+      = link_to 'cancelar', admin_videos_path
