@@ -19,7 +19,6 @@ class Video < ActiveRecord::Base
   # Validations
   #
 
-  validates_as_attachment
   validates_presence_of :title
   #
   # Options
@@ -27,7 +26,7 @@ class Video < ActiveRecord::Base
 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :title, :description
+  # attr_accessible :title, :description
 
   #
   # Instance Methods

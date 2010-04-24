@@ -9,8 +9,7 @@ class Admin::VideosController < AdminController
   end
 
   def create
-    @video = Video.new(params[:video])
-    @video.user = @current_user
+    @video = current_user.videos.build(params[:video])
     if @video.save
       flash[:notice] = 'Video enviado'
       redirect_to :action => 'index'

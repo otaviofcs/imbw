@@ -6,10 +6,11 @@
     - @videos.each do |video|
       .video
         %p
-          = link_to video.title, admin_video_path(video), :class => 'link-show'
+          = link_to "#{video.title} - link público", video_path(:id => "#{video.id}-#{video.video_hash}"), :class => 'link-show'
+          %br/
+          Criado em:
+          = l(video.created_at)
           %br/
           = link_to "excluir", admin_video_path(video), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
-          %br/
-          = link_to "link público", video_path(:id => "#{video.id}-#{video.video_hash}")
   %p.paginate
     = will_paginate @videos

@@ -4,6 +4,8 @@ pt:
       video: "vídeo"
     attributes:
       video:
+        user: "usuário"
+        user_id: "usuário"
         title: "título"
         description: "descrição"
         created_at: "criado em"
