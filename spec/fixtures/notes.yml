@@ -8,5 +8,5 @@
 
 twit_one:
   note: qualquer coisa
-  note_taked_at: <%= Time.current %>
+  note_taked_at: <%= Time.current - 12.hours %>
   twit_id: 1212
