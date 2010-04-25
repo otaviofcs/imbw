@@ -14,8 +14,6 @@ class Comment < ActiveRecord::Base
   #
   has_one :recent_activity, :as => :recentable, :dependent => :destroy
 
-  belongs_to :gallery
-
   #
   # Option
   #
