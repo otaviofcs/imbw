@@ -14,6 +14,12 @@ class Video < ActiveRecord::Base
     :s3_access => :private
 
   #
+  # Associations
+  #
+
+  has_many :comments, :as => :commentable, :dependent => :destroy
+
+  #
   # Callbacks
   #
 
