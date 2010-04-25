@@ -15,7 +15,7 @@ describe Gallery do
   describe "associations" do
     it { should belong_to(:user) }
     it { should have_many(:photos, :dependent => :destroy) }
-    it { should have_many(:comments, :dependent => :destroy) }
+    it { should have_many(:comments, :as => :commentable, :dependent => :destroy) }
   end
   
   describe "named_scopes" do

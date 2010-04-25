@@ -17,7 +17,7 @@ describe Comment do
 
 
   describe 'associations' do
-    it { should belong_to(:gallery) }
+    it { should have_one(:recent_activity, :as => :recentable, :dependent => :destroy) }
   end
 
   #
@@ -25,7 +25,8 @@ describe Comment do
   #
 
   describe 'validations' do
-    it { should validate_presence_of(:gallery_id) }
+    it { should validate_presence_of(:commentable_type) }
+    it { should validate_presence_of(:commentable_id) }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:comment) }
     it { should allow_values_for(:email, 'foo@bar.com', 'foo@newskool-tld.museum', 'foo@twoletter-tld.de', 'foo@nonexistant-tld.qq',

@@ -27,7 +27,9 @@ class Comment < ActiveRecord::Base
   named_scope :by_id, :order => "id desc"
   
 
-  validates_presence_of :gallery_id
+  validates_presence_of :commentable_id
+  validates_presence_of :commentable_type
+
   validates_presence_of :name
   validates_presence_of :comment
 
