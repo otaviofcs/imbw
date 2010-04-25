@@ -1,7 +1,7 @@
 module LinksHelper
 
   def link_link(link)
-    link_to link.title, link_path( :id => "#{link.id}-#{h( link.title.gsub('.','').gsub('/','-').gsub(' ','-') )}")
+    link_to link.title, link_path( :id => "#{link.id}-#{h( link.title.gsub('?','').gsub('[','').gsub(']','').gsub('.','').gsub('/','-').gsub(' ','-') )}")
   end
 
   def link_for_links(link)
