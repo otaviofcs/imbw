@@ -23,13 +23,13 @@ module PagesHelper
     content_tag(:div, :class => 'index_box') do
       html = ""
       html << content_tag(:h3) do
-        html2 = link_to(image_tag('o_mini.png', :alt => 'Observing', :title => 'Últimos comentários sobre as fotos.'), galleries_path)
-        html2 << link_to('Observing', galleries_path, :title => 'Últimos comentários sobre as fotos.')
+        html2 = link_to(image_tag('o_mini.png', :alt => 'Observing', :title => 'Últimos comentários sobre as fotos e vídeos.'), galleries_path)
+        html2 << link_to('Observing', galleries_path, :title => 'Últimos comentários sobre as fotos e vídeos.')
         html2
       end
       html << content_tag(:p) do
         html2 = content_tag(:span, "#{comment.name}", :class => 'destaque')
-        html2 << " comentou em um álbum de fotos: "
+        html2 << " comentou em um #{comment.commentable_type.constantize.human_name}: "
         html2 << comment.comment
         html2
       end
