@@ -1,0 +1,21 @@
+%h4 Deixe seu recado também!
+- remote_form_for new_comment, :url => video_comments_path("#{video.id}-#{video.video_hash}"), :method => :post do |f|
+  = f.error_messages
+  %p
+    = f.label_t :name
+    %br
+    = f.text_field :name
+    %br
+    = f.label_t :website
+    %br
+    = f.text_field :website
+    %br
+    = f.label_t :email
+    %br
+    = f.text_field :email
+    %br
+    = f.label_t :comment
+  %p
+    = f.text_area :comment, :cols => 8, :rows => 8, :class => 'my_text_area'
+  %p
+    = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'

@@ -17,5 +17,5 @@
       #new_comment
 - javascript_tag do
   $(document).ready(function(){
-  == load_comments('#{@gallery.id}-#{@gallery.gallery_hash}');
+  == load_comments('galleries', '#{@gallery.id}-#{@gallery.gallery_hash}');
   });

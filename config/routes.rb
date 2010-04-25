@@ -48,7 +48,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :galleries, :collection => { :search => :get } do |gallery|
     gallery.resources :comments, :controller => "gallery_comments"
   end
-  map.resources :videos
+  
+  map.resources :videos do |video|
+    video.resources :comments, :controller => "video_comments"
+  end
 
   map.resources :comments
 

@@ -1,0 +1,8 @@
+%h3 Mural de Recados
+- if comments.size > 0
+  - comments.each do |comment|
+    = render :partial => 'video_comments/comment', :locals => { :comment => comment }
+  %p.paginate
+    = ajax_will_paginate comments
+- else
+  %p Seja o primeiro a comentar.
