@@ -1,19 +1,19 @@
 .general
-  %h2
-    Vídeo
-    = @video.title
-  %p
-    = @video.description
-  .videos{ :style => "width:480px;height:360px;", :id => "player" }
-  %script
-    flowplayer("player", "/flowplayer/flowplayer-3.1.5.swf");
-    == $f().play('#{@video.public_filename}');
+  .span-15
+    %h2
+      Vídeo
+      = @video.title
+    %p
+      = @video.description
+    .videos{ :style => "width:480px;height:360px;", :id => "player" }
+    %script
+      flowplayer("player", "/flowplayer/flowplayer-3.1.5.swf");
+      == $f().play('#{@video.public_filename}');
+  .sidebar.span-7.last
+    #new_comment
 .span-24
-  .general
-    .span-15
-      #comments
-    .sidebar.span-7.last
-      #new_comment
+  .prepend-1.span-14
+    #comments
 - javascript_tag do
   $(document).ready(function(){
   == load_comments('videos','#{@video.id}-#{@video.video_hash}');
