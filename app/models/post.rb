@@ -54,7 +54,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :edited_at
 
-  # type in [:truncate, :full]
+  # type in [:truncate, :all]
   def formatted_body(type=:truncate)
     cut = self.body =~ /<span>more<\/span>/
     return self.body unless cut
@@ -66,7 +66,7 @@ class Post < ActiveRecord::Base
   end
 
   def text
-    self.formatted_body(:full)
+    self.formatted_body(:all)
   end
 
   protected
