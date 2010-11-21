@@ -17,7 +17,7 @@ class BeerVote < ActiveRecord::Base
   # Constants
   #
 
-  POSSIBLE_VOLUME_TYPES = %w( 275ml 300ml 500ml 600ml 1lt 5lt)
+  POSSIBLE_VOLUME_TYPES = %w( 275ml 300ml 330ml 500ml 600ml 750ml 1lt 2lt 5lt)
 
   #
   # Option
