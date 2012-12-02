@@ -8,7 +8,7 @@
     .videos{ :style => "width:640px", :id => "player" }
       %video{ :width => "640", :height => "480", :controls => "controls",
 :autobuffer => "autobuffer", :preload => "none" }
-        %source{ :src => "http://s3.amazonaws.com/imbw/pesadelo2.mp4", :type => "video/mp4" }
+        ==<source src="@video.public_filename" type="video/mp4" />
         Seu browser n&atilde;o suporta o formato mp4
   .sidebar.span-7.last
     #new_comment
