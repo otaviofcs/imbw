@@ -13,6 +13,14 @@
       %br
       = f.text_field :description
     %p
+      = f.label_t :video_hash
+      %br
+      = f.text_field :video_hash
+    %p
+      = f.label_t :mobile
+      %br
+      = f.check_box :mobile
+    %p
       = f.label_t :uploaded_data
       %br
       = @video.filename
