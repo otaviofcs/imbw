@@ -1,0 +1,21 @@
+.general
+  .span-15
+    %h2
+      Vídeo
+      = @video.title
+    %p
+      = @video.description
+    .videos{ :style => "width:640px", :id => "player" }
+      %video{ :width => "640", :height => "480", :controls => "controls",
+:autobuffer => "autobuffer", :preload => "none" }
+        %source{ :src => "http://s3.amazonaws.com/imbw/pesadelo2.mp4", :type => "video/mp4" />
+        Seu browser n&atilde;o suporta o formato mp4
+  .sidebar.span-7.last
+    #new_comment
+.span-24
+  .prepend-1.span-14
+    #comments
+- javascript_tag do
+  $(document).ready(function(){
+  == load_comments('videos','#{@video.id}-#{@video.video_hash}');
+  });
