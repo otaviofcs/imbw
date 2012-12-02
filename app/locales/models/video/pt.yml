@@ -14,3 +14,5 @@ pt:
         content_type: "tipo de arquivo"
         filename: "nome do arquivo"
         uploaded_data: "arquivo"
+        mobile: "mobile?"
+        video_hash: "Hash do vídeo"

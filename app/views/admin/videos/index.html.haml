@@ -10,6 +10,8 @@
           %br/
           Criado em:
           = l(video.created_at)
+          ,
+          = (video.mobile?) ? "Vídeo Mobile" : "Vídeo Comum"
           %br/
           = link_to "excluir", admin_video_path(video), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
           %br/
