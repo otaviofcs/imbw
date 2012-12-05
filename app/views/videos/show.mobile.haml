@@ -1,20 +1,20 @@
 .general
-  .span-15
-    %h2
-      Vídeo Mobile:
-      = @video.title
-    %p
-      = @video.description
-    .videos{ :style => "width:640px", :id => "player" }
-      %video{ :width => "640", :height => "480", :controls => "controls",
+  %h2
+    Vídeo Mobile:
+    = @video.title
+  %p
+    = @video.description
+  .videos{ :style => "width:640px", :id => "player" }
+    %video{ :width => "640", :height => "480", :controls => "controls",
 :autobuffer => "autobuffer", :preload => "none" }
-        ==<source src="#{@video_mobile.public_filename}" type="video/mp4" />
-        Seu browser n&atilde;o suporta o formato mp4
-  .sidebar.span-7.last
-    #new_comment
-.span-24
-  .prepend-1.span-14
-    #comments
+      ==<source src="#{@video_mobile.public_filename}" type="video/mp4" />
+      Seu browser n&atilde;o suporta o formato mp4
+%p
+  Mural de Recados abaixo. Clique
+  = link_to 'aqui', '#comment'
+  para deixar o seu recado
+#comments
+#new_comment{ :anchor => 'comment' }
 - javascript_tag do
   $(document).ready(function(){
   == load_comments('videos','#{@video.id}-#{@video.video_hash}');
