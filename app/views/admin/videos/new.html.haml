@@ -26,7 +26,7 @@
       Ou usando o aconv, podemos converter para mp4 e flv:
     %pre  
       sudo apt-get install libav-tools libavcodec-extra-53
-	%pre
+    %pre
       avconv -i FILME.avi -vcodec libx264 -acodec libvo_aacenc -r 30000/1001 nome.mp4
     %p.info
       Diminuindo o bitrate:
