@@ -29,9 +29,10 @@
     %pre
       avconv -i FILME.avi -vcodec libx264 -acodec libvo_aacenc -r 30000/1001 nome.mp4
     %p.info
-      Diminuindo o bitrate:
+      Diminuindo o bitrate para salvar de hd para wide, 820x480 ou vga (640x480):
     %pre
-      avconv -i FILME.avi -vcodec libx264 -acodec libvo_aacenc -b:v 256K -bt 256K -r 30000/1001 nome.mp4
+      avconv -i FILME.avi -vcodec libx264 -acodec libvo_aacenc -b:v 256K -bt 256K -s hd480 -r 30000/1001 nome.mp4
+      avconv -i FILME.avi -vcodec libx264 -acodec libvo_aacenc -b:v 256K -bt 256K -s vga -r 30000/1001 nome.mp4
       avconv -i FILME.avi -ar 22050 -f flv -y nome.flv
     %p
       = submit_tag 'Enviar', :disable_with => 'salvando...', :class => 'button'
