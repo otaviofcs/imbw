@@ -13,7 +13,7 @@ module PagesHelper
         html2
       end
       html << content_tag(:p) do
-        "#{post_link(post, 80, 'normal')}, #{time_ago_in_words(post.edited_at)}"
+        "#{post_link(post, 80, 'normal')}, há #{time_ago_in_words(post.edited_at)}"
       end
       html
     end
@@ -31,7 +31,7 @@ module PagesHelper
         html2 = content_tag(:span, "#{comment.name}", :class => 'destaque')
         html2 << " comentou em um #{comment.commentable_type.constantize.human_name}: "
         html2 << comment.comment
-        html2 << ", "
+        html2 << ", há "
         html2 << time_ago_in_words(comment.created_at)
         html2
       end
@@ -50,9 +50,9 @@ module PagesHelper
       html << content_tag(:div, :class => 'text_box') do
         html2 = star_rating(beer_vote.vote) if beer_vote.vote
         html2 << "&nbsp;foi a nota para #{beer_vote_link beer_vote}"
-        html2 << content_tag(:div, "&nbsp;", :class => "clear")
         html2 << ", "
         html2 << time_ago_in_words(beer_vote.commented_at)
+        html2 << content_tag(:div, "&nbsp;", :class => "clear")
         html2
       end
       html
