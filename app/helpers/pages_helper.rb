@@ -50,7 +50,7 @@ module PagesHelper
       html << content_tag(:div, :class => 'text_box') do
         html2 = star_rating(beer_vote.vote) if beer_vote.vote
         html2 << "&nbsp;foi a nota para #{beer_vote_link beer_vote}"
-        html2 << ", "
+        html2 << ", há "
         html2 << time_ago_in_words(beer_vote.commented_at)
         html2 << content_tag(:div, "&nbsp;", :class => "clear")
         html2
