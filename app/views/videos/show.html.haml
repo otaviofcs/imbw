@@ -9,7 +9,7 @@
     %script
       - if @video.mobile?
         %video{ :width => "640", :height => "480", :controls => "controls", :autobuffer => "autobuffer", :preload => "none" }
-          ==<source src="#{@video_mobile.public_filename}" type="video/mp4" />
+          ==<source src="#{@video.public_filename}" type="video/mp4" />
           Seu browser n&atilde;o suporta o formato mp4
       - else
         flowplayer("player", "/flowplayer/flowplayer-3.1.5.swf");
