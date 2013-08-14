@@ -7,7 +7,7 @@
       = @video.description
     .videos{ :style => "width:480px;height:360px;", :id => "player" }
     - if @video.mobile?
-      %video{ :width => "640", :height => "480", :controls => "controls", :autobuffer => "autobuffer", :preload => "none" }
+      %video{ :width => "560", :height => "420", :controls => "controls", :autobuffer => "autobuffer", :preload => "none" }
         ==<source src="#{@video.public_filename}" type="video/mp4" />
         Seu browser n&atilde;o suporta o formato mp4
     - else
