@@ -10,7 +10,7 @@ module PostsHelper
   end
 
   def striped_post_url(post)
-    post_url(:id => "#{post.id}-#{h( post.title.gsub('?','').gsub('.','').gsub('/./','-').gsub(' ','-') )}" )
+    post_url(:id => "#{post.id}-#{h( post.title.gsub('\?','').gsub('.','').gsub('/./','-').gsub(' ','-') )}" )
   end
 
 end
