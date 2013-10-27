@@ -1,6 +1,9 @@
 .span-18
   #post
     = render :partial => 'one_post', :locals => { :post => @post, :body => @post.formatted_body(:full) }
+  %p
+    %script{ :type => "text/javascript", :src => "http://platform.linkedin.com/in.js" }
+    %script{ :type => "IN/Share", :"data-url" => striped_post_url(@post), :title => truncate(@post.title, :length => 100, :omission => "..."), :summary => truncate(@post.formatted_body(:truncate), :length => 200, :omission => "...") , :"data-counter" => "right" }
 .span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
