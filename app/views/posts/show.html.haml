@@ -12,7 +12,7 @@
         %p
           Nenhum post relacionado a esse.
     %script{ :type => "text/javascript", :src => "http://platform.linkedin.com/in.js" }
-    %script{ :type => "IN/Share", :data-url=> post_link(@post, 40), :title => truncate(@post.title, :length => 100, :omission => "..."), :summary => truncate(@post.formatted_body(:truncate), :length => 200, :omission => "...") , :data-counter => "right" }
+    %script{ :type => "IN/Share", :"data-url" => striped_post_url(@post), :title => truncate(@post.title, :length => 100, :omission => "..."), :summary => truncate(@post.formatted_body(:truncate), :length => 200, :omission => "...") , :"data-counter" => "right" }
     %p
       Clique
       = link_to 'aqui', posts_path
