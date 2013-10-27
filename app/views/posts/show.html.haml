@@ -11,12 +11,13 @@
       - else
         %p
           Nenhum post relacionado a esse.
-    %script{ :type => "text/javascript", :src => "http://platform.linkedin.com/in.js" }
-    %script{ :type => "IN/Share", :"data-url" => striped_post_url(@post), :title => truncate(@post.title, :length => 100, :omission => "..."), :summary => truncate(@post.formatted_body(:truncate), :length => 200, :omission => "...") , :"data-counter" => "right" }
     %p
       Clique
       = link_to 'aqui', posts_path
       para ver todos os posts.
+    %p
+      %script{ :type => "text/javascript", :src => "http://platform.linkedin.com/in.js" }
+      %script{ :type => "IN/Share", :"data-url" => striped_post_url(@post), :title => truncate(@post.title, :length => 100, :omission => "..."), :summary => truncate(@post.formatted_body(:truncate), :length => 200, :omission => "...") , :"data-counter" => "right" }
 .prepend-1.span-18
   #comments_container
     = disqus_comments_tag(Settings::DISQUS_SITE_ID)
