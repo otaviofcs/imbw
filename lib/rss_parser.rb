@@ -38,6 +38,47 @@ module RssParser
     end
   end
 
+  # Parser Rss do Google Reader (que é um Atom)
+  #
+  # RssParser::Diigo.run 'www.diigo.com', 80, 'http://www.diigo.com/rss/user/otavio'
+  class Diigo
+    require 'rexml/document'
+    require 'rexml/xpath'
+
+    def self.run(host, port, url)
+      use_ssl = false
+      xml = nil
+      http = Net::HTTP.new(host, port)
+      http.use_ssl = use_ssl
+      http.start do |http|
+          request = Net::HTTP::Get.new(url)
+          response = http.request(request)
+          response.value
+          # turn the results into a REXML document
+          xml = REXML::Document.new(response.body)
+      end
+      xpath = REXML::XPath.first(xml,"//channel/")
+      data = {
+        :title    => xml.root.elements['channel/title'].text,
+        :home_url => xml.root.elements['channel/link'].text,
+        :rss_url  => url,
+        :items    => []
+      }
+      data[:title] = xpath.elements['title'].text
+      data[:home_url] = xpath.elements['link'].attributes["href"]
+      REXML::XPath.each(xpath,"//item/") do |item|
+        new_items = {:categories => []} and item.elements.each do |e|
+          # new_items[e.name.gsub(/^dc:(\w)/,"\1").to_sym] = e.text
+          new_items[e.name.to_sym] = e.text unless e.name == "category"
+          new_items[:categories] << e.text if e.name == "category"
+        end
+        new_items[:link_source] = "diigo"
+        data[:items] << new_items
+      end
+      data
+    end
+  end
+
 
   # Parser Rss do Google Reader (que é um Atom)
   #

@@ -56,11 +56,12 @@ class Link < ActiveRecord::Base
     Link.create_links_from_feed(feed_parsed[:items])
   end
 
-  def self.parse_google_reader_feed
-    google_reader_url = LINK_SOURCE_TYPES["google_reader"]
-    feed_parsed = RssParser::GoogleReader.run 'www.google.com', 80, google_reader_url
+  def self.parse_diigo_feed
+    diigo_url = 'https://www.diigo.com/rss/user/otavio'
+    feed_parsed = RssParser::GoogleReader.run 'www.diigo.com', 80, google_reader_url
     Link.create_links_from_feed(feed_parsed[:items])
   end
+  
 
   def self.create_links_from_feed(items)
     itens_created = []

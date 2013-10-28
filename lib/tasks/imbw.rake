@@ -19,10 +19,10 @@ namespace :imbw do
       puts "Feito."
       puts " > #{updated.size} links criados"
     end
-    desc "links do Google Reader"
-    task :create_from_google_reader => :environment do
+    desc "links do Diigo"
+    task :create_from_diigo => :environment do
       puts "Atualizando links..."
-      updated = Link.parse_google_reader_feed
+      updated = Link.parse_diigo_feed
       puts "Feito."
       puts " > #{updated.size} links criados"
     end
