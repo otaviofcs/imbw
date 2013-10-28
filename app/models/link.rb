@@ -59,7 +59,7 @@ class Link < ActiveRecord::Base
 
   def self.parse_diigo_feed
     diigo_url = 'https://www.diigo.com/rss/user/otavio'
-    feed_parsed = RssParser::GoogleReader.run 'www.diigo.com', 80, google_reader_url
+    feed_parsed = RssParser::GoogleReader.run 'www.diigo.com', 80, diigo_url
     Link.create_links_from_feed(feed_parsed[:items])
   end
   
