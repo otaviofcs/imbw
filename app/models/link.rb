@@ -10,7 +10,8 @@ class Link < ActiveRecord::Base
   # link para o email osampaio  http://www.google.com/reader/public/atom/user/11310005898312724236/state/com.google/broadcast
   LINK_SOURCE_TYPES = {
     "rplinks" => 'https://links.riopro.com.br/rss.php/otavio',
-    "google_reader" => 'http://www.google.com/reader/public/atom/user/16195098290729456512/state/com.google/broadcast'
+    "google_reader" => 'http://www.google.com/reader/public/atom/user/16195098290729456512/state/com.google/broadcast',
+    'diigo' => 'https://www.diigo.com/user/otavio'
   }
 
   cattr_reader :per_page
