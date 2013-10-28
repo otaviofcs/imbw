@@ -5,9 +5,7 @@ module LinksHelper
   end
 
   def link_for_links(link)
-    if link.description
-      link_to truncate( h(link.description), :length => 80, :omission => "..."), link.link
-    elsif link.title
+    if link.title
       link_to truncate( h(link.title), :length => 80, :omission => "..."), link.link
     else
       link_to truncate(link.link, :length => 80, :omission => "..."), link.link
