@@ -14,7 +14,7 @@ class LinksController < ApplicationController
     @search = Link.search params_search
     @links = @search.paginate(:page => params[:page])
     @page_title = "O que estou lendo"
-    @tags = Link.tag_counts :limit => 50, :order => 'tags.name'
+    @tags = Link.tag_counts :limit => 60, :order => 'tags.name', :at_least => 2
   end
 
   # GET /links/1
