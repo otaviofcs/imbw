@@ -4,10 +4,10 @@
       = link_link link
     %p
       %span
-        = link.description
+        = h(link.description)
       %br/
       link:
-      = link_to truncate(link.link, :length => 60), link.link
+      = link_to h(truncate(link.link, :length => 60)), link.link
     %p
       feito há
       - if link.linked_at
