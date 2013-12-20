@@ -69,7 +69,7 @@ module RssParser
       REXML::XPath.each(xpath,"//item/") do |item|
         new_items = {:categories => []} and item.elements.each do |e|
           # new_items[e.name.gsub(/^dc:(\w)/,"\1").to_sym] = e.text
-          new_items[e.name.to_sym] = e.text unless e.name == "category"
+          new_items[e.name.to_sym] = ActionView::Base.full_sanitizer.sanitize(e.text) unless e.name == "category"
           new_items[:categories] << e.text if e.name == "category"
         end
         new_items[:link_source] = "diigo"
