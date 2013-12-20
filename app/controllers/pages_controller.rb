@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   #
   # Músicas recentes
   def musica
-    APP_CONFIG['last_fm_api_key']
+    Settings::LAST_FM_API_KEY
   end
 
   # GET /pages/mobile/1 # true
