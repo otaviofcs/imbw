@@ -15,6 +15,15 @@ class PagesController < ApplicationController
     @recent_activities = @search.paginate(:page => params[:page])
   end
 
+  # GET /pages/musica
+  # Via: musica_pages_path
+  # Disponível: [todos]
+  #
+  # Músicas recentes
+  def musica
+    APP_CONFIG['last_fm_api_key']
+  end
+
   # GET /pages/mobile/1 # true
   # GET /pages/mobile/0 # false
   # GET /pages/mobile?id=1

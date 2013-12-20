@@ -15,12 +15,7 @@
           I might be wrong (imbw)
         , leia
         <a href="http://imbw.com.br/posts/2-Sobre%20o%20I%20Might%20be%20Wrong">esse post</a>.
-      %h4 Informação útil
-      %a{ :href => 'http://tempo1.cptec.inpe.br/cidades/previsao.do?parameter=tempo&id=241', :target => '_blank' }
-        %img{ :src => 'http://www7.cptec.inpe.br/seloweb/CreateImg?cidade=241&op=1&lang=pt', :alt => 'Clique na imagem para mais detalhes' }
-        \.
       %h4 Música!!!:
-      %a{ :href => "http://lastfm.gammalyrae.com/", :target => '_blank' }
-        %img{ :style => 'width:230px;', :src => "http://lastfm.gammalyrae.com/output/collage/topalbums/otaviofcs,overall,3,4,none.jpg", :alt => 'Top Albuns' }
-      %img{ :style => 'width:230px;', :src => 'http://lastfm.gammalyrae.com/output/spiral/topartists/otaviofcs,overall,black.png', :alt => 'Núvem de Artistas' }
-        
+      #musica
+      %script{ :type=> "text/javascript" }
+        jQuery.get("pages/musica", function( data ) { $( "#musica" ).html( data ); });
