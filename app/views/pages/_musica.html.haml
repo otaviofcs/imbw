@@ -1,1 +1,5 @@
-<h2>Música</h2>
+%h2 Música
+%ul
+  - for musica in @musicas['recenttracks']['track']
+    %li
+      = musica['name']
