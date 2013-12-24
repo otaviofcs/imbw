@@ -12,7 +12,7 @@ module LastFm
 
     def self.get(method, api_key, extraParams)
       host = "ws.audioscrobbler.com"
-      url="/2.0/?format=json&method=#{method}&api_key=#{mykey}&#{extraParams}"
+      url="/2.0/?format=json&method=#{method}&api_key=#{api_key}&#{extraParams}"
       
       parsed_json = nil
       response = Net::HTTP.get_response(host, url)
