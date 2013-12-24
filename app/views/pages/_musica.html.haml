@@ -2,4 +2,4 @@
 %ul
   - for musica in @musicas['recenttracks']['track']
     %li
-      = musica['name']
+      = link_to "#{musica['name']} - #{musica['artist']['#text']}", musica['url']
