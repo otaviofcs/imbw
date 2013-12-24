@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   #
   # Músicas recentes
   def musica
-    musicas = LastFm::Api.get 'user.getrecenttracks', 'a19dfed5ce7bc8c06c7e4f1d195e4d2a', "user=otaviofcs&limit=10" 
+    @musicas = LastFm::Api.get 'user.getrecenttracks', 'a19dfed5ce7bc8c06c7e4f1d195e4d2a', "user=otaviofcs&limit=10" 
   end
 
   # GET /pages/mobile/1 # true
