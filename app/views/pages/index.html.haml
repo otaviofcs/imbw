@@ -17,7 +17,4 @@
         <a href="http://imbw.com.br/posts/2-Sobre%20o%20I%20Might%20be%20Wrong">esse post</a>.
       %h4 Música!!!:
       #musica
-      %script{ :type=> "text/javascript" }
-        $(document).ready(function(){
-        jQuery.get("pages/musica", function( data ) { $( "#musica" ).html( data ); });
-        });
+      show_music_list(musica_pages_path(:format => :js))

@@ -1,5 +1,18 @@
 module PagesHelper
 
+  def show_music_list(url)
+    javascript_tag do
+      <<-eof
+        jQuery(document).ready(function() {
+          $.ajax({
+	  url: '#{url}',
+	  dataType: 'script'
+	});
+        });
+      eof
+    end
+  end
+
   def recent_box(recent_activity)
     self.send("#{recent_activity.recentable.class.name.underscore}_box".to_sym, recent_activity.recentable)
   end
