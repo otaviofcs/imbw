@@ -9,7 +9,8 @@
           %p
             = lightbox_image_tag(attachment.public_filename(:small), attachment.public_filename(:medium), {:class=>"images"}, :title => "#{ ((attachment.title) ? attachment.title : "sem título" ) }", :rel => "lightbox[roadtrip]")
           %p
-            = link_to "link público", attachment.public_filename(:medium)
+            - unless attachment.public_filename(:medium).nil?
+              = link_to "link público", attachment.public_filename(:medium)
             %br/
             = link_to "excluir", admin_attachment_path(attachment), :method => 'delete', :confirm => 'Tem certeza que deseja excluir este item? Não será possível voltar atrás.', :class => 'link-delete'
 
